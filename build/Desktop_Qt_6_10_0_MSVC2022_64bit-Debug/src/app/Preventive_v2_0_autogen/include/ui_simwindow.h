@@ -22,6 +22,7 @@ class Ui_SimWindow
 public:
     QPushButton *closeSimulatorBtn;
     QCustomPlot *plotWidget;
+    QPushButton *importCsvBtn;
 
     void setupUi(QDialog *SimWindow)
     {
@@ -34,6 +35,9 @@ public:
         plotWidget = new QCustomPlot(SimWindow);
         plotWidget->setObjectName("plotWidget");
         plotWidget->setGeometry(QRect(39, 29, 321, 191));
+        importCsvBtn = new QPushButton(SimWindow);
+        importCsvBtn->setObjectName("importCsvBtn");
+        importCsvBtn->setGeometry(QRect(40, 240, 80, 24));
 
         retranslateUi(SimWindow);
 
@@ -44,6 +48,7 @@ public:
     {
         SimWindow->setWindowTitle(QCoreApplication::translate("SimWindow", "Dialog", nullptr));
         closeSimulatorBtn->setText(QCoreApplication::translate("SimWindow", "Zamknij", nullptr));
+        importCsvBtn->setText(QCoreApplication::translate("SimWindow", "Dane z CSV", nullptr));
     } // retranslateUi
 
 };

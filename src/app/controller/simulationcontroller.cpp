@@ -33,6 +33,7 @@ void SimulationController::runSimulation(const QString &filePath, StrategyType s
     connect (m_simulator, &Simulator::valueChanged, this, &SimulationController::newValueProduced);
     connect (m_simulator, &Simulator::simulationFinished, this, &SimulationController::simulationFinished);
 
+    disconnect(m_loader,&DataLoader::dataLoaded,nullptr,nullptr);
     //połaczenie loadera z symulatorem
     connect(m_loader, &DataLoader::dataLoaded, this, [this](const QList<DataPoint>& data){
         if (m_simulator) {
@@ -42,7 +43,22 @@ void SimulationController::runSimulation(const QString &filePath, StrategyType s
     });
 
 
+    if(!filePath.isEmpty())
+        m_loader->loadFromCSV(filePath);
+}
 
+void SimulationController::loadNewData(const QString &filePath)
+{
+    qInfo() << "Ładowanie danych z: " << filePath;
+
+    // jezeli symulator działa, zatrzymaj go tymczasowo
+    if(m_simulator){
+        m_simulator->stop();
+    }
+
+    // Ponownie użyj istniejącego modułu ładującego, aby załadować nowy plik.
+    // Ponieważ już połączyłeś m_loader::dataLoaded z lambdą w konstruktorze/runSimulation,
+    // wywołanie tej funkcji automatycznie spowoduje, że symulator zaktualizuje swoje dane i uruchomi się ponownie!
     m_loader->loadFromCSV(filePath);
 }
 

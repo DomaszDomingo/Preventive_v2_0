@@ -19,8 +19,13 @@ public:
     ~SimWindow();
     void setupPlot();//funkcja do inicjalizacji wykresu
 
+signals:
+    void dataImportRequested (const QString &filePath); //sygnał emitowany gdy użytkownik wybierze plik
+
+
 public slots:
     void onNewData (double value); // slot na nowe dane
+    void handleImportCsv(); //slot dla przycisku
 private:
     Ui::SimWindow *ui;
     QElapsedTimer m_plotTimer; //Timer do śledzenia osi czasu X

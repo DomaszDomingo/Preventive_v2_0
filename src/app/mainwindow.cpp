@@ -19,7 +19,6 @@ MainWindow::MainWindow(QWidget *parent)
     //Podłączenie przycisku do otwierania okna
     connect (ui->simulatorBtn, &QPushButton::clicked, this, &MainWindow::on_simulatorBtn_clicked);
 
-
 }
 
 MainWindow::~MainWindow()
@@ -29,7 +28,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_simulatorBtn_clicked()
 {
-    //sprawczenie czy okno jescze nie istnieje
+    //sprawdzenie czy okno jescze nie istnieje
     if (!m_simWindow){
         //jeśli nie to tworzymy
         m_simWindow = new SimWindow(this); //this jako rodzic
@@ -47,10 +46,15 @@ void MainWindow::on_simulatorBtn_clicked()
         //Połaczenie sygnału z kontrolera ze slotem w oknie wykresu
         connect (m_controller, &SimulationController::newValueProduced, m_simWindow, &SimWindow::onNewData);
 
+        connect (m_simWindow, &SimWindow::dataImportRequested, m_controller, &SimulationController::loadNewData);
+
+        //Połącz żądanie pliku systmeu okien z logiką ładowania controllera
+        connect (m_simWindow, &SimWindow::dataImportRequested, m_controller, &SimulationController::loadNewData);
+
     }
 
 
-    m_controller->runSimulation("data.csv", StrategyType::Linear);
+    m_controller->runSimulation("", StrategyType::Linear);
     //2. niezależnie czy okno było, czy dopiero zostało stworzone
     m_simWindow->show();
     m_simWindow->activateWindow();

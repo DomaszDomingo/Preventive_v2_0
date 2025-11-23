@@ -2,6 +2,8 @@
 #include "ui_simwindow.h"
 #include "qcustomplot.h"
 #include <QDebug> // Do logowania błędów
+#include <QFileDialog>
+#include <QMessageBox>
 
 SimWindow::SimWindow(QWidget *parent)
     : QDialog(parent)
@@ -24,6 +26,8 @@ SimWindow::SimWindow(QWidget *parent)
     // --- KONIEC POPRAWKI ---
 
     connect (ui->closeSimulatorBtn, &QPushButton::clicked, this, &SimWindow::close);
+
+    connect (ui->importCsvBtn, &QPushButton::clicked, this, &SimWindow::handleImportCsv);
 
     // Inicjalizujemy wykres
     setupPlot();
@@ -76,3 +80,44 @@ void SimWindow::onNewData(double value)
     //odswiez wykres
     m_plot->replot(QCustomPlot::rpQueuedReplot);
 }
+
+void SimWindow::handleImportCsv()
+{
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Importuj Dane CSV"), "", tr("CSV Files(*.csv);;AllFiles(*)")); // otwórz okno dialogowe
+
+    if(fileName.isEmpty()) //jezeli uzytkownik anuluje
+        return;
+
+    emit dataImportRequested(fileName); // wyemituj sygnał do controllera
+
+    //przygotowanie wykresu na nowe dane
+    m_plot->graph(0)->data()->clear();
+    m_plot->replot();
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
