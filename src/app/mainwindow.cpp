@@ -45,6 +45,7 @@ void MainWindow::on_simulatorBtn_clicked()
 
         //Połaczenie sygnału z kontrolera ze slotem w oknie wykresu
         connect (m_controller, &SimulationController::newValueProduced, m_simWindow, &SimWindow::onNewData);
+        connect (m_controller, &SimulationController::statsReady, m_simWindow, &SimWindow::onStatsReceived);
 
         connect (m_simWindow, &SimWindow::dataImportRequested, m_controller, &SimulationController::loadNewData);
 

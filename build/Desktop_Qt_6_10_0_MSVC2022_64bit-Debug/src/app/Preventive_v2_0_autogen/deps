@@ -59,6 +59,7 @@ Preventive_v2_0_autogen/timestamp: \
 	C:/Qt/6.10.0/msvc2022_64/include/QtCore/QElapsedTimer \
 	C:/Qt/6.10.0/msvc2022_64/include/QtCore/QList \
 	C:/Qt/6.10.0/msvc2022_64/include/QtCore/QObject \
+	C:/Qt/6.10.0/msvc2022_64/include/QtCore/QString \
 	C:/Qt/6.10.0/msvc2022_64/include/QtCore/QTimer \
 	C:/Qt/6.10.0/msvc2022_64/include/QtCore/q17memory.h \
 	C:/Qt/6.10.0/msvc2022_64/include/QtCore/q20functional.h \
@@ -114,6 +115,7 @@ Preventive_v2_0_autogen/timestamp: \
 	C:/Qt/6.10.0/msvc2022_64/include/QtCore/qglobalstatic.h \
 	C:/Qt/6.10.0/msvc2022_64/include/QtCore/qhash.h \
 	C:/Qt/6.10.0/msvc2022_64/include/QtCore/qhashfunctions.h \
+	C:/Qt/6.10.0/msvc2022_64/include/QtCore/qiodevice.h \
 	C:/Qt/6.10.0/msvc2022_64/include/QtCore/qiodevicebase.h \
 	C:/Qt/6.10.0/msvc2022_64/include/QtCore/qiterable.h \
 	C:/Qt/6.10.0/msvc2022_64/include/QtCore/qiterator.h \
@@ -187,6 +189,7 @@ Preventive_v2_0_autogen/timestamp: \
 	C:/Qt/6.10.0/msvc2022_64/include/QtCore/qtversionchecks.h \
 	C:/Qt/6.10.0/msvc2022_64/include/QtCore/qtypeinfo.h \
 	C:/Qt/6.10.0/msvc2022_64/include/QtCore/qtypes.h \
+	C:/Qt/6.10.0/msvc2022_64/include/QtCore/qurl.h \
 	C:/Qt/6.10.0/msvc2022_64/include/QtCore/qutf8stringview.h \
 	C:/Qt/6.10.0/msvc2022_64/include/QtCore/qvariant.h \
 	C:/Qt/6.10.0/msvc2022_64/include/QtCore/qvarlengtharray.h \
@@ -207,12 +210,14 @@ Preventive_v2_0_autogen/timestamp: \
 	C:/Qt/6.10.0/msvc2022_64/include/QtGui/qkeysequence.h \
 	C:/Qt/6.10.0/msvc2022_64/include/QtGui/qpaintdevice.h \
 	C:/Qt/6.10.0/msvc2022_64/include/QtGui/qpalette.h \
+	C:/Qt/6.10.0/msvc2022_64/include/QtGui/qpicture.h \
 	C:/Qt/6.10.0/msvc2022_64/include/QtGui/qpixelformat.h \
 	C:/Qt/6.10.0/msvc2022_64/include/QtGui/qpixmap.h \
 	C:/Qt/6.10.0/msvc2022_64/include/QtGui/qpolygon.h \
 	C:/Qt/6.10.0/msvc2022_64/include/QtGui/qregion.h \
 	C:/Qt/6.10.0/msvc2022_64/include/QtGui/qrgb.h \
 	C:/Qt/6.10.0/msvc2022_64/include/QtGui/qrgba64.h \
+	C:/Qt/6.10.0/msvc2022_64/include/QtGui/qtextdocument.h \
 	C:/Qt/6.10.0/msvc2022_64/include/QtGui/qtgui-config.h \
 	C:/Qt/6.10.0/msvc2022_64/include/QtGui/qtguiexports.h \
 	C:/Qt/6.10.0/msvc2022_64/include/QtGui/qtguiglobal.h \
@@ -220,8 +225,11 @@ Preventive_v2_0_autogen/timestamp: \
 	C:/Qt/6.10.0/msvc2022_64/include/QtGui/qwindowdefs.h \
 	C:/Qt/6.10.0/msvc2022_64/include/QtGui/qwindowdefs_win.h \
 	C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/QDialog \
+	C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/QLabel \
 	C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/QMainWindow \
 	C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/qdialog.h \
+	C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/qframe.h \
+	C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/qlabel.h \
 	C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/qmainwindow.h \
 	C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/qsizepolicy.h \
 	C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/qtabwidget.h \
@@ -235,6 +243,8 @@ Preventive_v2_0_autogen/timestamp: \
 	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/dataloader/dataloader.cpp \
 	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/dataloader/dataloader.h \
 	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/datamodel/DataPoint.h \
+	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/infowindow.cpp \
+	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/infowindow.h \
 	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/main.cpp \
 	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/mainwindow.cpp \
 	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/mainwindow.h \
@@ -247,6 +257,8 @@ Preventive_v2_0_autogen/timestamp: \
 	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/simulation/strategyfactory.h \
 	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/simwindow.cpp \
 	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/simwindow.h \
+	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/utils/dataanalyzer.cpp \
+	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/utils/dataanalyzer.h \
 	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/mainwindow.ui \
 	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/simwindow.ui \
 	C:/Qt/Tools/CMake_64/bin/cmake.exe

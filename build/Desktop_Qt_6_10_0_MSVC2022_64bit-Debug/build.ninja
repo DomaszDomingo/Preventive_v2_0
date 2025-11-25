@@ -159,6 +159,24 @@ build src\app\CMakeFiles\Preventive_v2_0.dir\simulation\strategyfactory.cpp.obj:
   TARGET_COMPILE_PDB = src\app\CMakeFiles\Preventive_v2_0.dir\
   TARGET_PDB = Preventive_v2_0.pdb
 
+build src\app\CMakeFiles\Preventive_v2_0.dir\utils\dataanalyzer.cpp.obj: CXX_COMPILER__Preventive_v2_0_unscanned_Debug C$:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\app\utils\dataanalyzer.cpp || cmake_object_order_depends_target_Preventive_v2_0
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd -Zc:__cplusplus -permissive- -utf-8
+  INCLUDES = -IC:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_10_0_MSVC2022_64bit-Debug\src\app\Preventive_v2_0_autogen\include -IC:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\3rdPart\qcustomplot -external:IC:\Qt\6.10.0\msvc2022_64\include\QtCore -external:IC:\Qt\6.10.0\msvc2022_64\include -external:IC:\Qt\6.10.0\msvc2022_64\mkspecs\win32-msvc -external:IC:\Qt\6.10.0\msvc2022_64\include\QtWidgets -external:IC:\Qt\6.10.0\msvc2022_64\include\QtGui -external:IC:\Qt\6.10.0\msvc2022_64\include\QtPrintSupport -external:W0
+  OBJECT_DIR = src\app\CMakeFiles\Preventive_v2_0.dir
+  OBJECT_FILE_DIR = src\app\CMakeFiles\Preventive_v2_0.dir\utils
+  TARGET_COMPILE_PDB = src\app\CMakeFiles\Preventive_v2_0.dir\
+  TARGET_PDB = Preventive_v2_0.pdb
+
+build src\app\CMakeFiles\Preventive_v2_0.dir\infowindow.cpp.obj: CXX_COMPILER__Preventive_v2_0_unscanned_Debug C$:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\app\infowindow.cpp || cmake_object_order_depends_target_Preventive_v2_0
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd -Zc:__cplusplus -permissive- -utf-8
+  INCLUDES = -IC:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_10_0_MSVC2022_64bit-Debug\src\app\Preventive_v2_0_autogen\include -IC:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\3rdPart\qcustomplot -external:IC:\Qt\6.10.0\msvc2022_64\include\QtCore -external:IC:\Qt\6.10.0\msvc2022_64\include -external:IC:\Qt\6.10.0\msvc2022_64\mkspecs\win32-msvc -external:IC:\Qt\6.10.0\msvc2022_64\include\QtWidgets -external:IC:\Qt\6.10.0\msvc2022_64\include\QtGui -external:IC:\Qt\6.10.0\msvc2022_64\include\QtPrintSupport -external:W0
+  OBJECT_DIR = src\app\CMakeFiles\Preventive_v2_0.dir
+  OBJECT_FILE_DIR = src\app\CMakeFiles\Preventive_v2_0.dir
+  TARGET_COMPILE_PDB = src\app\CMakeFiles\Preventive_v2_0.dir\
+  TARGET_PDB = Preventive_v2_0.pdb
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Preventive_v2_0
@@ -167,7 +185,7 @@ build src\app\CMakeFiles\Preventive_v2_0.dir\simulation\strategyfactory.cpp.obj:
 #############################################
 # Link the executable Preventive_v2_0.exe
 
-build Preventive_v2_0.exe: CXX_EXECUTABLE_LINKER__Preventive_v2_0_Debug src\app\CMakeFiles\Preventive_v2_0.dir\Preventive_v2_0_autogen\mocs_compilation.cpp.obj src\app\CMakeFiles\Preventive_v2_0.dir\main.cpp.obj src\app\CMakeFiles\Preventive_v2_0.dir\mainwindow.cpp.obj src\app\CMakeFiles\Preventive_v2_0.dir\simwindow.cpp.obj src\app\CMakeFiles\Preventive_v2_0.dir\controller\simulationcontroller.cpp.obj src\app\CMakeFiles\Preventive_v2_0.dir\dataloader\dataloader.cpp.obj src\app\CMakeFiles\Preventive_v2_0.dir\simulation\simulator.cpp.obj src\app\CMakeFiles\Preventive_v2_0.dir\simulation\concretestrategies.cpp.obj src\app\CMakeFiles\Preventive_v2_0.dir\simulation\strategyfactory.cpp.obj | src\3rdPart\qcustomplot\qcustomplot.lib C$:\Qt\6.10.0\msvc2022_64\lib\Qt6PrintSupportd.lib C$:\Qt\6.10.0\msvc2022_64\lib\Qt6Widgetsd.lib C$:\Qt\6.10.0\msvc2022_64\lib\Qt6Guid.lib C$:\Qt\6.10.0\msvc2022_64\lib\Qt6Cored.lib || qcustomplot.dll src\app\Preventive_v2_0_autogen src\app\Preventive_v2_0_autogen_timestamp_deps
+build Preventive_v2_0.exe: CXX_EXECUTABLE_LINKER__Preventive_v2_0_Debug src\app\CMakeFiles\Preventive_v2_0.dir\Preventive_v2_0_autogen\mocs_compilation.cpp.obj src\app\CMakeFiles\Preventive_v2_0.dir\main.cpp.obj src\app\CMakeFiles\Preventive_v2_0.dir\mainwindow.cpp.obj src\app\CMakeFiles\Preventive_v2_0.dir\simwindow.cpp.obj src\app\CMakeFiles\Preventive_v2_0.dir\controller\simulationcontroller.cpp.obj src\app\CMakeFiles\Preventive_v2_0.dir\dataloader\dataloader.cpp.obj src\app\CMakeFiles\Preventive_v2_0.dir\simulation\simulator.cpp.obj src\app\CMakeFiles\Preventive_v2_0.dir\simulation\concretestrategies.cpp.obj src\app\CMakeFiles\Preventive_v2_0.dir\simulation\strategyfactory.cpp.obj src\app\CMakeFiles\Preventive_v2_0.dir\utils\dataanalyzer.cpp.obj src\app\CMakeFiles\Preventive_v2_0.dir\infowindow.cpp.obj | src\3rdPart\qcustomplot\qcustomplot.lib C$:\Qt\6.10.0\msvc2022_64\lib\Qt6PrintSupportd.lib C$:\Qt\6.10.0\msvc2022_64\lib\Qt6Widgetsd.lib C$:\Qt\6.10.0\msvc2022_64\lib\Qt6Guid.lib C$:\Qt\6.10.0\msvc2022_64\lib\Qt6Cored.lib || qcustomplot.dll src\app\Preventive_v2_0_autogen src\app\Preventive_v2_0_autogen_timestamp_deps
   FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -MDd
   LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
   LINK_LIBRARIES = src\3rdPart\qcustomplot\qcustomplot.lib  C:\Qt\6.10.0\msvc2022_64\lib\Qt6PrintSupportd.lib  C:\Qt\6.10.0\msvc2022_64\lib\Qt6Widgetsd.lib  C:\Qt\6.10.0\msvc2022_64\lib\Qt6Guid.lib  C:\Qt\6.10.0\msvc2022_64\lib\Qt6Cored.lib  mpr.lib  userenv.lib  d3d11.lib  dxgi.lib  dxguid.lib  d3d12.lib  comdlg32.lib  winspool.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib

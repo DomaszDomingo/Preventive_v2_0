@@ -56,6 +56,8 @@ C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/build/Desktop_Qt_6_10_0_MSVC202
   C:/Program\ Files/Microsoft\ Visual\ Studio/18/Community/VC/Tools/MSVC/14.50.35717/include/yvals.h \
   C:/Program\ Files/Microsoft\ Visual\ Studio/18/Community/VC/Tools/MSVC/14.50.35717/include/yvals_core.h \
   C:/Qt/6.10.0/msvc2022_64/include/QtCore/QElapsedTimer \
+  C:/Qt/6.10.0/msvc2022_64/include/QtCore/QList \
+  C:/Qt/6.10.0/msvc2022_64/include/QtCore/QString \
   C:/Qt/6.10.0/msvc2022_64/include/QtCore/q17memory.h \
   C:/Qt/6.10.0/msvc2022_64/include/QtCore/q20functional.h \
   C:/Qt/6.10.0/msvc2022_64/include/QtCore/q20iterator.h \
@@ -106,6 +108,7 @@ C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/build/Desktop_Qt_6_10_0_MSVC202
   C:/Qt/6.10.0/msvc2022_64/include/QtCore/qglobalstatic.h \
   C:/Qt/6.10.0/msvc2022_64/include/QtCore/qhash.h \
   C:/Qt/6.10.0/msvc2022_64/include/QtCore/qhashfunctions.h \
+  C:/Qt/6.10.0/msvc2022_64/include/QtCore/qiodevice.h \
   C:/Qt/6.10.0/msvc2022_64/include/QtCore/qiodevicebase.h \
   C:/Qt/6.10.0/msvc2022_64/include/QtCore/qiterable.h \
   C:/Qt/6.10.0/msvc2022_64/include/QtCore/qiterator.h \
@@ -178,6 +181,7 @@ C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/build/Desktop_Qt_6_10_0_MSVC202
   C:/Qt/6.10.0/msvc2022_64/include/QtCore/qtversionchecks.h \
   C:/Qt/6.10.0/msvc2022_64/include/QtCore/qtypeinfo.h \
   C:/Qt/6.10.0/msvc2022_64/include/QtCore/qtypes.h \
+  C:/Qt/6.10.0/msvc2022_64/include/QtCore/qurl.h \
   C:/Qt/6.10.0/msvc2022_64/include/QtCore/qutf8stringview.h \
   C:/Qt/6.10.0/msvc2022_64/include/QtCore/qvariant.h \
   C:/Qt/6.10.0/msvc2022_64/include/QtCore/qvarlengtharray.h \
@@ -198,12 +202,14 @@ C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/build/Desktop_Qt_6_10_0_MSVC202
   C:/Qt/6.10.0/msvc2022_64/include/QtGui/qkeysequence.h \
   C:/Qt/6.10.0/msvc2022_64/include/QtGui/qpaintdevice.h \
   C:/Qt/6.10.0/msvc2022_64/include/QtGui/qpalette.h \
+  C:/Qt/6.10.0/msvc2022_64/include/QtGui/qpicture.h \
   C:/Qt/6.10.0/msvc2022_64/include/QtGui/qpixelformat.h \
   C:/Qt/6.10.0/msvc2022_64/include/QtGui/qpixmap.h \
   C:/Qt/6.10.0/msvc2022_64/include/QtGui/qpolygon.h \
   C:/Qt/6.10.0/msvc2022_64/include/QtGui/qregion.h \
   C:/Qt/6.10.0/msvc2022_64/include/QtGui/qrgb.h \
   C:/Qt/6.10.0/msvc2022_64/include/QtGui/qrgba64.h \
+  C:/Qt/6.10.0/msvc2022_64/include/QtGui/qtextdocument.h \
   C:/Qt/6.10.0/msvc2022_64/include/QtGui/qtgui-config.h \
   C:/Qt/6.10.0/msvc2022_64/include/QtGui/qtguiexports.h \
   C:/Qt/6.10.0/msvc2022_64/include/QtGui/qtguiglobal.h \
@@ -211,9 +217,15 @@ C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/build/Desktop_Qt_6_10_0_MSVC202
   C:/Qt/6.10.0/msvc2022_64/include/QtGui/qwindowdefs.h \
   C:/Qt/6.10.0/msvc2022_64/include/QtGui/qwindowdefs_win.h \
   C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/QDialog \
+  C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/QLabel \
   C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/qdialog.h \
+  C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/qframe.h \
+  C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/qlabel.h \
   C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/qsizepolicy.h \
   C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/qtwidgets-config.h \
   C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/qtwidgetsexports.h \
   C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/qtwidgetsglobal.h \
-  C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/qwidget.h
+  C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/qwidget.h \
+  C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/datamodel/DataPoint.h \
+  C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/infowindow.h \
+  C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/utils/dataanalyzer.h

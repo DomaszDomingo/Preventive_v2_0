@@ -12,7 +12,9 @@ SimWindow::SimWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    // --- KLUCZOWA POPRAWKA ---
+    m_infoWindow = new InfoWindow(this);
+
+       // --- KLUCZOWA POPRAWKA ---
     // ui->plotWidget jest typu QWidget*.
     // Musimy go bezpiecznie zrzutować na QCustomPlot*, który został "promowany".
 
@@ -94,6 +96,18 @@ void SimWindow::handleImportCsv()
     m_plot->graph(0)->data()->clear();
     m_plot->replot();
 
+
+}
+
+
+void SimWindow::onStatsReceived(const SimulationStats &stats)
+{
+    if (!m_infoWindow) return;
+
+    m_infoWindow->updateStats(stats);
+    m_infoWindow->show();
+    m_infoWindow->raise();
+    m_infoWindow->activateWindow();
 
 }
 

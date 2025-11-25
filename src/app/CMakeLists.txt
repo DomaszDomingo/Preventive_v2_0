@@ -18,6 +18,9 @@ qt_add_executable(Preventive_v2_0
     simulation/ISimulationStrategy.h
     simulation/strategyfactory.cpp
     simulation/strategyfactory.h
+    utils/dataanalyzer.cpp
+    utils/dataanalyzer.h
+    infowindow.h infowindow.cpp
 
 )
 

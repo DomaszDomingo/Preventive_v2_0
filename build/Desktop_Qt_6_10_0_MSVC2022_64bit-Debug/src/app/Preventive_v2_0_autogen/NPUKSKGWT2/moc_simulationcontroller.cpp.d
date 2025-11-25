@@ -58,6 +58,7 @@ C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/build/Desktop_Qt_6_10_0_MSVC202
   C:/Qt/6.10.0/msvc2022_64/include/QtCore/QElapsedTimer \
   C:/Qt/6.10.0/msvc2022_64/include/QtCore/QList \
   C:/Qt/6.10.0/msvc2022_64/include/QtCore/QObject \
+  C:/Qt/6.10.0/msvc2022_64/include/QtCore/QString \
   C:/Qt/6.10.0/msvc2022_64/include/QtCore/QTimer \
   C:/Qt/6.10.0/msvc2022_64/include/QtCore/q17memory.h \
   C:/Qt/6.10.0/msvc2022_64/include/QtCore/q20functional.h \
@@ -184,4 +185,5 @@ C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/build/Desktop_Qt_6_10_0_MSVC202
   C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/datamodel/DataPoint.h \
   C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/simulation/ISimulationStrategy.h \
   C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/simulation/simulator.h \
-  C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/simulation/strategyfactory.h
+  C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/simulation/strategyfactory.h \
+  C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/utils/dataanalyzer.h

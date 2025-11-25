@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QElapsedTimer>
+#include "infowindow.h"
 
 class QCustomPlot;
 
@@ -26,10 +27,12 @@ signals:
 public slots:
     void onNewData (double value); // slot na nowe dane
     void handleImportCsv(); //slot dla przycisku
+    void onStatsReceived(const SimulationStats & stats);
 private:
     Ui::SimWindow *ui;
     QElapsedTimer m_plotTimer; //Timer do śledzenia osi czasu X
     QCustomPlot *m_plot;
+    InfoWindow *m_infoWindow = nullptr;
 };
 
 #endif

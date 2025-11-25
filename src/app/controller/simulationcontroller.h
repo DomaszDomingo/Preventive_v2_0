@@ -5,6 +5,8 @@
 #include "../simulation/simulator.h"
 #include "../simulation/strategyfactory.h"
 #include <QDebug>
+#include "../utils/dataanalyzer.h"
+
 
 class DataLoader;
 class Simulator;
@@ -20,6 +22,8 @@ signals:
     //Nowy sygnał, który bedzie przekazywał wartośc z symulatora
     void newValueProduced(double value);
     void simulationFinished();
+    void statsReady(const SimulationStats& stats);
+
 
 public slots:
     void runSimulation (const QString & filePath, StrategyType strategyType);
