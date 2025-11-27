@@ -42,7 +42,8 @@ template <> constexpr inline auto Simulator::qt_create_metaobjectdata<qt_meta_ta
         "Simulator",
         "valueChanged",
         "",
-        "newValue",
+        "time",
+        "value",
         "simulationFinished",
         "setData",
         "QList<DataPoint>",
@@ -52,17 +53,17 @@ template <> constexpr inline auto Simulator::qt_create_metaobjectdata<qt_meta_ta
 
     QtMocHelpers::UintData qt_methods {
         // Signal 'valueChanged'
-        QtMocHelpers::SignalData<void(double)>(1, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::Double, 3 },
+        QtMocHelpers::SignalData<void(double, double)>(1, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::Double, 3 }, { QMetaType::Double, 4 },
         }}),
         // Signal 'simulationFinished'
-        QtMocHelpers::SignalData<void()>(4, 2, QMC::AccessPublic, QMetaType::Void),
+        QtMocHelpers::SignalData<void()>(5, 2, QMC::AccessPublic, QMetaType::Void),
         // Slot 'setData'
-        QtMocHelpers::SlotData<void(const QList<DataPoint> &)>(5, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { 0x80000000 | 6, 7 },
+        QtMocHelpers::SlotData<void(const QList<DataPoint> &)>(6, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { 0x80000000 | 7, 8 },
         }}),
         // Slot 'onTick'
-        QtMocHelpers::SlotData<void()>(8, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(9, 2, QMC::AccessPrivate, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -86,7 +87,7 @@ void Simulator::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
     auto *_t = static_cast<Simulator *>(_o);
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: _t->valueChanged((*reinterpret_cast<std::add_pointer_t<double>>(_a[1]))); break;
+        case 0: _t->valueChanged((*reinterpret_cast<std::add_pointer_t<double>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<double>>(_a[2]))); break;
         case 1: _t->simulationFinished(); break;
         case 2: _t->setData((*reinterpret_cast<std::add_pointer_t<QList<DataPoint>>>(_a[1]))); break;
         case 3: _t->onTick(); break;
@@ -94,7 +95,7 @@ void Simulator::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         }
     }
     if (_c == QMetaObject::IndexOfMethod) {
-        if (QtMocHelpers::indexOfMethod<void (Simulator::*)(double )>(_a, &Simulator::valueChanged, 0))
+        if (QtMocHelpers::indexOfMethod<void (Simulator::*)(double , double )>(_a, &Simulator::valueChanged, 0))
             return;
         if (QtMocHelpers::indexOfMethod<void (Simulator::*)()>(_a, &Simulator::simulationFinished, 1))
             return;
@@ -133,9 +134,9 @@ int Simulator::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void Simulator::valueChanged(double _t1)
+void Simulator::valueChanged(double _t1, double _t2)
 {
-    QMetaObject::activate<void>(this, &staticMetaObject, 0, nullptr, _t1);
+    QMetaObject::activate<void>(this, &staticMetaObject, 0, nullptr, _t1, _t2);
 }
 
 // SIGNAL 1

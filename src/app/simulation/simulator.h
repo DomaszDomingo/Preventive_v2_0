@@ -20,7 +20,7 @@ public:
     bool isRunning () const;
 
 signals:
-    void valueChanged (double newValue);
+    void valueChanged (double time, double value);
     void simulationFinished();
 
 public slots:

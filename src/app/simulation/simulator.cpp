@@ -46,7 +46,10 @@ void Simulator::setData(const QList<DataPoint> &data)
     m_data = data;
     if(!m_data.isEmpty()){
         m_simulationDuration = m_data.last().timestamp;
+    } else {
+        m_simulationDuration = 0;
     }
+
     qInfo() << "Zbiór danych symulacji. Czas trwania:" << m_simulationDuration << "ms";
 }
 
@@ -55,12 +58,14 @@ void Simulator::onTick()
     qint64 elapsed = m_elapsedTimer.elapsed();
     if (elapsed > m_simulationDuration){
         stop ();
+        if(!m_data.isEmpty()){
         //Upewniamy sie, że na końcu emitujemy ostanią wartość
-        emit valueChanged(m_data.last().value);
+            emit valueChanged((double)m_simulationDuration, m_data.last().value);
+        }
         return;
         }
     double currentValue = m_strategy->process(elapsed, m_data);
-        emit valueChanged(currentValue);
+        emit valueChanged((double)elapsed,currentValue);
 }
 
 

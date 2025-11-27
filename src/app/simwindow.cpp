@@ -58,23 +58,23 @@ void SimWindow::setupPlot()
     m_plot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
 
     //uruchomienie timera do osi x
-    m_plotTimer.start();
+    //m_plotTimer.start();
 }
 
-void SimWindow::onNewData(double value)
+void SimWindow::onNewData(double time, double value)
 {
     // Jeśli m_plot jest nieprawidłowy, nie rób nic
     if (!m_plot) return;
 
     //Pobranie czasu jaki upłynał w sekundach
-    double time = m_plotTimer.elapsed() / 1000.0;
-
+    //double timeInSeconds = m_plotTimer.elapsed() / 1000.0;
+    double timeInSeconds = time / 1000.0;
     //dodanie punktu (x,y) do wykresu
-    m_plot->graph(0)->addData(time, value);
+    m_plot->graph(0)->addData(timeInSeconds, value);
 
     // --- POPRAWKA LOGIKI WYKRESU (z poprzedniej analizy) ---
-    // Wyrównujemy do 'time' (prawa krawędź) i pokazujemy 5 sekund wstecz
-    m_plot->xAxis->setRange(time, 5.0, Qt::AlignRight);
+    // Wyrównujemy do 'timeInSeconds' (prawa krawędź) i pokazujemy 5 sekund wstecz
+    m_plot->xAxis->setRange(timeInSeconds, 5.0, Qt::AlignRight);
 
     // Oś Y nadal skalujemy automatycznie, aby dopasować do widocznych danych
     m_plot->yAxis->rescale();
@@ -90,11 +90,14 @@ void SimWindow::handleImportCsv()
     if(fileName.isEmpty()) //jezeli uzytkownik anuluje
         return;
 
+    m_plot->graph(0)->data()->clear();
+
+    m_plot->xAxis->setRange(0,5);
+
+    m_plot->replot();
+
     emit dataImportRequested(fileName); // wyemituj sygnał do controllera
 
-    //przygotowanie wykresu na nowe dane
-    m_plot->graph(0)->data()->clear();
-    m_plot->replot();
 
 
 }

@@ -44,6 +44,7 @@ template <> constexpr inline auto SimWindow::qt_create_metaobjectdata<qt_meta_ta
         "",
         "filePath",
         "onNewData",
+        "time",
         "value",
         "handleImportCsv",
         "onStatsReceived",
@@ -57,14 +58,14 @@ template <> constexpr inline auto SimWindow::qt_create_metaobjectdata<qt_meta_ta
             { QMetaType::QString, 3 },
         }}),
         // Slot 'onNewData'
-        QtMocHelpers::SlotData<void(double)>(4, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::Double, 5 },
+        QtMocHelpers::SlotData<void(double, double)>(4, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::Double, 5 }, { QMetaType::Double, 6 },
         }}),
         // Slot 'handleImportCsv'
-        QtMocHelpers::SlotData<void()>(6, 2, QMC::AccessPublic, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(7, 2, QMC::AccessPublic, QMetaType::Void),
         // Slot 'onStatsReceived'
-        QtMocHelpers::SlotData<void(const SimulationStats &)>(7, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { 0x80000000 | 8, 9 },
+        QtMocHelpers::SlotData<void(const SimulationStats &)>(8, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { 0x80000000 | 9, 10 },
         }}),
     };
     QtMocHelpers::UintData qt_properties {
@@ -90,7 +91,7 @@ void SimWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
         case 0: _t->dataImportRequested((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
-        case 1: _t->onNewData((*reinterpret_cast<std::add_pointer_t<double>>(_a[1]))); break;
+        case 1: _t->onNewData((*reinterpret_cast<std::add_pointer_t<double>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<double>>(_a[2]))); break;
         case 2: _t->handleImportCsv(); break;
         case 3: _t->onStatsReceived((*reinterpret_cast<std::add_pointer_t<SimulationStats>>(_a[1]))); break;
         default: ;

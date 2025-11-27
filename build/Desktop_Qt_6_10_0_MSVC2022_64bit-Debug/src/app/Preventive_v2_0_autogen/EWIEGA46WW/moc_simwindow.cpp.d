@@ -55,7 +55,6 @@ C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/build/Desktop_Qt_6_10_0_MSVC202
   C:/Program\ Files/Microsoft\ Visual\ Studio/18/Community/VC/Tools/MSVC/14.50.35717/include/version \
   C:/Program\ Files/Microsoft\ Visual\ Studio/18/Community/VC/Tools/MSVC/14.50.35717/include/yvals.h \
   C:/Program\ Files/Microsoft\ Visual\ Studio/18/Community/VC/Tools/MSVC/14.50.35717/include/yvals_core.h \
-  C:/Qt/6.10.0/msvc2022_64/include/QtCore/QElapsedTimer \
   C:/Qt/6.10.0/msvc2022_64/include/QtCore/QList \
   C:/Qt/6.10.0/msvc2022_64/include/QtCore/QString \
   C:/Qt/6.10.0/msvc2022_64/include/QtCore/q17memory.h \
@@ -95,7 +94,6 @@ C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/build/Desktop_Qt_6_10_0_MSVC202
   C:/Qt/6.10.0/msvc2022_64/include/QtCore/qdarwinhelpers.h \
   C:/Qt/6.10.0/msvc2022_64/include/QtCore/qdatastream.h \
   C:/Qt/6.10.0/msvc2022_64/include/QtCore/qdebug.h \
-  C:/Qt/6.10.0/msvc2022_64/include/QtCore/qelapsedtimer.h \
   C:/Qt/6.10.0/msvc2022_64/include/QtCore/qendian.h \
   C:/Qt/6.10.0/msvc2022_64/include/QtCore/qexceptionhandling.h \
   C:/Qt/6.10.0/msvc2022_64/include/QtCore/qflags.h \

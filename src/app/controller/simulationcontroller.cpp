@@ -30,7 +30,9 @@ void SimulationController::runSimulation(const QString &filePath, StrategyType s
     m_simulator = new Simulator(std::move(strategy), this);
 
     //3.Łączymy sygnały symulatora z naszymi slotami
-    connect (m_simulator, &Simulator::valueChanged, this, &SimulationController::newValueProduced);
+    connect(m_simulator, &Simulator::valueChanged, this, [this](double time, double value){
+        emit newValueProduced(time, value);
+    });
     connect (m_simulator, &Simulator::simulationFinished, this, &SimulationController::simulationFinished);
 
     if(!filePath.isEmpty())

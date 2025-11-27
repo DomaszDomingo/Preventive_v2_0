@@ -20,7 +20,7 @@ public:
 
 signals:
     //Nowy sygnał, który bedzie przekazywał wartośc z symulatora
-    void newValueProduced(double value);
+    void newValueProduced(double time, double value);
     void simulationFinished();
     void statsReady(const SimulationStats& stats);
 
