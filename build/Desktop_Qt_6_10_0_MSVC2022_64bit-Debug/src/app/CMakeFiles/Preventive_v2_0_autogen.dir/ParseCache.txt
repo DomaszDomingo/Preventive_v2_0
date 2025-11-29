@@ -348,8 +348,6 @@ C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/dataloader/dataloader.h
  mdp:C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/dataloader/dataloader.h
  mdp:C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/datamodel/DataPoint.h
 C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/datamodel/DataPoint.h
-C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/utils/dataanalyzer.cpp
-C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/simulation/strategyfactory.h
 C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/mainwindow.h
  mmc:Q_OBJECT
  mdp:C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/ucrt/assert.h
@@ -570,6 +568,8 @@ C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/mainwindow.h
  mdp:C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/qtwidgetsglobal.h
  mdp:C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/qwidget.h
  mdp:C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/mainwindow.h
+C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/utils/dataanalyzer.cpp
+C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/simulation/strategyfactory.h
 C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/simulation/ISimulationStrategy.h
 C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/simulation/concretestrategies.h
 C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/simulation/simulator.h
