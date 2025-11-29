@@ -28,6 +28,9 @@ signals:
 public slots:
     void runSimulation (const QString & filePath, StrategyType strategyType);
     void loadNewData (const QString &filePath); // nowy slot do dynamicznego ladowania danych
+    void startSimulation();
+    void stopSimulation();
+    void resetSimulation();
 
 private slots:
 

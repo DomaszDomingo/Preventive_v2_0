@@ -28,8 +28,33 @@ SimWindow::SimWindow(QWidget *parent)
     // --- KONIEC POPRAWKI ---
 
     connect (ui->closeSimulatorBtn, &QPushButton::clicked, this, &SimWindow::close);
-
     connect (ui->importCsvBtn, &QPushButton::clicked, this, &SimWindow::handleImportCsv);
+    connect(ui->btnStart, &QPushButton::clicked, this, [this](){
+        ui->btnStart->setEnabled(false);
+        ui->btnStop->setEnabled(true);
+        emit startRequested();
+
+    });
+    connect(ui->btnStop, &QPushButton::clicked, this, [this](){
+        ui->btnStart->setEnabled(true);
+        ui->btnStop->setEnabled(false);
+        emit stopRequested();
+    });
+    connect(ui->btnReset, &QPushButton::clicked, this, [this](){
+        if(m_plot->graph(0)){
+            m_plot->graph(0)->data().clear();
+            m_plot->xAxis->setRange(0, 5);
+            m_plot->replot();
+        }
+
+        ui->btnStart->setEnabled(true);
+        ui->btnStop->setEnabled(false);
+
+        emit resetRequested();
+    });
+
+    ui->btnStart->setEnabled(true);
+    ui->btnStop->setEnabled(false);
 
     // Inicjalizujemy wykres
     setupPlot();

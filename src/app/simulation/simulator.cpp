@@ -53,6 +53,21 @@ void Simulator::setData(const QList<DataPoint> &data)
     qInfo() << "Zbiór danych symulacji. Czas trwania:" << m_simulationDuration << "ms";
 }
 
+void Simulator::reset()
+{
+    stop();
+
+    if(!m_data.isEmpty()){
+
+        //emit (time = 0, value = first value)
+
+        emit valueChanged(0.0, m_data.first().value);
+
+        qInfo() << "Symulacja zresetowana.";
+
+    }
+}
+
 void Simulator::onTick()
 {
     qint64 elapsed = m_elapsedTimer.elapsed();

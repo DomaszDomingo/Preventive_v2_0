@@ -52,6 +52,9 @@ template <> constexpr inline auto SimulationController::qt_create_metaobjectdata
         "StrategyType",
         "strategyType",
         "loadNewData",
+        "startSimulation",
+        "stopSimulation",
+        "resetSimulation",
         "onNewValue",
         "onFinished",
         "onError",
@@ -77,15 +80,21 @@ template <> constexpr inline auto SimulationController::qt_create_metaobjectdata
         QtMocHelpers::SlotData<void(const QString &)>(13, 2, QMC::AccessPublic, QMetaType::Void, {{
             { QMetaType::QString, 10 },
         }}),
+        // Slot 'startSimulation'
+        QtMocHelpers::SlotData<void()>(14, 2, QMC::AccessPublic, QMetaType::Void),
+        // Slot 'stopSimulation'
+        QtMocHelpers::SlotData<void()>(15, 2, QMC::AccessPublic, QMetaType::Void),
+        // Slot 'resetSimulation'
+        QtMocHelpers::SlotData<void()>(16, 2, QMC::AccessPublic, QMetaType::Void),
         // Slot 'onNewValue'
-        QtMocHelpers::SlotData<void(double)>(14, 2, QMC::AccessPrivate, QMetaType::Void, {{
+        QtMocHelpers::SlotData<void(double)>(17, 2, QMC::AccessPrivate, QMetaType::Void, {{
             { QMetaType::Double, 4 },
         }}),
         // Slot 'onFinished'
-        QtMocHelpers::SlotData<void()>(15, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(18, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onError'
-        QtMocHelpers::SlotData<void(const QString &)>(16, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { QMetaType::QString, 17 },
+        QtMocHelpers::SlotData<void(const QString &)>(19, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::QString, 20 },
         }}),
     };
     QtMocHelpers::UintData qt_properties {
@@ -115,9 +124,12 @@ void SimulationController::qt_static_metacall(QObject *_o, QMetaObject::Call _c,
         case 2: _t->statsReady((*reinterpret_cast<std::add_pointer_t<SimulationStats>>(_a[1]))); break;
         case 3: _t->runSimulation((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<StrategyType>>(_a[2]))); break;
         case 4: _t->loadNewData((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
-        case 5: _t->onNewValue((*reinterpret_cast<std::add_pointer_t<double>>(_a[1]))); break;
-        case 6: _t->onFinished(); break;
-        case 7: _t->onError((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
+        case 5: _t->startSimulation(); break;
+        case 6: _t->stopSimulation(); break;
+        case 7: _t->resetSimulation(); break;
+        case 8: _t->onNewValue((*reinterpret_cast<std::add_pointer_t<double>>(_a[1]))); break;
+        case 9: _t->onFinished(); break;
+        case 10: _t->onError((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
         default: ;
         }
     }
@@ -150,14 +162,14 @@ int SimulationController::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 8)
+        if (_id < 11)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 8;
+        _id -= 11;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 8)
+        if (_id < 11)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 8;
+        _id -= 11;
     }
     return _id;
 }

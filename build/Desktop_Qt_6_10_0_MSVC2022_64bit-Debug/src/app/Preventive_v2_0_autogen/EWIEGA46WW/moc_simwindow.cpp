@@ -43,6 +43,9 @@ template <> constexpr inline auto SimWindow::qt_create_metaobjectdata<qt_meta_ta
         "dataImportRequested",
         "",
         "filePath",
+        "startRequested",
+        "stopRequested",
+        "resetRequested",
         "onNewData",
         "time",
         "value",
@@ -57,15 +60,21 @@ template <> constexpr inline auto SimWindow::qt_create_metaobjectdata<qt_meta_ta
         QtMocHelpers::SignalData<void(const QString &)>(1, 2, QMC::AccessPublic, QMetaType::Void, {{
             { QMetaType::QString, 3 },
         }}),
+        // Signal 'startRequested'
+        QtMocHelpers::SignalData<void()>(4, 2, QMC::AccessPublic, QMetaType::Void),
+        // Signal 'stopRequested'
+        QtMocHelpers::SignalData<void()>(5, 2, QMC::AccessPublic, QMetaType::Void),
+        // Signal 'resetRequested'
+        QtMocHelpers::SignalData<void()>(6, 2, QMC::AccessPublic, QMetaType::Void),
         // Slot 'onNewData'
-        QtMocHelpers::SlotData<void(double, double)>(4, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::Double, 5 }, { QMetaType::Double, 6 },
+        QtMocHelpers::SlotData<void(double, double)>(7, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::Double, 8 }, { QMetaType::Double, 9 },
         }}),
         // Slot 'handleImportCsv'
-        QtMocHelpers::SlotData<void()>(7, 2, QMC::AccessPublic, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(10, 2, QMC::AccessPublic, QMetaType::Void),
         // Slot 'onStatsReceived'
-        QtMocHelpers::SlotData<void(const SimulationStats &)>(8, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { 0x80000000 | 9, 10 },
+        QtMocHelpers::SlotData<void(const SimulationStats &)>(11, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { 0x80000000 | 12, 13 },
         }}),
     };
     QtMocHelpers::UintData qt_properties {
@@ -91,14 +100,23 @@ void SimWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
         case 0: _t->dataImportRequested((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
-        case 1: _t->onNewData((*reinterpret_cast<std::add_pointer_t<double>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<double>>(_a[2]))); break;
-        case 2: _t->handleImportCsv(); break;
-        case 3: _t->onStatsReceived((*reinterpret_cast<std::add_pointer_t<SimulationStats>>(_a[1]))); break;
+        case 1: _t->startRequested(); break;
+        case 2: _t->stopRequested(); break;
+        case 3: _t->resetRequested(); break;
+        case 4: _t->onNewData((*reinterpret_cast<std::add_pointer_t<double>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<double>>(_a[2]))); break;
+        case 5: _t->handleImportCsv(); break;
+        case 6: _t->onStatsReceived((*reinterpret_cast<std::add_pointer_t<SimulationStats>>(_a[1]))); break;
         default: ;
         }
     }
     if (_c == QMetaObject::IndexOfMethod) {
         if (QtMocHelpers::indexOfMethod<void (SimWindow::*)(const QString & )>(_a, &SimWindow::dataImportRequested, 0))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (SimWindow::*)()>(_a, &SimWindow::startRequested, 1))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (SimWindow::*)()>(_a, &SimWindow::stopRequested, 2))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (SimWindow::*)()>(_a, &SimWindow::resetRequested, 3))
             return;
     }
 }
@@ -122,14 +140,14 @@ int SimWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 4)
+        if (_id < 7)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 4;
+        _id -= 7;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 4)
+        if (_id < 7)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 4;
+        _id -= 7;
     }
     return _id;
 }
@@ -138,5 +156,23 @@ int SimWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 void SimWindow::dataImportRequested(const QString & _t1)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 0, nullptr, _t1);
+}
+
+// SIGNAL 1
+void SimWindow::startRequested()
+{
+    QMetaObject::activate(this, &staticMetaObject, 1, nullptr);
+}
+
+// SIGNAL 2
+void SimWindow::stopRequested()
+{
+    QMetaObject::activate(this, &staticMetaObject, 2, nullptr);
+}
+
+// SIGNAL 3
+void SimWindow::resetRequested()
+{
+    QMetaObject::activate(this, &staticMetaObject, 3, nullptr);
 }
 QT_WARNING_POP

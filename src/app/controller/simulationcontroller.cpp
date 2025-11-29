@@ -3,6 +3,7 @@
 #include "../simulation/StrategyFactory.h"
 #include "../dataloader/dataloader.h"
 #include <QDebug> //
+#include "../simwindow.h"
 
 SimulationController::SimulationController(QObject *parent) : QObject(parent)  {
     //DataLoader jest stałym komponentem kontrolera
@@ -35,6 +36,7 @@ void SimulationController::runSimulation(const QString &filePath, StrategyType s
     });
     connect (m_simulator, &Simulator::simulationFinished, this, &SimulationController::simulationFinished);
 
+
     if(!filePath.isEmpty())
         m_loader->loadFromCSV(filePath);
 }
@@ -48,18 +50,35 @@ void SimulationController::loadNewData(const QString &filePath)
     connect(m_loader, &DataLoader::dataLoaded, this, [this, filePath](const QList<DataPoint> &data){
     if(m_simulator){
         m_simulator->setData(data);
-        m_simulator->start();
+        //m_simulator->start();
     }
 
     //kontroler nie wie jak obliczac wiec pyta analyzer o zrobienie tego
-    SimulationStats stats = DataAnalyzer::analyze(data,filePath);
-
-    emit statsReady(stats);
+        SimulationStats stats = DataAnalyzer::analyze(data,filePath);
+        emit statsReady(stats);
     });
     // Ponownie użyj istniejącego modułu ładującego, aby załadować nowy plik.
     // Ponieważ już połączyłeś m_loader::dataLoaded z lambdą w konstruktorze/runSimulation,
     // wywołanie tej funkcji automatycznie spowoduje, że symulator zaktualizuje swoje dane i uruchomi się ponownie!
     m_loader->loadFromCSV(filePath);
+}
+
+void SimulationController::startSimulation()
+{
+    if(m_simulator && !m_simulator->isRunning())
+        m_simulator->start();;
+}
+
+void SimulationController::stopSimulation()
+{
+    if(m_simulator && m_simulator->isRunning())
+        m_simulator->stop();
+}
+
+void SimulationController::resetSimulation()
+{
+    if(m_simulator)
+        m_simulator->reset();
 }
 
 

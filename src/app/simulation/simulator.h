@@ -26,6 +26,8 @@ signals:
 public slots:
     //slot do ustawiania danych np. po sygnale z DataLoader
     void setData(const QList<DataPoint> & data);
+    void reset ();
+
 
 private slots:
     void onTick();

@@ -9,7 +9,9 @@ void DataLoader::loadFromCSV(const QString &filePath)
 {
     QFile file(filePath);
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        qCritical() << "Could not open file:" << filePath;
+        QString msg = "Nie można otworzyć pliku: " + filePath;
+        qCritical() << msg;
+        emit errorOccured(msg);
         return;
     }
 

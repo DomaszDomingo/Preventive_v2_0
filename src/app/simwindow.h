@@ -22,7 +22,9 @@ public:
 
 signals:
     void dataImportRequested (const QString &filePath); //sygnał emitowany gdy użytkownik wybierze plik
-
+    void startRequested();
+    void stopRequested();
+    void resetRequested();
 
 public slots:
     void onNewData (double time, double value); // slot na nowe dane
