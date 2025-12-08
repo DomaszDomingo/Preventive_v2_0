@@ -24,7 +24,7 @@ class Ui_SimWindow
 public:
     QPushButton *closeSimulatorBtn;
     QCustomPlot *plotWidget;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QFormLayout *formLayout;
     QPushButton *btnStart;
     QPushButton *btnStop;
@@ -42,28 +42,28 @@ public:
         plotWidget = new QCustomPlot(SimWindow);
         plotWidget->setObjectName("plotWidget");
         plotWidget->setGeometry(QRect(39, 29, 321, 191));
-        widget = new QWidget(SimWindow);
-        widget->setObjectName("widget");
-        widget->setGeometry(QRect(40, 240, 168, 56));
-        formLayout = new QFormLayout(widget);
+        layoutWidget = new QWidget(SimWindow);
+        layoutWidget->setObjectName("layoutWidget");
+        layoutWidget->setGeometry(QRect(30, 510, 168, 56));
+        formLayout = new QFormLayout(layoutWidget);
         formLayout->setObjectName("formLayout");
         formLayout->setContentsMargins(0, 0, 0, 0);
-        btnStart = new QPushButton(widget);
+        btnStart = new QPushButton(layoutWidget);
         btnStart->setObjectName("btnStart");
 
         formLayout->setWidget(0, QFormLayout::ItemRole::LabelRole, btnStart);
 
-        btnStop = new QPushButton(widget);
+        btnStop = new QPushButton(layoutWidget);
         btnStop->setObjectName("btnStop");
 
         formLayout->setWidget(0, QFormLayout::ItemRole::FieldRole, btnStop);
 
-        importCsvBtn = new QPushButton(widget);
+        importCsvBtn = new QPushButton(layoutWidget);
         importCsvBtn->setObjectName("importCsvBtn");
 
         formLayout->setWidget(1, QFormLayout::ItemRole::LabelRole, importCsvBtn);
 
-        btnReset = new QPushButton(widget);
+        btnReset = new QPushButton(layoutWidget);
         btnReset->setObjectName("btnReset");
 
         formLayout->setWidget(1, QFormLayout::ItemRole::FieldRole, btnReset);

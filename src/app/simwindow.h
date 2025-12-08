@@ -2,8 +2,9 @@
 #define SIMWINDOW_H
 
 #include <QDialog>
-//#include <QElapsedTimer>
+#include "components/chartslot.h"
 #include "infowindow.h"
+#include <QList>
 
 class QCustomPlot;
 
@@ -18,7 +19,8 @@ class SimWindow : public QDialog
 public:
     explicit SimWindow(QWidget *parent = nullptr);
     ~SimWindow();
-    void setupPlot();//funkcja do inicjalizacji wykresu
+
+    void setupLayout();
 
 signals:
     void dataImportRequested (const QString &filePath); //sygnał emitowany gdy użytkownik wybierze plik
@@ -30,10 +32,11 @@ public slots:
     void onNewData (double time, double value); // slot na nowe dane
     void handleImportCsv(); //slot dla przycisku
     void onStatsReceived(const SimulationStats & stats);
+    //slot ktory obsluguje klikniecie przycisku dodaj wewnątrz chartslot
+    void onSlotImportRequested(int slotIndex);
 private:
     Ui::SimWindow *ui;
-    //QElapsedTimer m_plotTimer; //Timer do śledzenia osi czasu X
-    QCustomPlot *m_plot;
+    QList <ChartSlot*> m_chartSlots;
     InfoWindow *m_infoWindow = nullptr;
 };
 

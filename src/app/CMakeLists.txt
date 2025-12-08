@@ -21,6 +21,7 @@ qt_add_executable(Preventive_v2_0
     utils/dataanalyzer.cpp
     utils/dataanalyzer.h
     infowindow.h infowindow.cpp
+    components/chartslot.h components/chartslot.cpp
 
 )
 

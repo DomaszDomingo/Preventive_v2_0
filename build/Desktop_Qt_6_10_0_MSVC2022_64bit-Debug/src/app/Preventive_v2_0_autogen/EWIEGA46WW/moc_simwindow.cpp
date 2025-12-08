@@ -8,6 +8,7 @@
 
 #include "../../../../../../src/app/simwindow.h"
 #include <QtGui/qtextcursor.h>
+#include <QtGui/qscreen.h>
 #include <QtCore/qmetatype.h>
 
 #include <QtCore/qtmochelpers.h>
@@ -52,7 +53,9 @@ template <> constexpr inline auto SimWindow::qt_create_metaobjectdata<qt_meta_ta
         "handleImportCsv",
         "onStatsReceived",
         "SimulationStats",
-        "stats"
+        "stats",
+        "onSlotImportRequested",
+        "slotIndex"
     };
 
     QtMocHelpers::UintData qt_methods {
@@ -75,6 +78,10 @@ template <> constexpr inline auto SimWindow::qt_create_metaobjectdata<qt_meta_ta
         // Slot 'onStatsReceived'
         QtMocHelpers::SlotData<void(const SimulationStats &)>(11, 2, QMC::AccessPublic, QMetaType::Void, {{
             { 0x80000000 | 12, 13 },
+        }}),
+        // Slot 'onSlotImportRequested'
+        QtMocHelpers::SlotData<void(int)>(14, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::Int, 15 },
         }}),
     };
     QtMocHelpers::UintData qt_properties {
@@ -106,6 +113,7 @@ void SimWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 4: _t->onNewData((*reinterpret_cast<std::add_pointer_t<double>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<double>>(_a[2]))); break;
         case 5: _t->handleImportCsv(); break;
         case 6: _t->onStatsReceived((*reinterpret_cast<std::add_pointer_t<SimulationStats>>(_a[1]))); break;
+        case 7: _t->onSlotImportRequested((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
         default: ;
         }
     }
@@ -140,14 +148,14 @@ int SimWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 7)
+        if (_id < 8)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 7;
+        _id -= 8;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 7)
+        if (_id < 8)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 7;
+        _id -= 8;
     }
     return _id;
 }

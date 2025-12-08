@@ -5,30 +5,27 @@
 #include <QFileDialog>
 #include <QMessageBox>
 
+
+
 SimWindow::SimWindow(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::SimWindow)
-    , m_plot(nullptr) // Zawsze inicjalizuj wskaźniki
-{
+   {
     ui->setupUi(this);
 
     m_infoWindow = new InfoWindow(this);
-
-       // --- KLUCZOWA POPRAWKA ---
-    // ui->plotWidget jest typu QWidget*.
-    // Musimy go bezpiecznie zrzutować na QCustomPlot*, który został "promowany".
-
-    m_plot = qobject_cast<QCustomPlot*>(ui->plotWidget);
-
-    if (!m_plot) {
-        // Jeśli m_plot jest nullptr, to znaczy, że nazwa w .ui jest zła LUB promocja się nie powiodła
-        qCritical() << "KRYTYCZNY BŁĄD: Nie można znaleźć lub zrzutować ui->plotWidget na QCustomPlot!";
-        return;
+    
+    //ukrycie starego pliku widget
+    if(ui->plotWidget){
+        ui->plotWidget->setVisible(false);
     }
-    // --- KONIEC POPRAWKI ---
+    
+    //inicjalizacja siatki wykresow
+    setupLayout();
 
     connect (ui->closeSimulatorBtn, &QPushButton::clicked, this, &SimWindow::close);
     connect (ui->importCsvBtn, &QPushButton::clicked, this, &SimWindow::handleImportCsv);
+
     connect(ui->btnStart, &QPushButton::clicked, this, [this](){
         ui->btnStart->setEnabled(false);
         ui->btnStop->setEnabled(true);
@@ -41,23 +38,22 @@ SimWindow::SimWindow(QWidget *parent)
         emit stopRequested();
     });
     connect(ui->btnReset, &QPushButton::clicked, this, [this](){
-        if(m_plot->graph(0)){
-            m_plot->graph(0)->data().clear();
-            m_plot->xAxis->setRange(0, 5);
-            m_plot->replot();
+        // Resetujemy wszystkie aktywne wykresy
+        for(auto slot : m_chartSlots) {
+            slot->reset(); // Przywraca stan "pusty" (z przyciskiem Dodaj)
+            // Lub jeśli chcesz tylko wyczyścić dane, ale zostawić wykres:
+            //slot->displayChart(slot->getTrendId(), "Wykres");
         }
 
         ui->btnStart->setEnabled(true);
         ui->btnStop->setEnabled(false);
-
         emit resetRequested();
     });
 
     ui->btnStart->setEnabled(true);
     ui->btnStop->setEnabled(false);
 
-    // Inicjalizujemy wykres
-    setupPlot();
+
 }
 
 SimWindow::~SimWindow()
@@ -65,47 +61,52 @@ SimWindow::~SimWindow()
     delete ui;
 }
 
-void SimWindow::setupPlot()
+void SimWindow::setupLayout()
 {
-    // Jeśli m_plot jest nieprawidłowy, nie rób nic
-    if (!m_plot) return;
+    // Znajdujemy miejsce, gdzie wstawić naszą siatkę.
+    // Najlepiej wstawić ją w miejsce, gdzie był plotWidget.
+    // Pobieramy layout rodzica plotWidgeta (czyli główny layout okna)
 
-    // Od teraz używamy m_plot, a NIE ui->plotWidget
+    // Tworzymy nowy layout dla wykresów, jeśli jeszcze nie istnieje w odpowiednim miejscu
+    // Dla uproszczenia: dodamy nowy layout do głównego layoutu okna lub stworzymy go dynamicznie.
 
-    //Dodanie nowego wykresu (graph) do widgetu
-    m_plot->addGraph();
+    // Zakładając, że w ui jest jakiś główny layout (np. wertykalny), ale jeśli używasz pozycjonowania absolutnego w .ui,
+    // musimy zrobić to ręcznie.
 
-    //ustawienie osi
-    m_plot->xAxis->setLabel ("Czas (s)");
-    m_plot->yAxis->setLabel ("Temperatura (°C)");
+    // Stwórzmy kontener na wykresy, który zajmie miejsce starego plotWidget
 
-    //włączenie interakcji (zoom, przesuwanie)
-    m_plot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
+    QWidget * chartsContainer = new QWidget(this);
+    //Ustawienie geometrii
+    chartsContainer->setGeometry(39,29,600,350);
 
-    //uruchomienie timera do osi x
-    //m_plotTimer.start();
+    QGridLayout * gridLayout = new QGridLayout(chartsContainer);
+    gridLayout->setContentsMargins(0,0,0,0);
+
+    m_chartSlots.clear();
+
+    //Tworzenie 2 slotow obok siebie
+    for (int i = 0; i < 2; ++i){
+        ChartSlot *slot = new ChartSlot (i,this);
+
+        // Łaczymy sygnały prosby o dodanie wykresu
+        connect (slot, &ChartSlot::importRequested, this, &SimWindow::onSlotImportRequested);
+
+        m_chartSlots.append(slot);
+        gridLayout->addWidget(slot, 0 ,i);
+    }
+
+    chartsContainer->show();
 }
 
 void SimWindow::onNewData(double time, double value)
 {
-    // Jeśli m_plot jest nieprawidłowy, nie rób nic
-    if (!m_plot) return;
-
-    //Pobranie czasu jaki upłynał w sekundach
-    //double timeInSeconds = m_plotTimer.elapsed() / 1000.0;
     double timeInSeconds = time / 1000.0;
-    //dodanie punktu (x,y) do wykresu
-    m_plot->graph(0)->addData(timeInSeconds, value);
 
-    // --- POPRAWKA LOGIKI WYKRESU (z poprzedniej analizy) ---
-    // Wyrównujemy do 'timeInSeconds' (prawa krawędź) i pokazujemy 5 sekund wstecz
-    m_plot->xAxis->setRange(timeInSeconds, 5.0, Qt::AlignRight);
+    //przekazujemy dane do wszystkich aktywnych slotów
+    for (auto slot : m_chartSlots){
+        slot->addDataPoint(timeInSeconds, value);
+    }
 
-    // Oś Y nadal skalujemy automatycznie, aby dopasować do widocznych danych
-    m_plot->yAxis->rescale();
-
-    //odswiez wykres
-    m_plot->replot(QCustomPlot::rpQueuedReplot);
 }
 
 void SimWindow::handleImportCsv()
@@ -115,16 +116,15 @@ void SimWindow::handleImportCsv()
     if(fileName.isEmpty()) //jezeli uzytkownik anuluje
         return;
 
-    m_plot->graph(0)->data()->clear();
-
-    m_plot->xAxis->setRange(0,5);
-
-    m_plot->replot();
-
+    for (auto slot : m_chartSlots){
+        //czyścimy dane, ale nie zamykamy wykresu ( nie robimy reset() do przycisku)
+        //Trzeba dodać metodę clearData() do chartSlot lub uzyc publicznego dostępu
+        // w kodzie w ChartSlot::displayChart jest czyszczenie wiec mozna uzyć
+        if(!slot->isEmpty()){
+            slot->displayChart(1, "Symulacja temperatury");
+        }
+    }
     emit dataImportRequested(fileName); // wyemituj sygnał do controllera
-
-
-
 }
 
 
@@ -137,6 +137,21 @@ void SimWindow::onStatsReceived(const SimulationStats &stats)
     m_infoWindow->raise();
     m_infoWindow->activateWindow();
 
+}
+
+void SimWindow::onSlotImportRequested(int slotIndex)
+{
+    // Użytkownik kliknął "Dodaj Wykres" w konkretnym slocie.
+    // Tutaj decydujemy co tam wyświetlić.
+
+    // Ponieważ na razie mamy tylko jedną symulację (jeden strumień danych),
+    // po prostu aktywujemy ten slot i podpisujemy go.
+
+    if (slotIndex >= 0 && slotIndex < m_chartSlots.size()){
+        ChartSlot* slot = m_chartSlots[slotIndex];
+        slot->displayChart(1, "Symulacja temp");
+
+    }
 }
 
 
