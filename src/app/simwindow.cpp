@@ -15,43 +15,12 @@ SimWindow::SimWindow(QWidget *parent)
 
     m_infoWindow = new InfoWindow(this);
     
-    //ukrycie starego pliku widget
-    if(ui->plotWidget){
-        ui->plotWidget->setVisible(false);
-    }
-    
+
     //inicjalizacja siatki wykresow
     setupLayout();
 
-    connect (ui->closeSimulatorBtn, &QPushButton::clicked, this, &SimWindow::close);
-    connect (ui->importCsvBtn, &QPushButton::clicked, this, &SimWindow::handleImportCsv);
 
-    connect(ui->btnStart, &QPushButton::clicked, this, [this](){
-        ui->btnStart->setEnabled(false);
-        ui->btnStop->setEnabled(true);
-        emit startRequested();
 
-    });
-    connect(ui->btnStop, &QPushButton::clicked, this, [this](){
-        ui->btnStart->setEnabled(true);
-        ui->btnStop->setEnabled(false);
-        emit stopRequested();
-    });
-    connect(ui->btnReset, &QPushButton::clicked, this, [this](){
-        // Resetujemy wszystkie aktywne wykresy
-        for(auto slot : m_chartSlots) {
-            slot->reset(); // Przywraca stan "pusty" (z przyciskiem Dodaj)
-            // Lub jeśli chcesz tylko wyczyścić dane, ale zostawić wykres:
-            //slot->displayChart(slot->getTrendId(), "Wykres");
-        }
-
-        ui->btnStart->setEnabled(true);
-        ui->btnStop->setEnabled(false);
-        emit resetRequested();
-    });
-
-    ui->btnStart->setEnabled(true);
-    ui->btnStop->setEnabled(false);
 
 
 }
@@ -63,39 +32,35 @@ SimWindow::~SimWindow()
 
 void SimWindow::setupLayout()
 {
-    // Znajdujemy miejsce, gdzie wstawić naszą siatkę.
-    // Najlepiej wstawić ją w miejsce, gdzie był plotWidget.
-    // Pobieramy layout rodzica plotWidgeta (czyli główny layout okna)
+    //Pobieramy wskaznik do grid layoutu, ktory jest wewnatrz srcoll area
 
-    // Tworzymy nowy layout dla wykresów, jeśli jeszcze nie istnieje w odpowiednim miejscu
-    // Dla uproszczenia: dodamy nowy layout do głównego layoutu okna lub stworzymy go dynamicznie.
+    QGridLayout *grid = qobject_cast<QGridLayout*> (ui->chartsContainer->layout());
 
-    // Zakładając, że w ui jest jakiś główny layout (np. wertykalny), ale jeśli używasz pozycjonowania absolutnego w .ui,
-    // musimy zrobić to ręcznie.
-
-    // Stwórzmy kontener na wykresy, który zajmie miejsce starego plotWidget
-
-    QWidget * chartsContainer = new QWidget(this);
-    //Ustawienie geometrii
-    chartsContainer->setGeometry(39,29,600,350);
-
-    QGridLayout * gridLayout = new QGridLayout(chartsContainer);
-    gridLayout->setContentsMargins(0,0,0,0);
+    if(!grid){
+        grid = new QGridLayout(ui->chartsContainer);
+        ui->chartsContainer->setLayout(grid);
+    }
 
     m_chartSlots.clear();
 
-    //Tworzenie 2 slotow obok siebie
-    for (int i = 0; i < 2; ++i){
-        ChartSlot *slot = new ChartSlot (i,this);
+    const int COLS = 2; //ilosc kolumn
+    const int ROWS = 2; //ilosc wierszy
 
-        // Łaczymy sygnały prosby o dodanie wykresu
-        connect (slot, &ChartSlot::importRequested, this, &SimWindow::onSlotImportRequested);
+    int slotCounter = 0;
 
-        m_chartSlots.append(slot);
-        gridLayout->addWidget(slot, 0 ,i);
+    for (int row = 0; row < ROWS; ++ row){
+        for (int col = 0; col < COLS; ++ col) {
+            ChartSlot* slot = new ChartSlot(slotCounter, this);
+
+            connect(slot, &ChartSlot::importRequested, this, &SimWindow::onSlotImportRequested);
+
+            m_chartSlots.append(slot);
+            grid->addWidget(slot, row, col);
+
+            slotCounter++;
+        }
+
     }
-
-    chartsContainer->show();
 }
 
 void SimWindow::onNewData(double time, double value)

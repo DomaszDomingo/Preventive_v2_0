@@ -33,6 +33,9 @@ public:
 signals:
     //sygnal dla (simwindow) ze uzytkownik klinał dodaj w tym slocie
     void importRequested (int slotIndex);
+    void startRequested(int slotIndex);
+    void stopRequested (int slotIndex);
+    void resetRequested(int slotIndex);
 
 private:
     int m_slotIndex;
@@ -49,6 +52,11 @@ private:
     QWidget *m_pageChart;
     QCustomPlot *m_plot;
     QLabel *m_lblTitle;
+
+    QPushButton *m_btnStart;
+    QPushButton *m_btnStop;
+    QPushButton *m_btnReset;
+    QPushButton *m_btnCsv;
 };
 
 #endif // CHARTSLOT_H
