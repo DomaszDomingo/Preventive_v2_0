@@ -2,95 +2,88 @@
 #include "../simulation/simulator.h"
 #include "../simulation/StrategyFactory.h"
 #include "../dataloader/dataloader.h"
-#include <QDebug> //
-#include "../simwindow.h"
+#include <QDebug>
 
+// Konstruktor kontrolera. Tworzy współdzielony DataLoader
+// i podłącza jego sygnał błędów do obsługi.
 SimulationController::SimulationController(QObject *parent) : QObject(parent)  {
-    //DataLoader jest stałym komponentem kontrolera
     m_loader = new DataLoader(this);
-
     connect(m_loader, &DataLoader::errorOccured, this, &SimulationController::onError);
-
 }
 
-void SimulationController::runSimulation(const QString &filePath, StrategyType strategyType)
+// Ładuje dane CSV do symulatora przypisanego do danego slotu.
+// Jeśli symulator dla tego slotu jeszcze nie istnieje, tworzy nową instancję
+// z domyślną strategią (Linear) i podłącza jego sygnały z przechwyceniem slotIndex,
+// dzięki czemu każdy slot emituje dane niezależnie.
+// Po utworzeniu/znalezieniu symulatora zatrzymuje go, parsuje plik CSV
+// przez DataLoader i po załadowaniu ustawia dane w symulatorze.
+void SimulationController::loadNewData(int slotIndex, const QString &filePath)
 {
-    //jeśli symulator juz istneije (z poprzedniego uruchomienia), usuwamy go.
-    //Dzięki temu mozemy wielokrotnie uruchamiać symulację z różnymi strategiami
-    if(m_simulator){
-        m_simulator->deleteLater();
+    if (!m_simulators.contains(slotIndex)) {
+        auto strategy = StrategyFactory::create(StrategyType::Linear);
+        if (!strategy) {
+            onError("Niepowodzenie w tworzeniu strategii symulacji.");
+            return;
+        }
+        Simulator *sim = new Simulator(std::move(strategy), this);
+
+        //podlaczamy sygnaly z przechwyceniem slotIndex
+        connect(sim, &Simulator::valueChanged, this, [this, slotIndex](double time, double value){
+            emit newValueProduced(slotIndex, time, value);
+        });
+        connect(sim, &Simulator::simulationFinished, this, [this, slotIndex](){
+            emit simulationFinished(slotIndex);
+        });
+
+        m_simulators[slotIndex] = sim;
     }
 
-    //1. Tworzymy nową strategię za pomoca fabryki
-    auto strategy = StrategyFactory::create(strategyType);
-    if(!strategy){
-        onError ("Niepowodzenie w tworzeniu strategii symulacji.");
-        return;
-    }
-    //2. Tworzymy nowy symulator z wybraną stragetią
-    m_simulator = new Simulator(std::move(strategy), this);
+    Simulator *sim = m_simulators[slotIndex];
+    sim->stop();
 
-    //3.Łączymy sygnały symulatora z naszymi slotami
-    connect(m_simulator, &Simulator::valueChanged, this, [this](double time, double value){
-        emit newValueProduced(time, value);
-    });
-    connect (m_simulator, &Simulator::simulationFinished, this, &SimulationController::simulationFinished);
+    //ladujemy dane - trzeba odlaczyc poprzednie polaczenie i podlaczyc nowe z kontekstem tego slotu
+    disconnect(m_loader, &DataLoader::dataLoaded, nullptr, nullptr);
+    connect(m_loader, &DataLoader::dataLoaded, this, [this, sim, filePath](const QList<DataPoint> &data){
+        sim->setData(data);
 
-
-    if(!filePath.isEmpty())
-        m_loader->loadFromCSV(filePath);
-}
-
-void SimulationController::loadNewData(const QString &filePath)
-{
-    //zatrzymaj istniejący symulator
-    if (m_simulator) m_simulator->stop();
-
-    disconnect (m_loader, &DataLoader::dataLoaded, nullptr, nullptr);
-    connect(m_loader, &DataLoader::dataLoaded, this, [this, filePath](const QList<DataPoint> &data){
-    if(m_simulator){
-        m_simulator->setData(data);
-        //m_simulator->start();
-    }
-
-    //kontroler nie wie jak obliczac wiec pyta analyzer o zrobienie tego
-        SimulationStats stats = DataAnalyzer::analyze(data,filePath);
+        SimulationStats stats = DataAnalyzer::analyze(data, filePath);
         emit statsReady(stats);
+
+        //odlaczamy po uzyciu zeby nie nakladac wielokrotnych polaczen
+        disconnect(m_loader, &DataLoader::dataLoaded, nullptr, nullptr);
     });
-    // Ponownie użyj istniejącego modułu ładującego, aby załadować nowy plik.
-    // Ponieważ już połączyłeś m_loader::dataLoaded z lambdą w konstruktorze/runSimulation,
-    // wywołanie tej funkcji automatycznie spowoduje, że symulator zaktualizuje swoje dane i uruchomi się ponownie!
+
     m_loader->loadFromCSV(filePath);
 }
 
-void SimulationController::startSimulation()
+// Uruchamia symulację dla konkretnego slotu.
+// Sprawdza czy symulator istnieje i czy nie jest już uruchomiony.
+void SimulationController::startSimulation(int slotIndex)
 {
-    if(m_simulator && !m_simulator->isRunning())
-        m_simulator->start();;
+    if (m_simulators.contains(slotIndex)) {
+        Simulator *sim = m_simulators[slotIndex];
+        if (!sim->isRunning())
+            sim->start();
+    }
 }
 
-void SimulationController::stopSimulation()
+// Zatrzymuje symulację dla konkretnego slotu (pauzuje timer).
+void SimulationController::stopSimulation(int slotIndex)
 {
-    if(m_simulator && m_simulator->isRunning())
-        m_simulator->stop();
+    if (m_simulators.contains(slotIndex)) {
+        Simulator *sim = m_simulators[slotIndex];
+        if (sim->isRunning())
+            sim->stop();
+    }
 }
 
-void SimulationController::resetSimulation()
+// Resetuje symulację dla konkretnego slotu - zatrzymuje timer
+// i ustawia czas symulacji z powrotem na początek.
+void SimulationController::resetSimulation(int slotIndex)
 {
-    if(m_simulator)
-        m_simulator->reset();
-}
-
-
-void SimulationController::onNewValue(double value)
-{
-   //Tutaj UI (np. Wykres) by się aktualizowało
-    qDebug().nospace() << "Obecna symulowana wartość: " << qSetRealNumberPrecision(2) << value;
-}
-
-void SimulationController::onFinished()
-{
-    qInfo() << "-- Symulacja zakończona --";
+    if (m_simulators.contains(slotIndex)) {
+        m_simulators[slotIndex]->reset();
+    }
 }
 
 void SimulationController::onError(const QString &message)

@@ -1,6 +1,7 @@
 #ifndef SIMULATIONCONTROLLER_H
 #define SIMULATIONCONTROLLER_H
 #include <QObject>
+#include <QMap>
 #include "../dataloader/dataloader.h"
 #include "../simulation/simulator.h"
 #include "../simulation/strategyfactory.h"
@@ -16,32 +17,25 @@ class SimulationController : public QObject {
     Q_OBJECT
 
 public:
-    explicit SimulationController(QObject * parrent = nullptr);
+    explicit SimulationController(QObject * parent = nullptr);
 
 signals:
-    //Nowy sygnał, który bedzie przekazywał wartośc z symulatora
-    void newValueProduced(double time, double value);
-    void simulationFinished();
+    void newValueProduced(int slotIndex, double time, double value);
+    void simulationFinished(int slotIndex);
     void statsReady(const SimulationStats& stats);
 
-
 public slots:
-    void runSimulation (const QString & filePath, StrategyType strategyType);
-    void loadNewData (const QString &filePath); // nowy slot do dynamicznego ladowania danych
-    void startSimulation();
-    void stopSimulation();
-    void resetSimulation();
+    void loadNewData(int slotIndex, const QString &filePath);
+    void startSimulation(int slotIndex);
+    void stopSimulation(int slotIndex);
+    void resetSimulation(int slotIndex);
 
 private slots:
-
-    void onNewValue (double value);
-    void onFinished();
     void onError(const QString & message);
-    //void onDataLoaded(const QList<DataPoint>& data);
 
 private:
     DataLoader * m_loader;
-    Simulator * m_simulator = nullptr;
+    QMap<int, Simulator*> m_simulators;
 };
 
 #endif // SIMULATIONCONTROLLER_H
