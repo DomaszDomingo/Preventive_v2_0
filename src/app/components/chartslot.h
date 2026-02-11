@@ -39,10 +39,16 @@ signals:
     void resetRequested(int slotIndex);
 
 private:
+    // Stawia kursor A lub B (naprzemiennie) w podanej pozycji X na wykresie.
+    void placeCursor(double xCoord);
+    // Aktualizuje tekst etykiet kursorów i deltę na podstawie bieżących pozycji.
+    void updateCursorLabels();
+    // Usuwa wszystkie kursory z wykresu i zeruje wskaźniki.
+    void removeCursors();
+
     int m_slotIndex;
     int m_trendId = -1; //oznacza ze pusty slot
 
-    //Tu musi byc wskaźnik, poniewaz w cpp jest new QStackedWidget
     QStackedWidget *m_stack;
 
     //strona1: pusty stan
@@ -58,6 +64,17 @@ private:
     QPushButton *m_btnStop;
     QPushButton *m_btnReset;
     QPushButton *m_btnCsv;
+
+    // Kursory pomiarowe
+    QCPItemStraightLine *m_cursorLineA = nullptr;
+    QCPItemStraightLine *m_cursorLineB = nullptr;
+    QCPItemTracer *m_cursorTracerA = nullptr;
+    QCPItemTracer *m_cursorTracerB = nullptr;
+    QCPItemText *m_cursorLabelA = nullptr;
+    QCPItemText *m_cursorLabelB = nullptr;
+    QCPItemText *m_deltaLabel = nullptr;
+    bool m_nextCursorIsA = true;
+    QCPItemStraightLine *m_draggedCursor = nullptr;
 };
 
 #endif // CHARTSLOT_H
