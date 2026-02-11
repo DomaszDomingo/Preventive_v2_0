@@ -13,7 +13,6 @@ ChartSlot::ChartSlot(int slotIndex, QWidget *parent)
     mainLayout->addWidget(m_stack);
 
     //strona1: Stan pusty(przycisk dodaj)
-
     m_PageEmpty = new QWidget(this);
     QVBoxLayout *emptyLayout = new QVBoxLayout(m_PageEmpty);
     m_btnAdd = new QPushButton("Dodaj Wykres", m_PageEmpty);
@@ -22,8 +21,6 @@ ChartSlot::ChartSlot(int slotIndex, QWidget *parent)
     emptyLayout->addStretch();
     emptyLayout->addWidget(m_btnAdd, 0, Qt::AlignCenter);
     emptyLayout->addStretch();
-    m_stack->addWidget(m_PageEmpty);
-
     m_stack->addWidget(m_PageEmpty);
 
     //strona2: wykres + sterowanie
@@ -43,19 +40,41 @@ ChartSlot::ChartSlot(int slotIndex, QWidget *parent)
     m_plot->xAxis->setLabel("Czas (s)");
     m_plot->yAxis->setLabel("Wartość");
     m_plot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
-    m_plot->setMinimumHeight(200);//Minimalna wysokość, zeby scroll area wiedzialo kiedy przewijac
+    m_plot->setMinimumHeight(200);
+
+    //menu kontekstowe na wykresie
+    m_plot->setContextMenuPolicy(Qt::CustomContextMenu);
+    connect(m_plot, &QCustomPlot::customContextMenuRequested, this, [this](const QPoint &pos){
+        QMenu menu(this);
+        QAction *removeAction = menu.addAction("Usuń wykres");
+        QAction *selected = menu.exec(m_plot->mapToGlobal(pos));
+        if (selected == removeAction) {
+            emit resetRequested(m_slotIndex);
+            reset();
+        }
+    });
     chartLayout->addWidget(m_plot, 1);
 
     //panel przyciskow
     QWidget *controlPanel = new QWidget(m_pageChart);
-    controlPanel->setStyleSheet("border: none"); // zeby nie dziedziczyl ramki slotu
+    controlPanel->setObjectName("controlPanel");
+    controlPanel->setStyleSheet("#controlPanel { border: none; }");
     QHBoxLayout *btnLayout = new QHBoxLayout(controlPanel);
     btnLayout->setContentsMargins(0,0,0,0);
+
+    QString btnStyle = "QPushButton { padding: 5px 12px; border: 1px solid #888; border-radius: 3px; background-color: #e0e0e0; }"
+                       "QPushButton:hover { background-color: #d0d0d0; }"
+                       "QPushButton:pressed { background-color: #c0c0c0; }";
 
     m_btnStart = new QPushButton("Start", controlPanel);
     m_btnStop = new QPushButton("Stop", controlPanel);
     m_btnReset = new QPushButton("Reset", controlPanel);
     m_btnCsv = new QPushButton("Ładuj CSV", controlPanel);
+
+    m_btnStart->setStyleSheet(btnStyle);
+    m_btnStop->setStyleSheet(btnStyle);
+    m_btnReset->setStyleSheet(btnStyle);
+    m_btnCsv->setStyleSheet(btnStyle);
 
     btnLayout->addWidget(m_btnStart);
     btnLayout->addWidget(m_btnStop);
@@ -65,8 +84,9 @@ ChartSlot::ChartSlot(int slotIndex, QWidget *parent)
     chartLayout->addWidget(controlPanel);
     m_stack->addWidget(m_pageChart);
 
+    //"Dodaj Wykres" - pokazuje pusty wykres
     connect(m_btnAdd, &QPushButton::clicked, this, [this](){
-        emit importRequested(m_slotIndex);
+        emit addChartRequested(m_slotIndex);
     });
 
     //przekazywanie sygnałów sterujacych
@@ -79,12 +99,15 @@ ChartSlot::ChartSlot(int slotIndex, QWidget *parent)
         }
         emit resetRequested(m_slotIndex);
     });
+    connect(m_btnCsv, &QPushButton::clicked, this, [this]() { emit csvLoadRequested(m_slotIndex); });
 
     //startujemy od pustego widoku
     reset();
 
 }
 
+// Przełącza slot z widoku pustego na widok wykresu.
+// Ustawia identyfikator trendu i tytuł, czyści poprzednie dane wykresu.
 void ChartSlot::displayChart(int trendId, const QString &title)
 {
     m_trendId = trendId;
@@ -97,6 +120,8 @@ void ChartSlot::displayChart(int trendId, const QString &title)
     m_stack->setCurrentWidget(m_pageChart);
 }
 
+// Resetuje slot do stanu pustego - czyści dane wykresu,
+// ustawia trendId na -1 (nieaktywny) i przełącza widok na przycisk "Dodaj Wykres".
 void ChartSlot::reset()
 {
     m_trendId = -1;
@@ -107,9 +132,11 @@ void ChartSlot::reset()
     m_stack->setCurrentWidget(m_PageEmpty);
 }
 
+// Dodaje nowy punkt danych do wykresu w czasie rzeczywistym.
+// Działa tylko gdy slot jest aktywny (trendId != -1).
+// Przesuwa oś X za ostatnim punktem (okno 5s) i automatycznie skaluje oś Y.
 void ChartSlot::addDataPoint(double time, double value)
 {
-    //dodajemy dane jeśli slot jest aktywny (ma przypisany trendId)
     if(m_trendId != -1 && m_plot) {
         m_plot->graph(0)->addData(time,value);
 

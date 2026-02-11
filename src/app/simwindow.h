@@ -23,17 +23,17 @@ public:
     void setupLayout();
 
 signals:
-    void dataImportRequested (const QString &filePath); //sygnał emitowany gdy użytkownik wybierze plik
-    void startRequested();
-    void stopRequested();
-    void resetRequested();
+    void dataImportRequested(int slotIndex, const QString &filePath);
+    void startRequested(int slotIndex);
+    void stopRequested(int slotIndex);
+    void resetRequested(int slotIndex);
 
 public slots:
-    void onNewData (double time, double value); // slot na nowe dane
-    void handleImportCsv(); //slot dla przycisku
+    void onNewData(int slotIndex, double time, double value);
     void onStatsReceived(const SimulationStats & stats);
-    //slot ktory obsluguje klikniecie przycisku dodaj wewnątrz chartslot
-    void onSlotImportRequested(int slotIndex);
+    void onSlotAddChartRequested(int slotIndex);
+    void onSlotCsvLoadRequested(int slotIndex);
+
 private:
     Ui::SimWindow *ui;
     QList <ChartSlot*> m_chartSlots;

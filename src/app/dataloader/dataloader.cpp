@@ -24,7 +24,7 @@ void DataLoader::loadFromCSV(const QString &filePath)
     // HEURISTIC 1: Detect Separator
     // We count occurrences. If ';' is present, it's likely European CSV.
     QChar separator = ',';
-    if (headerLine.count(';') > headerLine.count(',')) {
+    if (headerLine.count(';') >= headerLine.count(',')) {
         separator = ';';
     } else if (headerLine.count('\t') > headerLine.count(',')) {
         separator = '\t';

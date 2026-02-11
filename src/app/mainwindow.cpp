@@ -3,8 +3,6 @@
 #include "simwindow.h"
 #include <QDebug>
 #include "controller/simulationcontroller.h"
-#include "simulation/StrategyFactory.h"
-
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -14,11 +12,10 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     //Utworzenie kontrolera (jego rodzicem jest MainWindow)
-    m_controller = new SimulationController (this);
+    m_controller = new SimulationController(this);
 
     //Podłączenie przycisku do otwierania okna
-    connect (ui->simulatorBtn, &QPushButton::clicked, this, &MainWindow::on_simulatorBtn_clicked);
-
+    connect(ui->simulatorBtn, &QPushButton::clicked, this, &MainWindow::on_simulatorBtn_clicked);
 }
 
 MainWindow::~MainWindow()
@@ -26,40 +23,31 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+// Otwiera okno symulacji. Przy pierwszym kliknięciu tworzy SimWindow
+// i ustanawia połączenia sygnałów między kontrolerem a oknem:
+// - kontroler -> okno: nowe dane (per slot), statystyki
+// - okno -> kontroler: import CSV, start, stop, reset (wszystko z indeksem slotu)
+// Przy kolejnych kliknięciach tylko pokazuje istniejące okno.
 void MainWindow::on_simulatorBtn_clicked()
 {
-    //sprawdzenie czy okno jescze nie istnieje
     if (!m_simWindow){
-        //jeśli nie to tworzymy
-        m_simWindow = new SimWindow(this); //this jako rodzic
+        m_simWindow = new SimWindow(this);
 
-        //Musimy obsłużyć sytuację, gdy użytkownik zamknie okno
-        //Przyciskiem 'X'. Okno zostanie zniszczone (bo ma rodzica),
-        //ale nasz wskaźnik "m_simulatorWindow" nadal by na nie wskazywał
-        //Łączymy sygnał destroyed okna z lambdą, która wyzeruje wskaźnik
-
-        connect (m_simWindow, &QObject::destroyed, this, [this]() {
+        connect(m_simWindow, &QObject::destroyed, this, [this]() {
             m_simWindow = nullptr;
-            qDebug () << "Okno symulatora zniszczone, a wskaźnik wyzerowany";
+            qDebug() << "Okno symulatora zniszczone, a wskaźnik wyzerowany";
         });
 
-        //Połaczenie sygnału z kontrolera ze slotem w oknie wykresu
+        //sygnały kontroler <-> okno symulacji
         connect(m_controller, &SimulationController::newValueProduced, m_simWindow, &SimWindow::onNewData);
         connect(m_controller, &SimulationController::statsReady, m_simWindow, &SimWindow::onStatsReceived);
-        connect(m_simWindow, &SimWindow::dataImportRequested, m_controller, &SimulationController::loadNewData);
-        //Połącz żądanie pliku systmeu okien z logiką ładowania controllera
         connect(m_simWindow, &SimWindow::dataImportRequested, m_controller, &SimulationController::loadNewData);
         connect(m_simWindow, &SimWindow::startRequested, m_controller, &SimulationController::startSimulation);
         connect(m_simWindow, &SimWindow::stopRequested, m_controller, &SimulationController::stopSimulation);
         connect(m_simWindow, &SimWindow::resetRequested, m_controller, &SimulationController::resetSimulation);
     }
 
-
-    m_controller->runSimulation("", StrategyType::Linear);
-    //2. niezależnie czy okno było, czy dopiero zostało stworzone
     m_simWindow->show();
     m_simWindow->activateWindow();
     m_simWindow->raise();
-
-
 }

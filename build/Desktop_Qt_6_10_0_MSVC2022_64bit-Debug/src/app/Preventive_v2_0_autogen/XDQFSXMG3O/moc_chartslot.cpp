@@ -41,29 +41,34 @@ template <> constexpr inline auto ChartSlot::qt_create_metaobjectdata<qt_meta_ta
     namespace QMC = QtMocConstants;
     QtMocHelpers::StringRefStorage qt_stringData {
         "ChartSlot",
-        "importRequested",
+        "addChartRequested",
         "",
         "slotIndex",
+        "csvLoadRequested",
         "startRequested",
         "stopRequested",
         "resetRequested"
     };
 
     QtMocHelpers::UintData qt_methods {
-        // Signal 'importRequested'
+        // Signal 'addChartRequested'
         QtMocHelpers::SignalData<void(int)>(1, 2, QMC::AccessPublic, QMetaType::Void, {{
             { QMetaType::Int, 3 },
         }}),
-        // Signal 'startRequested'
+        // Signal 'csvLoadRequested'
         QtMocHelpers::SignalData<void(int)>(4, 2, QMC::AccessPublic, QMetaType::Void, {{
             { QMetaType::Int, 3 },
         }}),
-        // Signal 'stopRequested'
+        // Signal 'startRequested'
         QtMocHelpers::SignalData<void(int)>(5, 2, QMC::AccessPublic, QMetaType::Void, {{
             { QMetaType::Int, 3 },
         }}),
-        // Signal 'resetRequested'
+        // Signal 'stopRequested'
         QtMocHelpers::SignalData<void(int)>(6, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::Int, 3 },
+        }}),
+        // Signal 'resetRequested'
+        QtMocHelpers::SignalData<void(int)>(7, 2, QMC::AccessPublic, QMetaType::Void, {{
             { QMetaType::Int, 3 },
         }}),
     };
@@ -89,21 +94,24 @@ void ChartSlot::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
     auto *_t = static_cast<ChartSlot *>(_o);
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: _t->importRequested((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
-        case 1: _t->startRequested((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
-        case 2: _t->stopRequested((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
-        case 3: _t->resetRequested((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
+        case 0: _t->addChartRequested((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
+        case 1: _t->csvLoadRequested((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
+        case 2: _t->startRequested((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
+        case 3: _t->stopRequested((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
+        case 4: _t->resetRequested((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
         default: ;
         }
     }
     if (_c == QMetaObject::IndexOfMethod) {
-        if (QtMocHelpers::indexOfMethod<void (ChartSlot::*)(int )>(_a, &ChartSlot::importRequested, 0))
+        if (QtMocHelpers::indexOfMethod<void (ChartSlot::*)(int )>(_a, &ChartSlot::addChartRequested, 0))
             return;
-        if (QtMocHelpers::indexOfMethod<void (ChartSlot::*)(int )>(_a, &ChartSlot::startRequested, 1))
+        if (QtMocHelpers::indexOfMethod<void (ChartSlot::*)(int )>(_a, &ChartSlot::csvLoadRequested, 1))
             return;
-        if (QtMocHelpers::indexOfMethod<void (ChartSlot::*)(int )>(_a, &ChartSlot::stopRequested, 2))
+        if (QtMocHelpers::indexOfMethod<void (ChartSlot::*)(int )>(_a, &ChartSlot::startRequested, 2))
             return;
-        if (QtMocHelpers::indexOfMethod<void (ChartSlot::*)(int )>(_a, &ChartSlot::resetRequested, 3))
+        if (QtMocHelpers::indexOfMethod<void (ChartSlot::*)(int )>(_a, &ChartSlot::stopRequested, 3))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (ChartSlot::*)(int )>(_a, &ChartSlot::resetRequested, 4))
             return;
     }
 }
@@ -127,39 +135,45 @@ int ChartSlot::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 4)
+        if (_id < 5)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 4;
+        _id -= 5;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 4)
+        if (_id < 5)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 4;
+        _id -= 5;
     }
     return _id;
 }
 
 // SIGNAL 0
-void ChartSlot::importRequested(int _t1)
+void ChartSlot::addChartRequested(int _t1)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 0, nullptr, _t1);
 }
 
 // SIGNAL 1
-void ChartSlot::startRequested(int _t1)
+void ChartSlot::csvLoadRequested(int _t1)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 1, nullptr, _t1);
 }
 
 // SIGNAL 2
-void ChartSlot::stopRequested(int _t1)
+void ChartSlot::startRequested(int _t1)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 2, nullptr, _t1);
 }
 
 // SIGNAL 3
-void ChartSlot::resetRequested(int _t1)
+void ChartSlot::stopRequested(int _t1)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 3, nullptr, _t1);
+}
+
+// SIGNAL 4
+void ChartSlot::resetRequested(int _t1)
+{
+    QMetaObject::activate<void>(this, &staticMetaObject, 4, nullptr, _t1);
 }
 QT_WARNING_POP

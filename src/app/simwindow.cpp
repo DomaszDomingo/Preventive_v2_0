@@ -1,28 +1,18 @@
 #include "simwindow.h"
 #include "ui_simwindow.h"
 #include "qcustomplot.h"
-#include <QDebug> // Do logowania błędów
+#include <QDebug>
 #include <QFileDialog>
+#include <QFileInfo>
 #include <QMessageBox>
-
-
 
 SimWindow::SimWindow(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::SimWindow)
-   {
+{
     ui->setupUi(this);
-
     m_infoWindow = new InfoWindow(this);
-    
-
-    //inicjalizacja siatki wykresow
     setupLayout();
-
-
-
-
-
 }
 
 SimWindow::~SimWindow()
@@ -30,11 +20,14 @@ SimWindow::~SimWindow()
     delete ui;
 }
 
+// Tworzy siatkę 2x2 slotów wykresów (ChartSlot) w kontenerze scroll area.
+// Każdy slot otrzymuje unikalny indeks (0-3) i podłącza swoje sygnały
+// (dodaj wykres, ładuj CSV, start, stop, reset) do odpowiednich slotów/sygnałów SimWindow.
+// Dzięki temu każdy wykres działa niezależnie - slotIndex jest przekazywany
+// przez cały łańcuch sygnałów aż do kontrolera.
 void SimWindow::setupLayout()
 {
-    //Pobieramy wskaznik do grid layoutu, ktory jest wewnatrz srcoll area
-
-    QGridLayout *grid = qobject_cast<QGridLayout*> (ui->chartsContainer->layout());
+    QGridLayout *grid = qobject_cast<QGridLayout*>(ui->chartsContainer->layout());
 
     if(!grid){
         grid = new QGridLayout(ui->chartsContainer);
@@ -43,56 +36,39 @@ void SimWindow::setupLayout()
 
     m_chartSlots.clear();
 
-    const int COLS = 2; //ilosc kolumn
-    const int ROWS = 2; //ilosc wierszy
-
+    const int COLS = 2;
+    const int ROWS = 2;
     int slotCounter = 0;
 
-    for (int row = 0; row < ROWS; ++ row){
-        for (int col = 0; col < COLS; ++ col) {
+    for (int row = 0; row < ROWS; ++row){
+        for (int col = 0; col < COLS; ++col) {
             ChartSlot* slot = new ChartSlot(slotCounter, this);
 
-            connect(slot, &ChartSlot::importRequested, this, &SimWindow::onSlotImportRequested);
+            connect(slot, &ChartSlot::addChartRequested, this, &SimWindow::onSlotAddChartRequested);
+            connect(slot, &ChartSlot::csvLoadRequested, this, &SimWindow::onSlotCsvLoadRequested);
+            connect(slot, &ChartSlot::startRequested, this, [this](int slotIndex) { emit startRequested(slotIndex); });
+            connect(slot, &ChartSlot::stopRequested, this, [this](int slotIndex) { emit stopRequested(slotIndex); });
+            connect(slot, &ChartSlot::resetRequested, this, [this](int slotIndex) { emit resetRequested(slotIndex); });
 
             m_chartSlots.append(slot);
             grid->addWidget(slot, row, col);
-
             slotCounter++;
         }
-
     }
 }
 
-void SimWindow::onNewData(double time, double value)
+// Odbiera nowy punkt danych z kontrolera i kieruje go do konkretnego slotu.
+// Przelicza czas z milisekund na sekundy przed przekazaniem do wykresu.
+void SimWindow::onNewData(int slotIndex, double time, double value)
 {
     double timeInSeconds = time / 1000.0;
-
-    //przekazujemy dane do wszystkich aktywnych slotów
-    for (auto slot : m_chartSlots){
-        slot->addDataPoint(timeInSeconds, value);
+    if (slotIndex >= 0 && slotIndex < m_chartSlots.size()){
+        m_chartSlots[slotIndex]->addDataPoint(timeInSeconds, value);
     }
-
 }
 
-void SimWindow::handleImportCsv()
-{
-    QString fileName = QFileDialog::getOpenFileName(this, tr("Importuj Dane CSV"), "", tr("CSV Files(*.csv);;AllFiles(*)")); // otwórz okno dialogowe
-
-    if(fileName.isEmpty()) //jezeli uzytkownik anuluje
-        return;
-
-    for (auto slot : m_chartSlots){
-        //czyścimy dane, ale nie zamykamy wykresu ( nie robimy reset() do przycisku)
-        //Trzeba dodać metodę clearData() do chartSlot lub uzyc publicznego dostępu
-        // w kodzie w ChartSlot::displayChart jest czyszczenie wiec mozna uzyć
-        if(!slot->isEmpty()){
-            slot->displayChart(1, "Symulacja temperatury");
-        }
-    }
-    emit dataImportRequested(fileName); // wyemituj sygnał do controllera
-}
-
-
+// Odbiera statystyki z kontrolera po załadowaniu danych CSV
+// i wyświetla je w oknie InfoWindow (liczba próbek, min/max, średnia itd.).
 void SimWindow::onStatsReceived(const SimulationStats &stats)
 {
     if (!m_infoWindow) return;
@@ -101,45 +77,34 @@ void SimWindow::onStatsReceived(const SimulationStats &stats)
     m_infoWindow->show();
     m_infoWindow->raise();
     m_infoWindow->activateWindow();
-
 }
 
-void SimWindow::onSlotImportRequested(int slotIndex)
+// Obsługuje kliknięcie "Dodaj Wykres" - przełącza slot z widoku pustego
+// na widok wykresu z domyślnym tytułem "Wykres N". Nie ładuje danych -
+// użytkownik musi osobno kliknąć "Ładuj CSV".
+void SimWindow::onSlotAddChartRequested(int slotIndex)
 {
-    // Użytkownik kliknął "Dodaj Wykres" w konkretnym slocie.
-    // Tutaj decydujemy co tam wyświetlić.
-
-    // Ponieważ na razie mamy tylko jedną symulację (jeden strumień danych),
-    // po prostu aktywujemy ten slot i podpisujemy go.
-
     if (slotIndex >= 0 && slotIndex < m_chartSlots.size()){
         ChartSlot* slot = m_chartSlots[slotIndex];
-        slot->displayChart(1, "Symulacja temp");
-
+        slot->displayChart(slotIndex, "Wykres " + QString::number(slotIndex + 1));
     }
 }
 
+// Obsługuje kliknięcie "Ładuj CSV" - otwiera dialog wyboru pliku,
+// ustawia tytuł wykresu na nazwę pliku i emituje sygnał dataImportRequested
+// z indeksem slotu, który trafia do kontrolera w celu załadowania danych
+// do symulatora przypisanego do tego konkretnego slotu.
+void SimWindow::onSlotCsvLoadRequested(int slotIndex)
+{
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Importuj Dane CSV"), "", tr("CSV Files(*.csv);;All Files(*)"));
 
+    if(fileName.isEmpty())
+        return;
 
+    if (slotIndex >= 0 && slotIndex < m_chartSlots.size()){
+        ChartSlot* slot = m_chartSlots[slotIndex];
+        slot->displayChart(slotIndex, QFileInfo(fileName).fileName());
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    emit dataImportRequested(slotIndex, fileName);
+}
