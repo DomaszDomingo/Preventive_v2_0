@@ -47,8 +47,6 @@ void MainWindow::on_simulatorBtn_clicked()
         connect(m_controller, &SimulationController::newValueProduced, m_simWindow, &SimWindow::onNewData);
         connect(m_controller, &SimulationController::statsReady, m_simWindow, &SimWindow::onStatsReceived);
         connect(m_simWindow, &SimWindow::dataImportRequested, m_controller, &SimulationController::loadNewData);
-        //Połącz żądanie pliku systmeu okien z logiką ładowania controllera
-        connect(m_simWindow, &SimWindow::dataImportRequested, m_controller, &SimulationController::loadNewData);
         connect(m_simWindow, &SimWindow::startRequested, m_controller, &SimulationController::startSimulation);
         connect(m_simWindow, &SimWindow::stopRequested, m_controller, &SimulationController::stopSimulation);
         connect(m_simWindow, &SimWindow::resetRequested, m_controller, &SimulationController::resetSimulation);

@@ -1,3 +1,4 @@
+
 #ifndef CHARTSLOT_H
 #define CHARTSLOT_H
 
@@ -7,6 +8,7 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <QLabel>
+#include <QMenu>
 #include "qcustomplot.h"
 
 class ChartSlot : public QWidget
@@ -32,7 +34,8 @@ public:
 
 signals:
     //sygnal dla (simwindow) ze uzytkownik klinał dodaj w tym slocie
-    void importRequested (int slotIndex);
+    void addChartRequested(int slotIndex);
+    void csvLoadRequested(int slotIndex);
     void startRequested(int slotIndex);
     void stopRequested (int slotIndex);
     void resetRequested(int slotIndex);

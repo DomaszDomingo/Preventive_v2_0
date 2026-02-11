@@ -3,6 +3,7 @@
 #include "qcustomplot.h"
 #include <QDebug> // Do logowania błędów
 #include <QFileDialog>
+#include <QFileInfo>
 #include <QMessageBox>
 
 
@@ -52,7 +53,11 @@ void SimWindow::setupLayout()
         for (int col = 0; col < COLS; ++ col) {
             ChartSlot* slot = new ChartSlot(slotCounter, this);
 
-            connect(slot, &ChartSlot::importRequested, this, &SimWindow::onSlotImportRequested);
+            connect(slot, &ChartSlot::addChartRequested, this, &SimWindow::onSlotAddChartRequested);
+            connect(slot, &ChartSlot::csvLoadRequested, this, &SimWindow::onSlotCsvLoadRequested);
+            connect(slot, &ChartSlot::startRequested, this, [this]() { emit startRequested(); });
+            connect(slot, &ChartSlot::stopRequested, this, [this]() { emit stopRequested(); });
+            connect(slot, &ChartSlot::resetRequested, this, [this]() { emit resetRequested(); });
 
             m_chartSlots.append(slot);
             grid->addWidget(slot, row, col);
@@ -104,19 +109,27 @@ void SimWindow::onStatsReceived(const SimulationStats &stats)
 
 }
 
-void SimWindow::onSlotImportRequested(int slotIndex)
+void SimWindow::onSlotAddChartRequested(int slotIndex)
 {
-    // Użytkownik kliknął "Dodaj Wykres" w konkretnym slocie.
-    // Tutaj decydujemy co tam wyświetlić.
+    if (slotIndex >= 0 && slotIndex < m_chartSlots.size()){
+        ChartSlot* slot = m_chartSlots[slotIndex];
+        slot->displayChart(slotIndex, "Wykres " + QString::number(slotIndex + 1));
+    }
+}
 
-    // Ponieważ na razie mamy tylko jedną symulację (jeden strumień danych),
-    // po prostu aktywujemy ten slot i podpisujemy go.
+void SimWindow::onSlotCsvLoadRequested(int slotIndex)
+{
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Importuj Dane CSV"), "", tr("CSV Files(*.csv);;All Files(*)"));
+
+    if(fileName.isEmpty())
+        return;
 
     if (slotIndex >= 0 && slotIndex < m_chartSlots.size()){
         ChartSlot* slot = m_chartSlots[slotIndex];
-        slot->displayChart(1, "Symulacja temp");
-
+        slot->displayChart(slot->getTrendid(), QFileInfo(fileName).fileName());
     }
+
+    emit dataImportRequested(fileName);
 }
 
 

@@ -24,8 +24,6 @@ ChartSlot::ChartSlot(int slotIndex, QWidget *parent)
     emptyLayout->addStretch();
     m_stack->addWidget(m_PageEmpty);
 
-    m_stack->addWidget(m_PageEmpty);
-
     //strona2: wykres + sterowanie
     m_pageChart = new QWidget(this);
     QVBoxLayout *chartLayout = new QVBoxLayout(m_pageChart);
@@ -44,18 +42,38 @@ ChartSlot::ChartSlot(int slotIndex, QWidget *parent)
     m_plot->yAxis->setLabel("Wartość");
     m_plot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
     m_plot->setMinimumHeight(200);//Minimalna wysokość, zeby scroll area wiedzialo kiedy przewijac
+    m_plot->setContextMenuPolicy(Qt::CustomContextMenu);
+    connect(m_plot, &QCustomPlot::customContextMenuRequested, this, [this](const QPoint &pos){
+        QMenu menu(this);
+        QAction *removeAction = menu.addAction("Usuń wykres");
+        QAction *selected = menu.exec(m_plot->mapToGlobal(pos));
+        if (selected == removeAction) {
+            emit resetRequested(m_slotIndex);
+            reset();
+        }
+    });
     chartLayout->addWidget(m_plot, 1);
 
     //panel przyciskow
     QWidget *controlPanel = new QWidget(m_pageChart);
-    controlPanel->setStyleSheet("border: none"); // zeby nie dziedziczyl ramki slotu
+    controlPanel->setObjectName("controlPanel");
+    controlPanel->setStyleSheet("#controlPanel { border: none; }");
     QHBoxLayout *btnLayout = new QHBoxLayout(controlPanel);
     btnLayout->setContentsMargins(0,0,0,0);
+
+    QString btnStyle = "QPushButton { padding: 5px 12px; border: 1px solid #888; border-radius: 3px; background-color: #e0e0e0; }"
+                       "QPushButton:hover { background-color: #d0d0d0; }"
+                       "QPushButton:pressed { background-color: #c0c0c0; }";
 
     m_btnStart = new QPushButton("Start", controlPanel);
     m_btnStop = new QPushButton("Stop", controlPanel);
     m_btnReset = new QPushButton("Reset", controlPanel);
     m_btnCsv = new QPushButton("Ładuj CSV", controlPanel);
+
+    m_btnStart->setStyleSheet(btnStyle);
+    m_btnStop->setStyleSheet(btnStyle);
+    m_btnReset->setStyleSheet(btnStyle);
+    m_btnCsv->setStyleSheet(btnStyle);
 
     btnLayout->addWidget(m_btnStart);
     btnLayout->addWidget(m_btnStop);
@@ -66,7 +84,7 @@ ChartSlot::ChartSlot(int slotIndex, QWidget *parent)
     m_stack->addWidget(m_pageChart);
 
     connect(m_btnAdd, &QPushButton::clicked, this, [this](){
-        emit importRequested(m_slotIndex);
+        emit addChartRequested(m_slotIndex);
     });
 
     //przekazywanie sygnałów sterujacych
@@ -79,6 +97,7 @@ ChartSlot::ChartSlot(int slotIndex, QWidget *parent)
         }
         emit resetRequested(m_slotIndex);
     });
+    connect(m_btnCsv, &QPushButton::clicked, this, [this]() { emit csvLoadRequested(m_slotIndex); });
 
     //startujemy od pustego widoku
     reset();

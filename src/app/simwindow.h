@@ -32,8 +32,8 @@ public slots:
     void onNewData (double time, double value); // slot na nowe dane
     void handleImportCsv(); //slot dla przycisku
     void onStatsReceived(const SimulationStats & stats);
-    //slot ktory obsluguje klikniecie przycisku dodaj wewnątrz chartslot
-    void onSlotImportRequested(int slotIndex);
+    void onSlotAddChartRequested(int slotIndex);
+    void onSlotCsvLoadRequested(int slotIndex);
 private:
     Ui::SimWindow *ui;
     QList <ChartSlot*> m_chartSlots;

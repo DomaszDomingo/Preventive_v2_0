@@ -526,6 +526,7 @@ C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/build/Desktop_Qt_6_10_0_MSVC202
   C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/QCommonStyle \
   C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/QLabel \
   C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/QLayout \
+  C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/QMenu \
   C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/QPushButton \
   C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/QScrollerProperties \
   C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/QStackedWidget \

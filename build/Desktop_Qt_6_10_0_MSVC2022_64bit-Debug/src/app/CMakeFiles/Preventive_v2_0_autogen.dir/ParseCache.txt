@@ -1267,6 +1267,7 @@ C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/components/chartslot.h
  mdp:C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/QCommonStyle
  mdp:C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/QLabel
  mdp:C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/QLayout
+ mdp:C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/QMenu
  mdp:C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/QPushButton
  mdp:C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/QScrollerProperties
  mdp:C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/QStackedWidget
@@ -1930,6 +1931,7 @@ C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/simwindow.h
  mdp:C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/QDialog
  mdp:C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/QLabel
  mdp:C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/QLayout
+ mdp:C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/QMenu
  mdp:C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/QPushButton
  mdp:C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/QScrollerProperties
  mdp:C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/QStackedWidget
