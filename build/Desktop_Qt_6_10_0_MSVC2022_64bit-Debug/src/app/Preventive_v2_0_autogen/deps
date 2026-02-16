@@ -674,6 +674,12 @@ Preventive_v2_0_autogen/timestamp: \
 	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/main.cpp \
 	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/mainwindow.cpp \
 	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/mainwindow.h \
+	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/menu/aboutmenu.cpp \
+	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/menu/aboutmenu.h \
+	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/menu/editmenu.cpp \
+	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/menu/editmenu.h \
+	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/menu/filemenu.cpp \
+	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/menu/filemenu.h \
 	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/simulation/ISimulationStrategy.h \
 	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/simulation/concretestrategies.cpp \
 	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/simulation/concretestrategies.h \

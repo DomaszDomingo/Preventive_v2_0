@@ -1,11 +1,14 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 #include "controller/simulationcontroller.h"
+#include "menu/filemenu.h"
+#include "menu/editmenu.h"
+#include "menu/aboutmenu.h"
 #include "qcustomplot.h"
 #include <QDebug>
 #include <QFileDialog>
 #include <QFileInfo>
-#include <QMessageBox>
+#include <QMenuBar>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -16,6 +19,7 @@ MainWindow::MainWindow(QWidget *parent)
     m_controller = new SimulationController(this);
     m_infoWindow = new InfoWindow(this);
 
+    setupMenus();
     setupLayout();
 
     // Sygnały kontroler -> okno główne
@@ -26,6 +30,19 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::setupMenus()
+{
+    m_fileMenu = new FileMenu(this);
+    m_editMenu = new EditMenu(this);
+    m_aboutMenu = new AboutMenu(this);
+
+    ui->menubar->addMenu(m_fileMenu);
+    ui->menubar->addMenu(m_editMenu);
+    ui->menubar->addMenu(m_aboutMenu);
+
+    connect(m_fileMenu, &FileMenu::closeRequested, this, &QMainWindow::close);
 }
 
 // Tworzy siatkę 2x2 slotów wykresów (ChartSlot) w kontenerze scroll area.

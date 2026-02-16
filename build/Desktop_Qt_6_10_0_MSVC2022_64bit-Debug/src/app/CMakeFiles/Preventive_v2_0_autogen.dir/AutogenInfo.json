@@ -52,6 +52,24 @@
 			null
 		],
 		[
+			"C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/menu/aboutmenu.h",
+			"MU",
+			"ETVDZ3V6H3/moc_aboutmenu.cpp",
+			null
+		],
+		[
+			"C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/menu/editmenu.h",
+			"MU",
+			"ETVDZ3V6H3/moc_editmenu.cpp",
+			null
+		],
+		[
+			"C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/menu/filemenu.h",
+			"MU",
+			"ETVDZ3V6H3/moc_filemenu.cpp",
+			null
+		],
+		[
 			"C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/simulation/ISimulationStrategy.h",
 			"MU",
 			"UWAWGWCNXF/moc_ISimulationStrategy.cpp",
@@ -167,6 +185,21 @@
 		],
 		[
 			"C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/mainwindow.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/menu/aboutmenu.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/menu/editmenu.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/menu/filemenu.cpp",
 			"MU",
 			null
 		],

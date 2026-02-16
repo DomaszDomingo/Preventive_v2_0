@@ -4,4 +4,7 @@
 #include "NWZK5WP3BO/moc_dataloader.cpp"
 #include "EWIEGA46WW/moc_infowindow.cpp"
 #include "EWIEGA46WW/moc_mainwindow.cpp"
+#include "ETVDZ3V6H3/moc_aboutmenu.cpp"
+#include "ETVDZ3V6H3/moc_editmenu.cpp"
+#include "ETVDZ3V6H3/moc_filemenu.cpp"
 #include "UWAWGWCNXF/moc_simulator.cpp"
