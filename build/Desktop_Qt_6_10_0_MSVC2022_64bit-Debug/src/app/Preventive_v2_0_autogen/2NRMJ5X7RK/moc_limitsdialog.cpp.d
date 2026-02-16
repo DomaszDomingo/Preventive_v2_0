@@ -215,12 +215,15 @@ C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/build/Desktop_Qt_6_10_0_MSVC202
   C:/Qt/6.10.0/msvc2022_64/include/QtGui/qvalidator.h \
   C:/Qt/6.10.0/msvc2022_64/include/QtGui/qwindowdefs.h \
   C:/Qt/6.10.0/msvc2022_64/include/QtGui/qwindowdefs_win.h \
+  C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/QCheckBox \
   C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/QComboBox \
   C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/QDialog \
   C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/QDoubleSpinBox \
+  C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/qabstractbutton.h \
   C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/qabstractitemdelegate.h \
   C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/qabstractslider.h \
   C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/qabstractspinbox.h \
+  C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/qcheckbox.h \
   C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/qcombobox.h \
   C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/qdialog.h \
   C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/qframe.h \

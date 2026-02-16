@@ -524,6 +524,7 @@ Preventive_v2_0_autogen/timestamp: \
 	C:/Qt/6.10.0/msvc2022_64/include/QtPrintSupport/qtprintsupportexports.h \
 	C:/Qt/6.10.0/msvc2022_64/include/QtPrintSupport/qtprintsupportglobal.h \
 	C:/Qt/6.10.0/msvc2022_64/include/QtPrintSupport/qtprintsupportversion.h \
+	C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/QCheckBox \
 	C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/QComboBox \
 	C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/QCommonStyle \
 	C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/QDialog \

@@ -28,9 +28,11 @@ public:
 
     //limity
     void setLimits(double min, double max);
+    void setLimitsVisible(bool visible);
     double limitMin() const { return m_limitMin; }
     double limitMax() const { return m_limitMax; }
     bool hasLimits() const { return m_hasLimits; }
+    bool limitsVisible() const { return m_limitsVisible; }
 
     //gettery
     int getTrendid() const {return m_trendId;}
@@ -86,6 +88,15 @@ private:
     double m_limitMin = 0.0;
     double m_limitMax = 0.0;
     bool m_hasLimits = false;
+    bool m_limitsVisible = true;
+
+    void updateLimitsVisuals();
+    void removeLimitsVisuals();
+
+    QCPItemStraightLine *m_limitLineMin = nullptr;
+    QCPItemStraightLine *m_limitLineMax = nullptr;
+    QCPItemRect *m_limitZoneMin = nullptr;
+    QCPItemRect *m_limitZoneMax = nullptr;
 };
 
 #endif // CHARTSLOT_H

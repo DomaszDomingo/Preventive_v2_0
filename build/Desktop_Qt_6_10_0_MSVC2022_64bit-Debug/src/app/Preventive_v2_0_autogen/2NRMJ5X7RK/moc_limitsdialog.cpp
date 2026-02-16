@@ -44,9 +44,13 @@ template <> constexpr inline auto LimitsDialog::qt_create_metaobjectdata<qt_meta
         "slotIndex",
         "minVal",
         "maxVal",
+        "limitsVisibilityChanged",
+        "visible",
         "onSlotChanged",
         "comboIndex",
-        "onApply"
+        "onApply",
+        "onVisibilityToggled",
+        "checked"
     };
 
     QtMocHelpers::UintData qt_methods {
@@ -54,12 +58,20 @@ template <> constexpr inline auto LimitsDialog::qt_create_metaobjectdata<qt_meta
         QtMocHelpers::SignalData<void(int, double, double)>(1, 2, QMC::AccessPublic, QMetaType::Void, {{
             { QMetaType::Int, 3 }, { QMetaType::Double, 4 }, { QMetaType::Double, 5 },
         }}),
+        // Signal 'limitsVisibilityChanged'
+        QtMocHelpers::SignalData<void(int, bool)>(6, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::Int, 3 }, { QMetaType::Bool, 7 },
+        }}),
         // Slot 'onSlotChanged'
-        QtMocHelpers::SlotData<void(int)>(6, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { QMetaType::Int, 7 },
+        QtMocHelpers::SlotData<void(int)>(8, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::Int, 9 },
         }}),
         // Slot 'onApply'
-        QtMocHelpers::SlotData<void()>(8, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(10, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'onVisibilityToggled'
+        QtMocHelpers::SlotData<void(bool)>(11, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::Bool, 12 },
+        }}),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -84,13 +96,17 @@ void LimitsDialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
         case 0: _t->limitsApplied((*reinterpret_cast<std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<double>>(_a[2])),(*reinterpret_cast<std::add_pointer_t<double>>(_a[3]))); break;
-        case 1: _t->onSlotChanged((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
-        case 2: _t->onApply(); break;
+        case 1: _t->limitsVisibilityChanged((*reinterpret_cast<std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<bool>>(_a[2]))); break;
+        case 2: _t->onSlotChanged((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
+        case 3: _t->onApply(); break;
+        case 4: _t->onVisibilityToggled((*reinterpret_cast<std::add_pointer_t<bool>>(_a[1]))); break;
         default: ;
         }
     }
     if (_c == QMetaObject::IndexOfMethod) {
         if (QtMocHelpers::indexOfMethod<void (LimitsDialog::*)(int , double , double )>(_a, &LimitsDialog::limitsApplied, 0))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (LimitsDialog::*)(int , bool )>(_a, &LimitsDialog::limitsVisibilityChanged, 1))
             return;
     }
 }
@@ -114,14 +130,14 @@ int LimitsDialog::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 3)
+        if (_id < 5)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 5;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 3)
+        if (_id < 5)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 3;
+        _id -= 5;
     }
     return _id;
 }
@@ -130,5 +146,11 @@ int LimitsDialog::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 void LimitsDialog::limitsApplied(int _t1, double _t2, double _t3)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 0, nullptr, _t1, _t2, _t3);
+}
+
+// SIGNAL 1
+void LimitsDialog::limitsVisibilityChanged(int _t1, bool _t2)
+{
+    QMetaObject::activate<void>(this, &staticMetaObject, 1, nullptr, _t1, _t2);
 }
 QT_WARNING_POP

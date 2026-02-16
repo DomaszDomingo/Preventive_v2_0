@@ -306,13 +306,83 @@ void ChartSlot::displayChart(int trendId, const QString &title)
     m_stack->setCurrentWidget(m_pageChart);
 }
 
-// Resetuje slot do stanu pustego - czyści dane wykresu, usuwa kursory,
-// ustawia trendId na -1 (nieaktywny) i przełącza widok na przycisk "Dodaj Wykres".
 void ChartSlot::setLimits(double min, double max)
 {
     m_limitMin = min;
     m_limitMax = max;
     m_hasLimits = true;
+    if (m_limitsVisible)
+        updateLimitsVisuals();
+}
+
+void ChartSlot::setLimitsVisible(bool visible)
+{
+    m_limitsVisible = visible;
+    if (visible && m_hasLimits)
+        updateLimitsVisuals();
+    else {
+        removeLimitsVisuals();
+        if (m_plot) m_plot->replot();
+    }
+}
+
+void ChartSlot::updateLimitsVisuals()
+{
+    if (!m_plot || !m_hasLimits) return;
+
+    // Usuwamy stare, tworzymy nowe
+    removeLimitsVisuals();
+
+    QPen dashPen(QColor(200, 0, 0), 2, Qt::DashLine);
+    QBrush zoneBrush(QColor(0, 0, 0, 40));
+
+    // Linia dolna (min)
+    m_limitLineMin = new QCPItemStraightLine(m_plot);
+    m_limitLineMin->setPen(dashPen);
+    m_limitLineMin->point1->setCoords(0, m_limitMin);
+    m_limitLineMin->point2->setCoords(1, m_limitMin);
+
+    // Linia górna (max)
+    m_limitLineMax = new QCPItemStraightLine(m_plot);
+    m_limitLineMax->setPen(dashPen);
+    m_limitLineMax->point1->setCoords(0, m_limitMax);
+    m_limitLineMax->point2->setCoords(1, m_limitMax);
+
+    // Strefa poniżej min — góra w koordynatach wykresu (limitMin),
+    // dół i boki przylegają do krawędzi widocznego obszaru (axisRectRatio)
+    m_limitZoneMin = new QCPItemRect(m_plot);
+    m_limitZoneMin->setPen(Qt::NoPen);
+    m_limitZoneMin->setBrush(zoneBrush);
+    m_limitZoneMin->topLeft->setTypeX(QCPItemPosition::ptAxisRectRatio);
+    m_limitZoneMin->topLeft->setTypeY(QCPItemPosition::ptPlotCoords);
+    m_limitZoneMin->topLeft->setCoords(0, m_limitMin);
+    m_limitZoneMin->bottomRight->setTypeX(QCPItemPosition::ptAxisRectRatio);
+    m_limitZoneMin->bottomRight->setTypeY(QCPItemPosition::ptAxisRectRatio);
+    m_limitZoneMin->bottomRight->setCoords(1, 1);
+
+    // Strefa powyżej max — dół w koordynatach wykresu (limitMax),
+    // góra i boki przylegają do krawędzi widocznego obszaru (axisRectRatio)
+    m_limitZoneMax = new QCPItemRect(m_plot);
+    m_limitZoneMax->setPen(Qt::NoPen);
+    m_limitZoneMax->setBrush(zoneBrush);
+    m_limitZoneMax->topLeft->setTypeX(QCPItemPosition::ptAxisRectRatio);
+    m_limitZoneMax->topLeft->setTypeY(QCPItemPosition::ptAxisRectRatio);
+    m_limitZoneMax->topLeft->setCoords(0, 0);
+    m_limitZoneMax->bottomRight->setTypeX(QCPItemPosition::ptAxisRectRatio);
+    m_limitZoneMax->bottomRight->setTypeY(QCPItemPosition::ptPlotCoords);
+    m_limitZoneMax->bottomRight->setCoords(1, m_limitMax);
+
+    m_plot->replot();
+}
+
+void ChartSlot::removeLimitsVisuals()
+{
+    if (!m_plot) return;
+
+    if (m_limitLineMin)  { m_plot->removeItem(m_limitLineMin);  m_limitLineMin = nullptr; }
+    if (m_limitLineMax)  { m_plot->removeItem(m_limitLineMax);  m_limitLineMax = nullptr; }
+    if (m_limitZoneMin)  { m_plot->removeItem(m_limitZoneMin);  m_limitZoneMin = nullptr; }
+    if (m_limitZoneMax)  { m_plot->removeItem(m_limitZoneMax);  m_limitZoneMax = nullptr; }
 }
 
 void ChartSlot::reset()
@@ -320,9 +390,11 @@ void ChartSlot::reset()
     m_trendId = -1;
     if(m_plot) {
         removeCursors();
+        removeLimitsVisuals();
         m_plot->graph(0)->data()->clear();
         m_plot->replot();
     }
+    m_hasLimits = false;
     m_stack->setCurrentWidget(m_PageEmpty);
 }
 

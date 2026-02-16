@@ -33,6 +33,7 @@ private slots:
     void onSlotCsvLoadRequested(int slotIndex);
     void onLimitsDialogRequested();
     void onLimitsApplied(int slotIndex, double minVal, double maxVal);
+    void onLimitsVisibilityChanged(int slotIndex, bool visible);
 
 private:
     void setupMenus();

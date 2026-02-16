@@ -140,13 +140,15 @@ void MainWindow::onLimitsDialogRequested()
     if (!m_limitsDialog) {
         m_limitsDialog = new LimitsDialog(m_chartSlots.size(), this);
         connect(m_limitsDialog, &LimitsDialog::limitsApplied, this, &MainWindow::onLimitsApplied);
+        connect(m_limitsDialog, &LimitsDialog::limitsVisibilityChanged, this, &MainWindow::onLimitsVisibilityChanged);
     }
 
-    // Wypełnij aktualne limity
+    // Wypełnij aktualne limity i widoczność
     for (int i = 0; i < m_chartSlots.size(); ++i) {
         if (m_chartSlots[i]->hasLimits()) {
             m_limitsDialog->setLimits(i, m_chartSlots[i]->limitMin(), m_chartSlots[i]->limitMax());
         }
+        m_limitsDialog->setLimitsVisible(i, m_chartSlots[i]->limitsVisible());
     }
 
     m_limitsDialog->show();
@@ -158,5 +160,12 @@ void MainWindow::onLimitsApplied(int slotIndex, double minVal, double maxVal)
 {
     if (slotIndex >= 0 && slotIndex < m_chartSlots.size()) {
         m_chartSlots[slotIndex]->setLimits(minVal, maxVal);
+    }
+}
+
+void MainWindow::onLimitsVisibilityChanged(int slotIndex, bool visible)
+{
+    if (slotIndex >= 0 && slotIndex < m_chartSlots.size()) {
+        m_chartSlots[slotIndex]->setLimitsVisible(visible);
     }
 }
