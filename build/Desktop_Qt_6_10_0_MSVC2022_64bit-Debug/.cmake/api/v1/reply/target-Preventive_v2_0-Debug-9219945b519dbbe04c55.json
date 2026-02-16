@@ -74,7 +74,7 @@
 			{
 				"command" : 4,
 				"file" : 1,
-				"line" : 25,
+				"line" : 28,
 				"parent" : 0
 			},
 			{
@@ -365,7 +365,10 @@
 				15,
 				17,
 				20,
-				22
+				22,
+				24,
+				26,
+				28
 			]
 		}
 	],
@@ -376,11 +379,11 @@
 			"id" : "Preventive_v2_0_autogen::@ff93792cf40911dae1b8"
 		},
 		{
-			"id" : "Preventive_v2_0_autogen_timestamp_deps::@ff93792cf40911dae1b8"
-		},
-		{
 			"backtrace" : 5,
 			"id" : "qcustomplot::@d3298cd9ace31af89b51"
+		},
+		{
+			"id" : "Preventive_v2_0_autogen_timestamp_deps::@ff93792cf40911dae1b8"
 		}
 	],
 	"id" : "Preventive_v2_0::@ff93792cf40911dae1b8",
@@ -482,8 +485,8 @@
 			"sourceIndexes" : 
 			[
 				0,
-				23,
-				24
+				29,
+				30
 			]
 		},
 		{
@@ -499,7 +502,10 @@
 				15,
 				17,
 				20,
-				22
+				22,
+				24,
+				26,
+				28
 			]
 		},
 		{
@@ -516,7 +522,10 @@
 				16,
 				18,
 				19,
-				21
+				21,
+				23,
+				25,
+				27
 			]
 		},
 		{
@@ -530,7 +539,7 @@
 			"name" : "CMake Rules",
 			"sourceIndexes" : 
 			[
-				25
+				31
 			]
 		}
 	],
@@ -661,6 +670,39 @@
 			"backtrace" : 4,
 			"compileGroupIndex" : 0,
 			"path" : "src/app/components/chartslot.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"path" : "src/app/menu/filemenu.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "src/app/menu/filemenu.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"path" : "src/app/menu/editmenu.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "src/app/menu/editmenu.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"path" : "src/app/menu/aboutmenu.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "src/app/menu/aboutmenu.cpp",
 			"sourceGroupIndex" : 1
 		},
 		{
