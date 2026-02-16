@@ -22,6 +22,7 @@ qt_add_executable(Preventive_v2_0
     menu/filemenu.h menu/filemenu.cpp
     menu/editmenu.h menu/editmenu.cpp
     menu/aboutmenu.h menu/aboutmenu.cpp
+    dialogs/limitsdialog.h dialogs/limitsdialog.cpp
 
 )
 

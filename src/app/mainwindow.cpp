@@ -4,6 +4,7 @@
 #include "menu/filemenu.h"
 #include "menu/editmenu.h"
 #include "menu/aboutmenu.h"
+#include "dialogs/limitsdialog.h"
 #include "qcustomplot.h"
 #include <QDebug>
 #include <QFileDialog>
@@ -43,6 +44,7 @@ void MainWindow::setupMenus()
     ui->menubar->addMenu(m_aboutMenu);
 
     connect(m_fileMenu, &FileMenu::closeRequested, this, &QMainWindow::close);
+    connect(m_editMenu, &EditMenu::limitsDialogRequested, this, &MainWindow::onLimitsDialogRequested);
 }
 
 // Tworzy siatkę 2x2 slotów wykresów (ChartSlot) w kontenerze scroll area.
@@ -131,4 +133,30 @@ void MainWindow::onSlotCsvLoadRequested(int slotIndex)
     }
 
     m_controller->loadNewData(slotIndex, fileName);
+}
+
+void MainWindow::onLimitsDialogRequested()
+{
+    if (!m_limitsDialog) {
+        m_limitsDialog = new LimitsDialog(m_chartSlots.size(), this);
+        connect(m_limitsDialog, &LimitsDialog::limitsApplied, this, &MainWindow::onLimitsApplied);
+    }
+
+    // Wypełnij aktualne limity
+    for (int i = 0; i < m_chartSlots.size(); ++i) {
+        if (m_chartSlots[i]->hasLimits()) {
+            m_limitsDialog->setLimits(i, m_chartSlots[i]->limitMin(), m_chartSlots[i]->limitMax());
+        }
+    }
+
+    m_limitsDialog->show();
+    m_limitsDialog->raise();
+    m_limitsDialog->activateWindow();
+}
+
+void MainWindow::onLimitsApplied(int slotIndex, double minVal, double maxVal)
+{
+    if (slotIndex >= 0 && slotIndex < m_chartSlots.size()) {
+        m_chartSlots[slotIndex]->setLimits(minVal, maxVal);
+    }
 }

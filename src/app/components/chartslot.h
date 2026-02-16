@@ -26,6 +26,12 @@ public:
     //aktualizacja wewnętrznego wykresu o nowy punkt
     void addDataPoint (double time, double value);
 
+    //limity
+    void setLimits(double min, double max);
+    double limitMin() const { return m_limitMin; }
+    double limitMax() const { return m_limitMax; }
+    bool hasLimits() const { return m_hasLimits; }
+
     //gettery
     int getTrendid() const {return m_trendId;}
     int getSlotIndex() const {return m_slotIndex;}
@@ -75,6 +81,11 @@ private:
     QCPItemText *m_deltaLabel = nullptr;
     bool m_nextCursorIsA = true;
     QCPItemStraightLine *m_draggedCursor = nullptr;
+
+    // Limity wartości
+    double m_limitMin = 0.0;
+    double m_limitMax = 0.0;
+    bool m_hasLimits = false;
 };
 
 #endif // CHARTSLOT_H

@@ -9,6 +9,9 @@ class EditMenu : public QMenu
 
 public:
     explicit EditMenu(QWidget *parent = nullptr);
+
+signals:
+    void limitsDialogRequested();
 };
 
 #endif // EDITMENU_H

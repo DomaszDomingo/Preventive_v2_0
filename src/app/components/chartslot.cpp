@@ -308,6 +308,13 @@ void ChartSlot::displayChart(int trendId, const QString &title)
 
 // Resetuje slot do stanu pustego - czyści dane wykresu, usuwa kursory,
 // ustawia trendId na -1 (nieaktywny) i przełącza widok na przycisk "Dodaj Wykres".
+void ChartSlot::setLimits(double min, double max)
+{
+    m_limitMin = min;
+    m_limitMax = max;
+    m_hasLimits = true;
+}
+
 void ChartSlot::reset()
 {
     m_trendId = -1;

@@ -40,6 +40,12 @@
 			null
 		],
 		[
+			"C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/dialogs/limitsdialog.h",
+			"MU",
+			"2NRMJ5X7RK/moc_limitsdialog.cpp",
+			null
+		],
+		[
 			"C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/infowindow.h",
 			"MU",
 			"EWIEGA46WW/moc_infowindow.cpp",
@@ -170,6 +176,11 @@
 		],
 		[
 			"C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/dataloader/dataloader.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/dialogs/limitsdialog.cpp",
 			"MU",
 			null
 		],

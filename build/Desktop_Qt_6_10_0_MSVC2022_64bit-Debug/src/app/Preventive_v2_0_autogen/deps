@@ -82,6 +82,7 @@ Preventive_v2_0_autogen/timestamp: \
 	C:/Qt/6.10.0/msvc2022_64/include/QtCore/QMultiMap \
 	C:/Qt/6.10.0/msvc2022_64/include/QtCore/QMutex \
 	C:/Qt/6.10.0/msvc2022_64/include/QtCore/QObject \
+	C:/Qt/6.10.0/msvc2022_64/include/QtCore/QPair \
 	C:/Qt/6.10.0/msvc2022_64/include/QtCore/QPointF \
 	C:/Qt/6.10.0/msvc2022_64/include/QtCore/QPointer \
 	C:/Qt/6.10.0/msvc2022_64/include/QtCore/QRect \
@@ -523,8 +524,10 @@ Preventive_v2_0_autogen/timestamp: \
 	C:/Qt/6.10.0/msvc2022_64/include/QtPrintSupport/qtprintsupportexports.h \
 	C:/Qt/6.10.0/msvc2022_64/include/QtPrintSupport/qtprintsupportglobal.h \
 	C:/Qt/6.10.0/msvc2022_64/include/QtPrintSupport/qtprintsupportversion.h \
+	C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/QComboBox \
 	C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/QCommonStyle \
 	C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/QDialog \
+	C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/QDoubleSpinBox \
 	C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/QLabel \
 	C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/QLayout \
 	C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/QMainWindow \
@@ -669,6 +672,8 @@ Preventive_v2_0_autogen/timestamp: \
 	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/dataloader/dataloader.cpp \
 	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/dataloader/dataloader.h \
 	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/datamodel/DataPoint.h \
+	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/dialogs/limitsdialog.cpp \
+	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/dialogs/limitsdialog.h \
 	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/infowindow.cpp \
 	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/infowindow.h \
 	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/main.cpp \

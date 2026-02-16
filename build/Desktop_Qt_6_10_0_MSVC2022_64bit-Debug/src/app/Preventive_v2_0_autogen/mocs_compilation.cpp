@@ -2,6 +2,7 @@
 #include "XDQFSXMG3O/moc_chartslot.cpp"
 #include "NPUKSKGWT2/moc_simulationcontroller.cpp"
 #include "NWZK5WP3BO/moc_dataloader.cpp"
+#include "2NRMJ5X7RK/moc_limitsdialog.cpp"
 #include "EWIEGA46WW/moc_infowindow.cpp"
 #include "EWIEGA46WW/moc_mainwindow.cpp"
 #include "ETVDZ3V6H3/moc_aboutmenu.cpp"
