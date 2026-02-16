@@ -11,9 +11,10 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
-#include <QtWidgets/QPushButton>
+#include <QtWidgets/QScrollArea>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QWidget>
 
@@ -23,7 +24,9 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralwidget;
-    QPushButton *simulatorBtn;
+    QGridLayout *gridLayout;
+    QScrollArea *scrollArea;
+    QWidget *chartsContainer;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -34,9 +37,18 @@ public:
         MainWindow->resize(800, 600);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
-        simulatorBtn = new QPushButton(centralwidget);
-        simulatorBtn->setObjectName("simulatorBtn");
-        simulatorBtn->setGeometry(QRect(30, 30, 80, 35));
+        gridLayout = new QGridLayout(centralwidget);
+        gridLayout->setObjectName("gridLayout");
+        scrollArea = new QScrollArea(centralwidget);
+        scrollArea->setObjectName("scrollArea");
+        scrollArea->setWidgetResizable(true);
+        chartsContainer = new QWidget();
+        chartsContainer->setObjectName("chartsContainer");
+        chartsContainer->setGeometry(QRect(0, 0, 780, 580));
+        scrollArea->setWidget(chartsContainer);
+
+        gridLayout->addWidget(scrollArea, 0, 0, 1, 1);
+
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
@@ -53,8 +65,7 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        simulatorBtn->setText(QCoreApplication::translate("MainWindow", "Symulacja", nullptr));
+        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "Preventive v2.0", nullptr));
     } // retranslateUi
 
 };

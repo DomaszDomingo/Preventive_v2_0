@@ -5,4 +5,3 @@
 #include "EWIEGA46WW/moc_infowindow.cpp"
 #include "EWIEGA46WW/moc_mainwindow.cpp"
 #include "UWAWGWCNXF/moc_simulator.cpp"
-#include "EWIEGA46WW/moc_simwindow.cpp"

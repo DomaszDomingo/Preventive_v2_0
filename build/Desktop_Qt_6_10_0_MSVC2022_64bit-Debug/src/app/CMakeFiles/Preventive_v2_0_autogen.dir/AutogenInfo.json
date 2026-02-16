@@ -76,12 +76,6 @@
 			null
 		],
 		[
-			"C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/simwindow.h",
-			"MU",
-			"EWIEGA46WW/moc_simwindow.cpp",
-			null
-		],
-		[
 			"C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/utils/dataanalyzer.h",
 			"MU",
 			"7HEHEGDA3T/moc_dataanalyzer.cpp",
@@ -188,11 +182,6 @@
 		],
 		[
 			"C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/simulation/strategyfactory.cpp",
-			"MU",
-			null
-		],
-		[
-			"C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/simwindow.cpp",
 			"MU",
 			null
 		],

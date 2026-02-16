@@ -3,9 +3,6 @@ qt_add_executable(Preventive_v2_0
     mainwindow.cpp
     mainwindow.h
     mainwindow.ui
-    simwindow.h
-    simwindow.cpp
-    simwindow.ui
     controller/simulationcontroller.cpp
     controller/simulationcontroller.h
     dataloader/dataloader.cpp

@@ -2,10 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QList>
+#include "components/chartslot.h"
+#include "infowindow.h"
 
-
-
-class SimWindow;
 class SimulationController;
 
 QT_BEGIN_NAMESPACE
@@ -23,13 +23,18 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_simulatorBtn_clicked();
+    void onNewData(int slotIndex, double time, double value);
+    void onStatsReceived(const SimulationStats &stats);
+    void onSlotAddChartRequested(int slotIndex);
+    void onSlotCsvLoadRequested(int slotIndex);
 
 private:
+    void setupLayout();
+
     Ui::MainWindow *ui;
-    SimWindow *m_simWindow = nullptr;
-    SimulationController * m_controller;
-
-
+    SimulationController *m_controller;
+    QList<ChartSlot*> m_chartSlots;
+    InfoWindow *m_infoWindow = nullptr;
 };
+
 #endif // MAINWINDOW_H
