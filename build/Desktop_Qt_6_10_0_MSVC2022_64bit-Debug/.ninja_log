@@ -53,3 +53,10 @@
 343	17239	7925442104492775	src/app/CMakeFiles/Preventive_v2_0.dir/components/chartslot.cpp.obj	8ae0ec4d5c11c3a3
 334	17267	7925442104323122	src/app/CMakeFiles/Preventive_v2_0.dir/mainwindow.cpp.obj	176b0edc17b10632
 17268	17848	7925442273707583	Preventive_v2_0.exe	88a665ac93f9b6ff
+97	404	7929642799859365	src/app/Preventive_v2_0_autogen/timestamp	2c84a7c8f85d26ef
+97	404	7929642799859365	src/app/Preventive_v2_0_autogen/mocs_compilation.cpp	2c84a7c8f85d26ef
+97	404	7929642799859365	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/src/app/Preventive_v2_0_autogen/timestamp	2c84a7c8f85d26ef
+97	404	7929642799859365	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/src/app/Preventive_v2_0_autogen/mocs_compilation.cpp	2c84a7c8f85d26ef
+408	13101	7929642802947077	src/app/CMakeFiles/Preventive_v2_0.dir/mainwindow.cpp.obj	176b0edc17b10632
+412	13128	7929642802997517	src/app/CMakeFiles/Preventive_v2_0.dir/simwindow.cpp.obj	9aff51d79a79c97c
+13129	14012	7929642930165190	Preventive_v2_0.exe	88a665ac93f9b6ff

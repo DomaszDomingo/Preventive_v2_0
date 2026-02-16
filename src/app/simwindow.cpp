@@ -11,6 +11,7 @@ SimWindow::SimWindow(QWidget *parent)
     , ui(new Ui::SimWindow)
 {
     ui->setupUi(this);
+    setWindowFlags(Qt::Window | Qt::WindowMinMaxButtonsHint | Qt::WindowCloseButtonHint);
     m_infoWindow = new InfoWindow(this);
     setupLayout();
 }
