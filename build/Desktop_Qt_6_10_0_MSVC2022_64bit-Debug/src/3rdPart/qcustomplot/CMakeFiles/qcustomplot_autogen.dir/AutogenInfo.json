@@ -27,6 +27,7 @@
 	"MOC_COMPILATION_FILE" : "C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/src/3rdPart/qcustomplot/qcustomplot_autogen/mocs_compilation.cpp",
 	"MOC_DEFINITIONS" : 
 	[
+		"QCUSTOMPLOT_COMPILE_LIBRARY",
 		"QT_CORE_LIB",
 		"QT_GUI_LIB",
 		"QT_PRINTSUPPORT_LIB",

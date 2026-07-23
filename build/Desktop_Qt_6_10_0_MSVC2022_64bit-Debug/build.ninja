@@ -79,7 +79,7 @@ build rebuild_cache: phony CMakeFiles\rebuild_cache.util
 build cmake_object_order_depends_target_Preventive_v2_0: phony || cmake_object_order_depends_target_qcustomplot src\app\Preventive_v2_0_autogen src\app\Preventive_v2_0_autogen\mocs_compilation.cpp src\app\Preventive_v2_0_autogen\timestamp src\app\Preventive_v2_0_autogen_timestamp_deps
 
 build src\app\CMakeFiles\Preventive_v2_0.dir\Preventive_v2_0_autogen\mocs_compilation.cpp.obj: CXX_COMPILER__Preventive_v2_0_unscanned_Debug C$:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_10_0_MSVC2022_64bit-Debug\src\app\Preventive_v2_0_autogen\mocs_compilation.cpp || cmake_object_order_depends_target_Preventive_v2_0
-  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  DEFINES = -DQCUSTOMPLOT_USE_LIBRARY -DQT_CORE_LIB -DQT_GUI_LIB -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
   FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd -Zc:__cplusplus -permissive- -utf-8
   INCLUDES = -IC:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_10_0_MSVC2022_64bit-Debug\src\app\Preventive_v2_0_autogen\include -IC:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\3rdPart\qcustomplot -external:IC:\Qt\6.10.0\msvc2022_64\include\QtCore -external:IC:\Qt\6.10.0\msvc2022_64\include -external:IC:\Qt\6.10.0\msvc2022_64\mkspecs\win32-msvc -external:IC:\Qt\6.10.0\msvc2022_64\include\QtWidgets -external:IC:\Qt\6.10.0\msvc2022_64\include\QtGui -external:IC:\Qt\6.10.0\msvc2022_64\include\QtPrintSupport -external:W0
   OBJECT_DIR = src\app\CMakeFiles\Preventive_v2_0.dir
@@ -88,7 +88,7 @@ build src\app\CMakeFiles\Preventive_v2_0.dir\Preventive_v2_0_autogen\mocs_compil
   TARGET_PDB = Preventive_v2_0.pdb
 
 build src\app\CMakeFiles\Preventive_v2_0.dir\main.cpp.obj: CXX_COMPILER__Preventive_v2_0_unscanned_Debug C$:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\app\main.cpp || cmake_object_order_depends_target_Preventive_v2_0
-  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  DEFINES = -DQCUSTOMPLOT_USE_LIBRARY -DQT_CORE_LIB -DQT_GUI_LIB -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
   FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd -Zc:__cplusplus -permissive- -utf-8
   INCLUDES = -IC:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_10_0_MSVC2022_64bit-Debug\src\app\Preventive_v2_0_autogen\include -IC:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\3rdPart\qcustomplot -external:IC:\Qt\6.10.0\msvc2022_64\include\QtCore -external:IC:\Qt\6.10.0\msvc2022_64\include -external:IC:\Qt\6.10.0\msvc2022_64\mkspecs\win32-msvc -external:IC:\Qt\6.10.0\msvc2022_64\include\QtWidgets -external:IC:\Qt\6.10.0\msvc2022_64\include\QtGui -external:IC:\Qt\6.10.0\msvc2022_64\include\QtPrintSupport -external:W0
   OBJECT_DIR = src\app\CMakeFiles\Preventive_v2_0.dir
@@ -97,7 +97,7 @@ build src\app\CMakeFiles\Preventive_v2_0.dir\main.cpp.obj: CXX_COMPILER__Prevent
   TARGET_PDB = Preventive_v2_0.pdb
 
 build src\app\CMakeFiles\Preventive_v2_0.dir\mainwindow.cpp.obj: CXX_COMPILER__Preventive_v2_0_unscanned_Debug C$:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\app\mainwindow.cpp || cmake_object_order_depends_target_Preventive_v2_0
-  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  DEFINES = -DQCUSTOMPLOT_USE_LIBRARY -DQT_CORE_LIB -DQT_GUI_LIB -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
   FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd -Zc:__cplusplus -permissive- -utf-8
   INCLUDES = -IC:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_10_0_MSVC2022_64bit-Debug\src\app\Preventive_v2_0_autogen\include -IC:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\3rdPart\qcustomplot -external:IC:\Qt\6.10.0\msvc2022_64\include\QtCore -external:IC:\Qt\6.10.0\msvc2022_64\include -external:IC:\Qt\6.10.0\msvc2022_64\mkspecs\win32-msvc -external:IC:\Qt\6.10.0\msvc2022_64\include\QtWidgets -external:IC:\Qt\6.10.0\msvc2022_64\include\QtGui -external:IC:\Qt\6.10.0\msvc2022_64\include\QtPrintSupport -external:W0
   OBJECT_DIR = src\app\CMakeFiles\Preventive_v2_0.dir
@@ -106,7 +106,7 @@ build src\app\CMakeFiles\Preventive_v2_0.dir\mainwindow.cpp.obj: CXX_COMPILER__P
   TARGET_PDB = Preventive_v2_0.pdb
 
 build src\app\CMakeFiles\Preventive_v2_0.dir\controller\simulationcontroller.cpp.obj: CXX_COMPILER__Preventive_v2_0_unscanned_Debug C$:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\app\controller\simulationcontroller.cpp || cmake_object_order_depends_target_Preventive_v2_0
-  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  DEFINES = -DQCUSTOMPLOT_USE_LIBRARY -DQT_CORE_LIB -DQT_GUI_LIB -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
   FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd -Zc:__cplusplus -permissive- -utf-8
   INCLUDES = -IC:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_10_0_MSVC2022_64bit-Debug\src\app\Preventive_v2_0_autogen\include -IC:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\3rdPart\qcustomplot -external:IC:\Qt\6.10.0\msvc2022_64\include\QtCore -external:IC:\Qt\6.10.0\msvc2022_64\include -external:IC:\Qt\6.10.0\msvc2022_64\mkspecs\win32-msvc -external:IC:\Qt\6.10.0\msvc2022_64\include\QtWidgets -external:IC:\Qt\6.10.0\msvc2022_64\include\QtGui -external:IC:\Qt\6.10.0\msvc2022_64\include\QtPrintSupport -external:W0
   OBJECT_DIR = src\app\CMakeFiles\Preventive_v2_0.dir
@@ -115,7 +115,7 @@ build src\app\CMakeFiles\Preventive_v2_0.dir\controller\simulationcontroller.cpp
   TARGET_PDB = Preventive_v2_0.pdb
 
 build src\app\CMakeFiles\Preventive_v2_0.dir\dataloader\dataloader.cpp.obj: CXX_COMPILER__Preventive_v2_0_unscanned_Debug C$:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\app\dataloader\dataloader.cpp || cmake_object_order_depends_target_Preventive_v2_0
-  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  DEFINES = -DQCUSTOMPLOT_USE_LIBRARY -DQT_CORE_LIB -DQT_GUI_LIB -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
   FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd -Zc:__cplusplus -permissive- -utf-8
   INCLUDES = -IC:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_10_0_MSVC2022_64bit-Debug\src\app\Preventive_v2_0_autogen\include -IC:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\3rdPart\qcustomplot -external:IC:\Qt\6.10.0\msvc2022_64\include\QtCore -external:IC:\Qt\6.10.0\msvc2022_64\include -external:IC:\Qt\6.10.0\msvc2022_64\mkspecs\win32-msvc -external:IC:\Qt\6.10.0\msvc2022_64\include\QtWidgets -external:IC:\Qt\6.10.0\msvc2022_64\include\QtGui -external:IC:\Qt\6.10.0\msvc2022_64\include\QtPrintSupport -external:W0
   OBJECT_DIR = src\app\CMakeFiles\Preventive_v2_0.dir
@@ -124,7 +124,7 @@ build src\app\CMakeFiles\Preventive_v2_0.dir\dataloader\dataloader.cpp.obj: CXX_
   TARGET_PDB = Preventive_v2_0.pdb
 
 build src\app\CMakeFiles\Preventive_v2_0.dir\simulation\simulator.cpp.obj: CXX_COMPILER__Preventive_v2_0_unscanned_Debug C$:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\app\simulation\simulator.cpp || cmake_object_order_depends_target_Preventive_v2_0
-  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  DEFINES = -DQCUSTOMPLOT_USE_LIBRARY -DQT_CORE_LIB -DQT_GUI_LIB -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
   FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd -Zc:__cplusplus -permissive- -utf-8
   INCLUDES = -IC:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_10_0_MSVC2022_64bit-Debug\src\app\Preventive_v2_0_autogen\include -IC:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\3rdPart\qcustomplot -external:IC:\Qt\6.10.0\msvc2022_64\include\QtCore -external:IC:\Qt\6.10.0\msvc2022_64\include -external:IC:\Qt\6.10.0\msvc2022_64\mkspecs\win32-msvc -external:IC:\Qt\6.10.0\msvc2022_64\include\QtWidgets -external:IC:\Qt\6.10.0\msvc2022_64\include\QtGui -external:IC:\Qt\6.10.0\msvc2022_64\include\QtPrintSupport -external:W0
   OBJECT_DIR = src\app\CMakeFiles\Preventive_v2_0.dir
@@ -133,7 +133,7 @@ build src\app\CMakeFiles\Preventive_v2_0.dir\simulation\simulator.cpp.obj: CXX_C
   TARGET_PDB = Preventive_v2_0.pdb
 
 build src\app\CMakeFiles\Preventive_v2_0.dir\simulation\concretestrategies.cpp.obj: CXX_COMPILER__Preventive_v2_0_unscanned_Debug C$:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\app\simulation\concretestrategies.cpp || cmake_object_order_depends_target_Preventive_v2_0
-  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  DEFINES = -DQCUSTOMPLOT_USE_LIBRARY -DQT_CORE_LIB -DQT_GUI_LIB -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
   FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd -Zc:__cplusplus -permissive- -utf-8
   INCLUDES = -IC:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_10_0_MSVC2022_64bit-Debug\src\app\Preventive_v2_0_autogen\include -IC:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\3rdPart\qcustomplot -external:IC:\Qt\6.10.0\msvc2022_64\include\QtCore -external:IC:\Qt\6.10.0\msvc2022_64\include -external:IC:\Qt\6.10.0\msvc2022_64\mkspecs\win32-msvc -external:IC:\Qt\6.10.0\msvc2022_64\include\QtWidgets -external:IC:\Qt\6.10.0\msvc2022_64\include\QtGui -external:IC:\Qt\6.10.0\msvc2022_64\include\QtPrintSupport -external:W0
   OBJECT_DIR = src\app\CMakeFiles\Preventive_v2_0.dir
@@ -142,7 +142,7 @@ build src\app\CMakeFiles\Preventive_v2_0.dir\simulation\concretestrategies.cpp.o
   TARGET_PDB = Preventive_v2_0.pdb
 
 build src\app\CMakeFiles\Preventive_v2_0.dir\simulation\strategyfactory.cpp.obj: CXX_COMPILER__Preventive_v2_0_unscanned_Debug C$:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\app\simulation\strategyfactory.cpp || cmake_object_order_depends_target_Preventive_v2_0
-  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  DEFINES = -DQCUSTOMPLOT_USE_LIBRARY -DQT_CORE_LIB -DQT_GUI_LIB -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
   FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd -Zc:__cplusplus -permissive- -utf-8
   INCLUDES = -IC:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_10_0_MSVC2022_64bit-Debug\src\app\Preventive_v2_0_autogen\include -IC:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\3rdPart\qcustomplot -external:IC:\Qt\6.10.0\msvc2022_64\include\QtCore -external:IC:\Qt\6.10.0\msvc2022_64\include -external:IC:\Qt\6.10.0\msvc2022_64\mkspecs\win32-msvc -external:IC:\Qt\6.10.0\msvc2022_64\include\QtWidgets -external:IC:\Qt\6.10.0\msvc2022_64\include\QtGui -external:IC:\Qt\6.10.0\msvc2022_64\include\QtPrintSupport -external:W0
   OBJECT_DIR = src\app\CMakeFiles\Preventive_v2_0.dir
@@ -151,7 +151,7 @@ build src\app\CMakeFiles\Preventive_v2_0.dir\simulation\strategyfactory.cpp.obj:
   TARGET_PDB = Preventive_v2_0.pdb
 
 build src\app\CMakeFiles\Preventive_v2_0.dir\utils\dataanalyzer.cpp.obj: CXX_COMPILER__Preventive_v2_0_unscanned_Debug C$:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\app\utils\dataanalyzer.cpp || cmake_object_order_depends_target_Preventive_v2_0
-  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  DEFINES = -DQCUSTOMPLOT_USE_LIBRARY -DQT_CORE_LIB -DQT_GUI_LIB -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
   FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd -Zc:__cplusplus -permissive- -utf-8
   INCLUDES = -IC:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_10_0_MSVC2022_64bit-Debug\src\app\Preventive_v2_0_autogen\include -IC:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\3rdPart\qcustomplot -external:IC:\Qt\6.10.0\msvc2022_64\include\QtCore -external:IC:\Qt\6.10.0\msvc2022_64\include -external:IC:\Qt\6.10.0\msvc2022_64\mkspecs\win32-msvc -external:IC:\Qt\6.10.0\msvc2022_64\include\QtWidgets -external:IC:\Qt\6.10.0\msvc2022_64\include\QtGui -external:IC:\Qt\6.10.0\msvc2022_64\include\QtPrintSupport -external:W0
   OBJECT_DIR = src\app\CMakeFiles\Preventive_v2_0.dir
@@ -160,7 +160,7 @@ build src\app\CMakeFiles\Preventive_v2_0.dir\utils\dataanalyzer.cpp.obj: CXX_COM
   TARGET_PDB = Preventive_v2_0.pdb
 
 build src\app\CMakeFiles\Preventive_v2_0.dir\infowindow.cpp.obj: CXX_COMPILER__Preventive_v2_0_unscanned_Debug C$:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\app\infowindow.cpp || cmake_object_order_depends_target_Preventive_v2_0
-  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  DEFINES = -DQCUSTOMPLOT_USE_LIBRARY -DQT_CORE_LIB -DQT_GUI_LIB -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
   FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd -Zc:__cplusplus -permissive- -utf-8
   INCLUDES = -IC:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_10_0_MSVC2022_64bit-Debug\src\app\Preventive_v2_0_autogen\include -IC:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\3rdPart\qcustomplot -external:IC:\Qt\6.10.0\msvc2022_64\include\QtCore -external:IC:\Qt\6.10.0\msvc2022_64\include -external:IC:\Qt\6.10.0\msvc2022_64\mkspecs\win32-msvc -external:IC:\Qt\6.10.0\msvc2022_64\include\QtWidgets -external:IC:\Qt\6.10.0\msvc2022_64\include\QtGui -external:IC:\Qt\6.10.0\msvc2022_64\include\QtPrintSupport -external:W0
   OBJECT_DIR = src\app\CMakeFiles\Preventive_v2_0.dir
@@ -169,7 +169,7 @@ build src\app\CMakeFiles\Preventive_v2_0.dir\infowindow.cpp.obj: CXX_COMPILER__P
   TARGET_PDB = Preventive_v2_0.pdb
 
 build src\app\CMakeFiles\Preventive_v2_0.dir\components\chartslot.cpp.obj: CXX_COMPILER__Preventive_v2_0_unscanned_Debug C$:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\app\components\chartslot.cpp || cmake_object_order_depends_target_Preventive_v2_0
-  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  DEFINES = -DQCUSTOMPLOT_USE_LIBRARY -DQT_CORE_LIB -DQT_GUI_LIB -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
   FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd -Zc:__cplusplus -permissive- -utf-8
   INCLUDES = -IC:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_10_0_MSVC2022_64bit-Debug\src\app\Preventive_v2_0_autogen\include -IC:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\3rdPart\qcustomplot -external:IC:\Qt\6.10.0\msvc2022_64\include\QtCore -external:IC:\Qt\6.10.0\msvc2022_64\include -external:IC:\Qt\6.10.0\msvc2022_64\mkspecs\win32-msvc -external:IC:\Qt\6.10.0\msvc2022_64\include\QtWidgets -external:IC:\Qt\6.10.0\msvc2022_64\include\QtGui -external:IC:\Qt\6.10.0\msvc2022_64\include\QtPrintSupport -external:W0
   OBJECT_DIR = src\app\CMakeFiles\Preventive_v2_0.dir
@@ -178,7 +178,7 @@ build src\app\CMakeFiles\Preventive_v2_0.dir\components\chartslot.cpp.obj: CXX_C
   TARGET_PDB = Preventive_v2_0.pdb
 
 build src\app\CMakeFiles\Preventive_v2_0.dir\menu\filemenu.cpp.obj: CXX_COMPILER__Preventive_v2_0_unscanned_Debug C$:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\app\menu\filemenu.cpp || cmake_object_order_depends_target_Preventive_v2_0
-  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  DEFINES = -DQCUSTOMPLOT_USE_LIBRARY -DQT_CORE_LIB -DQT_GUI_LIB -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
   FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd -Zc:__cplusplus -permissive- -utf-8
   INCLUDES = -IC:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_10_0_MSVC2022_64bit-Debug\src\app\Preventive_v2_0_autogen\include -IC:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\3rdPart\qcustomplot -external:IC:\Qt\6.10.0\msvc2022_64\include\QtCore -external:IC:\Qt\6.10.0\msvc2022_64\include -external:IC:\Qt\6.10.0\msvc2022_64\mkspecs\win32-msvc -external:IC:\Qt\6.10.0\msvc2022_64\include\QtWidgets -external:IC:\Qt\6.10.0\msvc2022_64\include\QtGui -external:IC:\Qt\6.10.0\msvc2022_64\include\QtPrintSupport -external:W0
   OBJECT_DIR = src\app\CMakeFiles\Preventive_v2_0.dir
@@ -187,7 +187,7 @@ build src\app\CMakeFiles\Preventive_v2_0.dir\menu\filemenu.cpp.obj: CXX_COMPILER
   TARGET_PDB = Preventive_v2_0.pdb
 
 build src\app\CMakeFiles\Preventive_v2_0.dir\menu\editmenu.cpp.obj: CXX_COMPILER__Preventive_v2_0_unscanned_Debug C$:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\app\menu\editmenu.cpp || cmake_object_order_depends_target_Preventive_v2_0
-  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  DEFINES = -DQCUSTOMPLOT_USE_LIBRARY -DQT_CORE_LIB -DQT_GUI_LIB -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
   FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd -Zc:__cplusplus -permissive- -utf-8
   INCLUDES = -IC:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_10_0_MSVC2022_64bit-Debug\src\app\Preventive_v2_0_autogen\include -IC:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\3rdPart\qcustomplot -external:IC:\Qt\6.10.0\msvc2022_64\include\QtCore -external:IC:\Qt\6.10.0\msvc2022_64\include -external:IC:\Qt\6.10.0\msvc2022_64\mkspecs\win32-msvc -external:IC:\Qt\6.10.0\msvc2022_64\include\QtWidgets -external:IC:\Qt\6.10.0\msvc2022_64\include\QtGui -external:IC:\Qt\6.10.0\msvc2022_64\include\QtPrintSupport -external:W0
   OBJECT_DIR = src\app\CMakeFiles\Preventive_v2_0.dir
@@ -196,7 +196,7 @@ build src\app\CMakeFiles\Preventive_v2_0.dir\menu\editmenu.cpp.obj: CXX_COMPILER
   TARGET_PDB = Preventive_v2_0.pdb
 
 build src\app\CMakeFiles\Preventive_v2_0.dir\menu\aboutmenu.cpp.obj: CXX_COMPILER__Preventive_v2_0_unscanned_Debug C$:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\app\menu\aboutmenu.cpp || cmake_object_order_depends_target_Preventive_v2_0
-  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  DEFINES = -DQCUSTOMPLOT_USE_LIBRARY -DQT_CORE_LIB -DQT_GUI_LIB -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
   FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd -Zc:__cplusplus -permissive- -utf-8
   INCLUDES = -IC:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_10_0_MSVC2022_64bit-Debug\src\app\Preventive_v2_0_autogen\include -IC:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\3rdPart\qcustomplot -external:IC:\Qt\6.10.0\msvc2022_64\include\QtCore -external:IC:\Qt\6.10.0\msvc2022_64\include -external:IC:\Qt\6.10.0\msvc2022_64\mkspecs\win32-msvc -external:IC:\Qt\6.10.0\msvc2022_64\include\QtWidgets -external:IC:\Qt\6.10.0\msvc2022_64\include\QtGui -external:IC:\Qt\6.10.0\msvc2022_64\include\QtPrintSupport -external:W0
   OBJECT_DIR = src\app\CMakeFiles\Preventive_v2_0.dir
@@ -205,7 +205,7 @@ build src\app\CMakeFiles\Preventive_v2_0.dir\menu\aboutmenu.cpp.obj: CXX_COMPILE
   TARGET_PDB = Preventive_v2_0.pdb
 
 build src\app\CMakeFiles\Preventive_v2_0.dir\dialogs\limitsdialog.cpp.obj: CXX_COMPILER__Preventive_v2_0_unscanned_Debug C$:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\app\dialogs\limitsdialog.cpp || cmake_object_order_depends_target_Preventive_v2_0
-  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  DEFINES = -DQCUSTOMPLOT_USE_LIBRARY -DQT_CORE_LIB -DQT_GUI_LIB -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
   FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd -Zc:__cplusplus -permissive- -utf-8
   INCLUDES = -IC:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_10_0_MSVC2022_64bit-Debug\src\app\Preventive_v2_0_autogen\include -IC:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\3rdPart\qcustomplot -external:IC:\Qt\6.10.0\msvc2022_64\include\QtCore -external:IC:\Qt\6.10.0\msvc2022_64\include -external:IC:\Qt\6.10.0\msvc2022_64\mkspecs\win32-msvc -external:IC:\Qt\6.10.0\msvc2022_64\include\QtWidgets -external:IC:\Qt\6.10.0\msvc2022_64\include\QtGui -external:IC:\Qt\6.10.0\msvc2022_64\include\QtPrintSupport -external:W0
   OBJECT_DIR = src\app\CMakeFiles\Preventive_v2_0.dir
@@ -214,7 +214,7 @@ build src\app\CMakeFiles\Preventive_v2_0.dir\dialogs\limitsdialog.cpp.obj: CXX_C
   TARGET_PDB = Preventive_v2_0.pdb
 
 build src\app\CMakeFiles\Preventive_v2_0.dir\datamodel\analysisresult.cpp.obj: CXX_COMPILER__Preventive_v2_0_unscanned_Debug C$:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\app\datamodel\analysisresult.cpp || cmake_object_order_depends_target_Preventive_v2_0
-  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  DEFINES = -DQCUSTOMPLOT_USE_LIBRARY -DQT_CORE_LIB -DQT_GUI_LIB -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
   FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd -Zc:__cplusplus -permissive- -utf-8
   INCLUDES = -IC:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_10_0_MSVC2022_64bit-Debug\src\app\Preventive_v2_0_autogen\include -IC:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\3rdPart\qcustomplot -external:IC:\Qt\6.10.0\msvc2022_64\include\QtCore -external:IC:\Qt\6.10.0\msvc2022_64\include -external:IC:\Qt\6.10.0\msvc2022_64\mkspecs\win32-msvc -external:IC:\Qt\6.10.0\msvc2022_64\include\QtWidgets -external:IC:\Qt\6.10.0\msvc2022_64\include\QtGui -external:IC:\Qt\6.10.0\msvc2022_64\include\QtPrintSupport -external:W0
   OBJECT_DIR = src\app\CMakeFiles\Preventive_v2_0.dir
@@ -310,7 +310,7 @@ build src\app\CMakeFiles\Preventive_v2_0_autogen src\app\Preventive_v2_0_autogen
 build cmake_object_order_depends_target_qcustomplot: phony || src\3rdPart\qcustomplot\meta_types\qcustomplot_json_file_list.txt src\3rdPart\qcustomplot\meta_types\qcustomplot_json_file_list.txt.timestamp src\3rdPart\qcustomplot\meta_types\qt6qcustomplot_metatypes.json src\3rdPart\qcustomplot\meta_types\qt6qcustomplot_metatypes.json.gen src\3rdPart\qcustomplot\qcustomplot_autogen src\3rdPart\qcustomplot\qcustomplot_autogen\mocs_compilation.cpp src\3rdPart\qcustomplot\qcustomplot_autogen\timestamp src\3rdPart\qcustomplot\qcustomplot_autogen_timestamp_deps
 
 build src\3rdPart\qcustomplot\CMakeFiles\qcustomplot.dir\qcustomplot_autogen\mocs_compilation.cpp.obj: CXX_COMPILER__qcustomplot_unscanned_Debug C$:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_10_0_MSVC2022_64bit-Debug\src\3rdPart\qcustomplot\qcustomplot_autogen\mocs_compilation.cpp || cmake_object_order_depends_target_qcustomplot
-  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 -Dqcustomplot_EXPORTS
+  DEFINES = -DQCUSTOMPLOT_COMPILE_LIBRARY -DQT_CORE_LIB -DQT_GUI_LIB -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 -Dqcustomplot_EXPORTS
   FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd -Zc:__cplusplus -permissive- -utf-8
   INCLUDES = -IC:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_10_0_MSVC2022_64bit-Debug\src\3rdPart\qcustomplot\qcustomplot_autogen\include -external:IC:\Qt\6.10.0\msvc2022_64\include\QtWidgets -external:IC:\Qt\6.10.0\msvc2022_64\include -external:IC:\Qt\6.10.0\msvc2022_64\include\QtCore -external:IC:\Qt\6.10.0\msvc2022_64\mkspecs\win32-msvc -external:IC:\Qt\6.10.0\msvc2022_64\include\QtGui -external:IC:\Qt\6.10.0\msvc2022_64\include\QtPrintSupport -external:W0
   OBJECT_DIR = src\3rdPart\qcustomplot\CMakeFiles\qcustomplot.dir
@@ -319,7 +319,7 @@ build src\3rdPart\qcustomplot\CMakeFiles\qcustomplot.dir\qcustomplot_autogen\moc
   TARGET_PDB = qcustomplot.pdb
 
 build src\3rdPart\qcustomplot\CMakeFiles\qcustomplot.dir\qcustomplot.cpp.obj: CXX_COMPILER__qcustomplot_unscanned_Debug C$:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\3rdPart\qcustomplot\qcustomplot.cpp || cmake_object_order_depends_target_qcustomplot
-  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 -Dqcustomplot_EXPORTS
+  DEFINES = -DQCUSTOMPLOT_COMPILE_LIBRARY -DQT_CORE_LIB -DQT_GUI_LIB -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 -Dqcustomplot_EXPORTS
   FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd -Zc:__cplusplus -permissive- -utf-8
   INCLUDES = -IC:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_10_0_MSVC2022_64bit-Debug\src\3rdPart\qcustomplot\qcustomplot_autogen\include -external:IC:\Qt\6.10.0\msvc2022_64\include\QtWidgets -external:IC:\Qt\6.10.0\msvc2022_64\include -external:IC:\Qt\6.10.0\msvc2022_64\include\QtCore -external:IC:\Qt\6.10.0\msvc2022_64\mkspecs\win32-msvc -external:IC:\Qt\6.10.0\msvc2022_64\include\QtGui -external:IC:\Qt\6.10.0\msvc2022_64\include\QtPrintSupport -external:W0
   OBJECT_DIR = src\3rdPart\qcustomplot\CMakeFiles\qcustomplot.dir
