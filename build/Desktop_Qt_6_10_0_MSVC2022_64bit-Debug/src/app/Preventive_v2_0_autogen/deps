@@ -673,6 +673,8 @@ Preventive_v2_0_autogen/timestamp: \
 	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/dataloader/dataloader.cpp \
 	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/dataloader/dataloader.h \
 	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/datamodel/DataPoint.h \
+	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/datamodel/analysisresult.cpp \
+	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/datamodel/analysisresult.h \
 	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/dialogs/limitsdialog.cpp \
 	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/dialogs/limitsdialog.h \
 	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/infowindow.cpp \
