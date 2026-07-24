@@ -262,6 +262,10 @@
 			"defines" : 
 			[
 				{
+					"backtrace" : 5,
+					"define" : "QCUSTOMPLOT_USE_LIBRARY"
+				},
+				{
 					"backtrace" : 13,
 					"define" : "QT_CORE_LIB"
 				},
@@ -381,11 +385,11 @@
 			"id" : "Preventive_v2_0_autogen::@ff93792cf40911dae1b8"
 		},
 		{
-			"id" : "Preventive_v2_0_autogen_timestamp_deps::@ff93792cf40911dae1b8"
-		},
-		{
 			"backtrace" : 5,
 			"id" : "qcustomplot::@d3298cd9ace31af89b51"
+		},
+		{
+			"id" : "Preventive_v2_0_autogen_timestamp_deps::@ff93792cf40911dae1b8"
 		}
 	],
 	"id" : "Preventive_v2_0::@ff93792cf40911dae1b8",

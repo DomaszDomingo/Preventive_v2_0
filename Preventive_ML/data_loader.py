@@ -1,0 +1,114 @@
+import os               # moduł do operacji na ścieżkach plików
+import pandas as pd     #biblioteka do pracy z danymi tabelarycznymi (podobne jak excel w pythonie) pd to skrot
+
+TIME_KEYWORDS = ["time", "timestamp", "czas", "t", "time_ms"]
+VALUE_KEYWORDS = ["value", "signal", "wartość", "val", "v",
+                  "temperature", "temperature_c",
+                  "pressure", "pressure_bar",
+                  "flow", "flow_m3h",
+                  "position", "position_pct"]
+
+def load_file(file_path: str) -> pd.DataFrame:
+
+    #sprawdzenie czy plik istnieje
+    if not os.path.exists(file_path):
+        raise FileNotFoundError(f"Plik nie istnieje: {file_path}")  # raise to obsluga wyjatkow w tym przypadku zlapanie ze nie ma takiego pliku
+
+    #rozpoznanie formatu po rozszerzeniu
+    extension = os.path.splitext(file_path)[1].lower()
+
+    if extension == ".csv":
+        df = _load_csv(file_path)       #wywolanie funkcji do csv
+    elif extension in [".xlsx", ".xls"]:
+        df = _load_xlsx(file_path)
+    else:
+        raise ValueError(f"Nieobsługiwany format pliku: {extension}")
+
+    df = _normalize_columns(df)
+
+    return df
+
+#wczytuje plik csv z automatyczna detekcją separatora
+def _load_csv (file_path: str) -> pd.DataFrame:
+
+    #otwarcie pliku w sposob bezpieczny
+    with open(file_path, "r", encoding="utf-8-sig") as f:
+        first_line = f.readline()
+
+    #zliczanie wystąpienia każdego separatora w pierwszej linii
+    sep_counts = {
+        ";": first_line.count(";"),
+        ",": first_line.count(","),
+        "\t": first_line.count("\t")
+    }
+
+    separator = max(sep_counts, key=sep_counts.get)
+
+    if sep_counts[separator] == 0:
+        separator = ";"
+    if separator in [";", "\t"]:
+        decimal = ","           #europejski format np 42,19
+    else:
+        decimal = "."           #amerykanski format np 42.19
+    df = pd.read_csv(file_path, sep=separator, decimal=decimal, encoding="utf-8-sig")
+
+    return df
+
+#wczytywanie pliku xlsx. Excel przechowuje typy danych wiec nie trzeba wykrywac separatorow
+
+def _load_xlsx(file_path: str) -> pd.DataFrame:
+    df = pd.read_excel(file_path, engine="openpyxl")
+    return df
+
+#normalizowanie kolumn
+def _normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
+    df.columns = df.columns.str.lower().str.strip()
+
+    #szukanie kolumny czasowej
+    time_column = None
+    for col in df.columns:
+        if col in TIME_KEYWORDS:
+            time_column = col
+            break                   # znaleziono kolumne czasową
+
+    if time_column is None:
+        raise ValueError(
+            f"Nie znaleziono kolumny czasowej."
+            f"Nazwy kolumn w pliku: {list(df.columns)}."
+            f"Oczekiwane: {TIME_KEYWORDS}"
+        )
+
+    if time_column != "timestamp":
+        df = df.rename(columns={time_column: "timestamp"})
+    return df
+
+
+#blok testowy 
+
+if __name__ == "__main__":
+    import sys
+
+    if len (sys.argv) < 2:
+        print("Użycie: python data_loader.py <ścieżka_do_pliku>")
+        print("Przykład: python data_loader.py ../temperature_data.csv")
+        sys.exit(1)  #Zakoncz program z kodem bledy 1
+
+    file_path = sys.argv[1]
+
+    try:
+        df = load_file(file_path)
+
+        print (f"wczytano plik: {file_path}")
+        print (f"liczba wierszy: {len(df)}")
+        print (f"Kolumny: {list(df.columns)}")
+        print()
+        print("Pierwsze 5 wierszy: ")
+        print(df.head())        #head zwraca pierwsze 5 wierszy
+        print()
+        print("Statystyki:")
+        print (df.describe()) # describe zwraca min max mean std, itd.
+
+    except (FileNotFoundError, ValueError) as e:
+
+        print(f"Błąd:{e}")
+        sys.exit(1)
