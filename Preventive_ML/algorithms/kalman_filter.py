@@ -75,5 +75,98 @@ class KalmanFilter1D:
     @property
     def value_variance(self) -> float:
         #niepewnosc estymowanej wartosci - do liczenia pasm ufnosci prognozy
-        return float (self.x[0,0])
+        return float (self.P[0,0])
+
+class KalmanFilterAlgorithm(BaseAlgorithm):
+    name = "kalman"
+
+    def __init__(self, process_noise: float = 1e-4, measurement_noise: float = 1.0,
+                forecast_steps: int = 20, confidence_z: float = 1.96):
+        self.process_noise = process_noise
+        self.measurement_noise = measurement_noise
+        self.forecast_steps = forecast_steps
+         #1.96 odchylenia standardowego ~95% przedział ufności (rozkład normalny)
+        self.confidence_z = confidence_z
+    def run (self, df: pd.DataFrame, value_column: str) ->dict:
+        try:
+            data = df[["timestamp", value_column]].dropna().sort_values("timestamp")
+
+            if data.empty:
+                return self.to_result_dict(
+                    status="error",
+                        error_message=f"Brak danych w kolumnie '{value_column}'.",
+                    )
+            timestamps = data["timestamp"].to_numpy(dtype=float)
+            values = data[value_column].to_numpy(dtype=float)
+
+            kf = KalmanFilter1D(
+                initial_value=values[0],
+                process_noise=self.process_noise,
+                measurement_noise=self.measurement_noise,
+            )
+
+                #pierwszy punkt: nie bylo zadnej korekty, wiec predicted to wartosc startowa.
+
+            filtered = [{
+                "timestamp": float (timestamps[0]),
+                "value": float(values[0]),
+                "predicted":kf.value,
+            }]
+                #przechodzimy przez cale historyczne dane: predict (na podstawie dt do poprzedniego punktu),
+                #potem update (korekta o realny pomiar).
+                #Jest to jednoczesnie "estymacja stanu" i weryfikacja" - każdy element i ma realna wartosc, to co przewidzial model
+
+            for i in range (1, len(timestamps)):
+                dt = timestamps[i] - timestamps [i-1]
+
+                if dt<=0:
+                    continue #pomijam duplikaty/nieposortowane znaczniki czasu
+                kf.predict(dt)
+                kf.update(values[i])
+
+                filtered.append({
+                    "timestamp":float(timestamps[i]),
+                    "value":float(values[i]),
+                    "predicted":kf.value,
+                })
+
+                    #RSME (root mean square error) miedzy realnymi wartosciami, a tym co przewidzial model
+                    # - liczbowa miara jakosci dopasowania (weryfikacja)
+            predicted_arr = np.array([p["predicted"] for p in filtered])
+            actual_arr = np.array([p["value"] for p in filtered])
+            rmse = float (np.sqrt(np.mean((predicted_arr - actual_arr) ** 2 )))
+
+                    #Prognoza: same predict() bez update() ( nie ma przyszlych pomiarow ) -
+                    #wartosc jedzie dalej zgodnie z ostatnio wyestymowanym trendem, 
+                    #a niepewnosc rośnie z  kazdym krokiem (sta coraz szersze upper/lower)
+
+            forecasts = []
+            avg_dt = float (np.mean(np.diff(timestamps))) if len (timestamps) > 1 else 1.0
+            last_timestamp = float (timestamps[-1])
+
+            for step in range (1,self.forecast_steps +1):
+                kf.predict(avg_dt)
+                forecast_timestamp = last_timestamp + step * avg_dt
+                std_dev = float (np.sqrt(kf.value_variance))
+
+                forecasts.append({
+                    "timestamp": forecast_timestamp,
+                    "predicted": kf.value,
+                    "upper": kf.value + self.confidence_z * std_dev,
+                    "lower": kf.value - self.confidence_z * std_dev,
+                })
+
+            return self.to_result_dict(
+                filtered=filtered,
+                forecasts=forecasts,
+                metadata={
+                    "process_noise": self.process_noise,
+                    "measurement_noise": self.measurement_noise,
+                    "rmse": rmse,
+                    "final_velocity": kf.velocity,
+                    "avg_dt": avg_dt,                    },
+                )
+        except Exception as e:
+            return self.to_result_dict(status="error", error_message= str(e))
+            
             
