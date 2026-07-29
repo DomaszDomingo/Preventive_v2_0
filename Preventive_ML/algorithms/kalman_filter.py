@@ -87,7 +87,10 @@ class KalmanFilterAlgorithm(BaseAlgorithm):
         self.forecast_steps = forecast_steps
          #1.96 odchylenia standardowego ~95% przedział ufności (rozkład normalny)
         self.confidence_z = confidence_z
-    def run (self, df: pd.DataFrame, value_column: str) ->dict:
+    def run (self, df: pd.DataFrame, feature_columns: list[str],
+            target_column: str | None = None) ->dict:
+        value_column = feature_columns[0]               #kalman jest jednowymiarowy bierze pierwszą (jedną) kolumnę
+
         try:
             data = df[["timestamp", value_column]].dropna().sort_values("timestamp")
 

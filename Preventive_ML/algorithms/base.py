@@ -5,7 +5,10 @@ class BaseAlgorithm(ABC):
     name: str = "base"
 
     @abstractmethod
-    def run(self, df: pd.DataFrame, value_column: str) -> dict:
+    def run(self,
+            df: pd.DataFrame,
+            feature_columns: list [str],
+            target_column: str | None = None) -> dict:
         raise NotImplementedError
 
     def to_result_dict(

@@ -71,7 +71,7 @@ forecast_steps = 20
 
 
 algo = KalmanFilterAlgorithm(process_noise=1e-3, measurement_noise=1.0, forecast_steps=forecast_steps)
-result = algo.run(df, value_column)
+result = algo.run(df, feature_columns=[value_column])
 
 print("status:", result["status"])
 print("metadata:", result["metadata"])
