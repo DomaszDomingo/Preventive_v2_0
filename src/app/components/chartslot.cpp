@@ -1,4 +1,6 @@
 #include "chartslot.h"
+#include "../datamodel/analysisresult.h"
+
 
 ChartSlot::ChartSlot(int slotIndex, QWidget *parent)
     : QWidget(parent), m_slotIndex(slotIndex)
@@ -37,8 +39,18 @@ ChartSlot::ChartSlot(int slotIndex, QWidget *parent)
     //wykres
     m_plot = new QCustomPlot(m_pageChart);
     m_plot->addGraph();
+    m_plot->addGraph();
+    m_plot->addGraph();
+
+    m_plot->graph(1)->setPen(QPen(QColor(0,120,200),2));
+    m_plot->graph(1)->setName("Filtrowana (Kalman)");
+
+    m_plot->graph(2)->setPen(QPen(QColor(200,100,0),2, Qt::DashLine));
+    m_plot->graph(2)->setName("Prognoza");
+
     m_plot->xAxis->setLabel("Czas (s)");
     m_plot->yAxis->setLabel("Wartość");
+
     m_plot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom | QCP::iSelectItems);
     m_plot->setMinimumHeight(200);
 
@@ -145,6 +157,8 @@ ChartSlot::ChartSlot(int slotIndex, QWidget *parent)
     connect(m_btnReset, &QPushButton::clicked, this, [this]() {
         if (m_plot){
             m_plot->graph(0)->data()->clear();
+            m_plot->graph(1)->data()->clear();
+            m_plot->graph(2)->data()->clear();
             m_plot->replot();
         }
         emit resetRequested(m_slotIndex);
@@ -301,6 +315,8 @@ void ChartSlot::displayChart(int trendId, const QString &title)
     m_lblTitle->setText(title);
 
     m_plot->graph(0)->data()->clear();
+    m_plot->graph(1)->data()->clear();
+    m_plot->graph(2)->data()->clear();
     m_plot->replot();
 
     m_stack->setCurrentWidget(m_pageChart);
@@ -392,6 +408,8 @@ void ChartSlot::reset()
         removeCursors();
         removeLimitsVisuals();
         m_plot->graph(0)->data()->clear();
+        m_plot->graph(1)->data()->clear();
+        m_plot->graph(2)->data()->clear();
         m_plot->replot();
     }
     m_hasLimits = false;
@@ -412,3 +430,35 @@ void ChartSlot::addDataPoint(double time, double value)
         m_plot->replot(QCustomPlot::rpQueuedReplot);
     }
 }
+
+void ChartSlot::displayAnalysisResult(int trendId, const QString &title, const AnalysisResult &result)
+{
+    m_trendId = trendId;
+    m_lblTitle->setText(title);
+
+    m_plot->graph(0)->data()->clear();
+    m_plot->graph(1)->data()->clear();
+    m_plot->graph(2)->data()->clear();
+
+    const QList<FilteredPoint> filtered = result.filtered();
+    for (const FilteredPoint &point : filtered){
+        double t = point.timestamp / 1000.0;
+        m_plot->graph(0)->addData(t, point.value);
+        m_plot->graph(1)->addData(t, point.predicted);
+    }
+
+    const QList<ForecastPoint> forecasts = result.forecasts();
+    for (const ForecastPoint &point : forecasts){
+        double t = point.timestamp / 1000.0;
+        m_plot->graph(2)->addData(t,point.predicted);
+    }
+
+    m_plot->xAxis->rescale();
+    m_plot->yAxis->rescale();
+    m_plot->replot();
+
+    m_stack->setCurrentWidget(m_pageChart);
+
+}
+
+

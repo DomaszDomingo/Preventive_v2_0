@@ -54,6 +54,7 @@ private:
     AboutMenu *m_aboutMenu;
     LimitsDialog *m_limitsDialog = nullptr;
     PythonAnalysisRunner *m_pythonRunner;
+    int m_pythonAnalysisTargetSlot = -1;
 };
 
 #endif // MAINWINDOW_H

@@ -397,11 +397,11 @@
 	"dependencies" : 
 	[
 		{
-			"backtrace" : 0,
-			"id" : "qcustomplot_autogen::@d3298cd9ace31af89b51"
+			"id" : "qcustomplot_autogen_timestamp_deps::@d3298cd9ace31af89b51"
 		},
 		{
-			"id" : "qcustomplot_autogen_timestamp_deps::@d3298cd9ace31af89b51"
+			"backtrace" : 0,
+			"id" : "qcustomplot_autogen::@d3298cd9ace31af89b51"
 		}
 	],
 	"id" : "qcustomplot::@d3298cd9ace31af89b51",

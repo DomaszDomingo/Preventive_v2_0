@@ -10,6 +10,8 @@
 #include <QMenu>
 #include "qcustomplot.h"
 
+class AnalysisResult;
+
 class ChartSlot : public QWidget
 {
     Q_OBJECT
@@ -20,6 +22,8 @@ public:
     //przelaczanie widoku na wykres i ustawienie jego tytulu
     void displayChart (int trendId, const QString &title);
 
+    //wyswietla wynik analizy python (wartosci rzeczywiste, filtrowane, prognoza)
+    void displayAnalysisResult (int trendId, const QString &title, const AnalysisResult &result);
     //przelacza widok na przycisk dodaj i czysci dane
     void reset();
 
