@@ -5,11 +5,15 @@
 #include "menu/editmenu.h"
 #include "menu/aboutmenu.h"
 #include "dialogs/limitsdialog.h"
+#include "analysis/pythonanalysisrunner.h"
 #include "qcustomplot.h"
 #include <QDebug>
 #include <QFileDialog>
 #include <QFileInfo>
 #include <QMenuBar>
+#include <QInputDialog>
+#include <QLineEdit>
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -19,6 +23,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     m_controller = new SimulationController(this);
     m_infoWindow = new InfoWindow(this);
+    m_pythonRunner = new PythonAnalysisRunner(this);
 
     setupMenus();
     setupLayout();
@@ -26,6 +31,7 @@ MainWindow::MainWindow(QWidget *parent)
     // Sygnały kontroler -> okno główne
     connect(m_controller, &SimulationController::newValueProduced, this, &MainWindow::onNewData);
     connect(m_controller, &SimulationController::statsReady, this, &MainWindow::onStatsReceived);
+    connect(m_pythonRunner, &PythonAnalysisRunner::analysisFinished, this, &MainWindow::onAnalysisFinished);
 }
 
 MainWindow::~MainWindow()
@@ -45,6 +51,7 @@ void MainWindow::setupMenus()
 
     connect(m_fileMenu, &FileMenu::closeRequested, this, &QMainWindow::close);
     connect(m_editMenu, &EditMenu::limitsDialogRequested, this, &MainWindow::onLimitsDialogRequested);
+    connect(m_editMenu, &EditMenu::pythonAnalysisTestRequested, this, &MainWindow::onPythonAnalysisTestRequested);
 }
 
 // Tworzy siatkę 2x2 slotów wykresów (ChartSlot) w kontenerze scroll area.
@@ -169,3 +176,42 @@ void MainWindow::onLimitsVisibilityChanged(int slotIndex, bool visible)
         m_chartSlots[slotIndex]->setLimitsVisible(visible);
     }
 }
+
+
+//Testowy most C++ <->Python: pozwala uruchomic run_analysis.py na dowolnym pliku CSV i zobaczyć sparsowany wynik,
+//aby zweryfikowac, że cała droga (QProcess->stdout -> AnalysisResult::fromJson) działa poprawnie.
+
+void MainWindow::onPythonAnalysisTestRequested()
+{
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Wybierz plik danych"), "", tr("CSV Files (*.csv);;All Files(*)"));
+
+    if (fileName.isEmpty())
+        return;
+
+    bool ok = false;
+    QString column = QInputDialog::getText(this, tr("Kolumna wejściowa"), tr("Nazwy kolumny(po normalizacji, malymi literami):"), QLineEdit::Normal, "temperature_c", &ok);
+
+    if(!ok || column.isEmpty())
+        return;
+
+    m_pythonRunner->runAnalysis("kalman",fileName,QStringList() << column);
+}
+
+
+
+void MainWindow::onAnalysisFinished(const AnalysisResult &result)
+{
+    if (!result.isSuccess()){
+        QMessageBox::warning(this, tr("Analiza Python"), tr ("Błąd: %1").arg(result.errorMessage()));
+        return;
+    }
+
+    QMessageBox::information(this, tr("AnalizaPython:"), tr("Algotytm: %1\nPunkty filtered: %2\nPunkty forecast: %3\nRSME: %4")
+        .arg(result.algorithm())
+        .arg(result.filtered().size())
+        .arg(result.forecasts().size())
+    .arg(result.metadata().value("rmse").toString()));
+}
+
+
+

@@ -12,6 +12,7 @@ public:
 
 signals:
     void limitsDialogRequested();
+    void pythonAnalysisTestRequested();
 };
 
 #endif // EDITMENU_H

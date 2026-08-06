@@ -85,6 +85,7 @@ Preventive_v2_0_autogen/timestamp: \
 	C:/Qt/6.10.0/msvc2022_64/include/QtCore/QPair \
 	C:/Qt/6.10.0/msvc2022_64/include/QtCore/QPointF \
 	C:/Qt/6.10.0/msvc2022_64/include/QtCore/QPointer \
+	C:/Qt/6.10.0/msvc2022_64/include/QtCore/QProcess \
 	C:/Qt/6.10.0/msvc2022_64/include/QtCore/QRect \
 	C:/Qt/6.10.0/msvc2022_64/include/QtCore/QScopedPointer \
 	C:/Qt/6.10.0/msvc2022_64/include/QtCore/QSharedPointer \
@@ -96,6 +97,7 @@ Preventive_v2_0_autogen/timestamp: \
 	C:/Qt/6.10.0/msvc2022_64/include/QtCore/QTimeZone \
 	C:/Qt/6.10.0/msvc2022_64/include/QtCore/QTimer \
 	C:/Qt/6.10.0/msvc2022_64/include/QtCore/QVariant \
+	C:/Qt/6.10.0/msvc2022_64/include/QtCore/QVariantMap \
 	C:/Qt/6.10.0/msvc2022_64/include/QtCore/QVector \
 	C:/Qt/6.10.0/msvc2022_64/include/QtCore/QtCore \
 	C:/Qt/6.10.0/msvc2022_64/include/QtCore/QtCoreDepends \
@@ -666,6 +668,8 @@ Preventive_v2_0_autogen/timestamp: \
 	C:/Qt/6.10.0/msvc2022_64/include/QtWidgets/qwizard.h \
 	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/3rdPart/qcustomplot/qcustomplot.h \
 	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/CMakeLists.txt \
+	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/analysis/PythonAnalysisRunner.cpp \
+	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/analysis/PythonAnalysisRunner.h \
 	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/components/chartslot.cpp \
 	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/components/chartslot.h \
 	C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/controller/simulationcontroller.cpp \

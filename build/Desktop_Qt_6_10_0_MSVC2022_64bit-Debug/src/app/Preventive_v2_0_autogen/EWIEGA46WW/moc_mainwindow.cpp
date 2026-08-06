@@ -56,7 +56,11 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         "minVal",
         "maxVal",
         "onLimitsVisibilityChanged",
-        "visible"
+        "visible",
+        "onPythonAnalysisTestRequested",
+        "onAnalysisFinished",
+        "AnalysisResult",
+        "result"
     };
 
     QtMocHelpers::UintData qt_methods {
@@ -85,6 +89,12 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         // Slot 'onLimitsVisibilityChanged'
         QtMocHelpers::SlotData<void(int, bool)>(15, 2, QMC::AccessPrivate, QMetaType::Void, {{
             { QMetaType::Int, 3 }, { QMetaType::Bool, 16 },
+        }}),
+        // Slot 'onPythonAnalysisTestRequested'
+        QtMocHelpers::SlotData<void()>(17, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'onAnalysisFinished'
+        QtMocHelpers::SlotData<void(const AnalysisResult &)>(18, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { 0x80000000 | 19, 20 },
         }}),
     };
     QtMocHelpers::UintData qt_properties {
@@ -116,6 +126,8 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 4: _t->onLimitsDialogRequested(); break;
         case 5: _t->onLimitsApplied((*reinterpret_cast<std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<double>>(_a[2])),(*reinterpret_cast<std::add_pointer_t<double>>(_a[3]))); break;
         case 6: _t->onLimitsVisibilityChanged((*reinterpret_cast<std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<bool>>(_a[2]))); break;
+        case 7: _t->onPythonAnalysisTestRequested(); break;
+        case 8: _t->onAnalysisFinished((*reinterpret_cast<std::add_pointer_t<AnalysisResult>>(_a[1]))); break;
         default: ;
         }
     }
@@ -140,14 +152,14 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 7)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 7;
+        _id -= 9;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 7)
+        if (_id < 9)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 7;
+        _id -= 9;
     }
     return _id;
 }

@@ -24,6 +24,7 @@ qt_add_executable(Preventive_v2_0
     menu/aboutmenu.h menu/aboutmenu.cpp
     dialogs/limitsdialog.h dialogs/limitsdialog.cpp
     datamodel/analysisresult.h datamodel/analysisresult.cpp
+    analysis/PythonAnalysisRunner.h analysis/PythonAnalysisRunner.cpp
 
 )
 

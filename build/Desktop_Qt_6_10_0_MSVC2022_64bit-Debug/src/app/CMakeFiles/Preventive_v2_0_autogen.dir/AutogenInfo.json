@@ -16,6 +16,12 @@
 	"HEADERS" : 
 	[
 		[
+			"C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/analysis/PythonAnalysisRunner.h",
+			"MU",
+			"NCBB6XV4TB/moc_PythonAnalysisRunner.cpp",
+			null
+		],
+		[
 			"C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/components/chartslot.h",
 			"MU",
 			"XDQFSXMG3O/moc_chartslot.cpp",
@@ -171,6 +177,11 @@
 	"SETTINGS_FILE" : "C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/src/app/CMakeFiles/Preventive_v2_0_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
+		[
+			"C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/analysis/PythonAnalysisRunner.cpp",
+			"MU",
+			null
+		],
 		[
 			"C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/components/chartslot.cpp",
 			"MU",

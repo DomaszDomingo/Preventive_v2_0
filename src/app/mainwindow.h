@@ -11,6 +11,9 @@ class FileMenu;
 class EditMenu;
 class AboutMenu;
 class LimitsDialog;
+class PythonAnalysisRunner;
+class AnalysisResult;
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -34,6 +37,8 @@ private slots:
     void onLimitsDialogRequested();
     void onLimitsApplied(int slotIndex, double minVal, double maxVal);
     void onLimitsVisibilityChanged(int slotIndex, bool visible);
+    void onPythonAnalysisTestRequested();
+    void onAnalysisFinished(const AnalysisResult &result);
 
 private:
     void setupMenus();
@@ -48,6 +53,7 @@ private:
     EditMenu *m_editMenu;
     AboutMenu *m_aboutMenu;
     LimitsDialog *m_limitsDialog = nullptr;
+    PythonAnalysisRunner *m_pythonRunner;
 };
 
 #endif // MAINWINDOW_H
