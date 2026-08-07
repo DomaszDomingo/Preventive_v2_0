@@ -333,3 +333,12 @@ C:/Qt/6.11.1/msvc2022_64/include/QtCore/qcontainertools_impl.h
 C:/Qt/6.11.1/msvc2022_64/include/QtCore/qvarlengtharray.h
 C:/Qt/6.11.1/msvc2022_64/include/QtCore/qalloc.h
 C:/Qt/6.11.1/msvc2022_64/include/QtCore/qcontainertools_impl.h
+C:/Qt/6.11.1/msvc2022_64/include/QtCore/QDateTime
+C:/Qt/6.11.1/msvc2022_64/include/QtCore/qdatetime.h
+C:/Qt/6.11.1/msvc2022_64/include/QtCore/qcalendar.h
+C:/Qt/6.11.1/msvc2022_64/include/QtCore/qlocale.h
+C:/Qt/6.11.1/msvc2022_64/include/QtCore/qvariant.h
+C:/Qt/6.11.1/msvc2022_64/include/QtCore/q23utility.h
+C:/Qt/6.11.1/msvc2022_64/include/QtCore/q20utility.h
+C:/Qt/6.11.1/msvc2022_64/include/QtCore/qstringlist.h
+C:/Qt/6.11.1/msvc2022_64/include/QtCore/qbytearraylist.h

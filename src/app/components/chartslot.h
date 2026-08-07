@@ -9,6 +9,9 @@
 #include <QLabel>
 #include <QMenu>
 #include "qcustomplot.h"
+#include <QSlider>
+
+class AnalysisResult;
 
 class ChartSlot : public QWidget
 {
@@ -20,6 +23,8 @@ public:
     //przelaczanie widoku na wykres i ustawienie jego tytulu
     void displayChart (int trendId, const QString &title);
 
+    //wyswietla wynik analizy python (wartosci rzeczywiste, filtrowane, prognoza)
+    void displayAnalysisResult (int trendId, const QString &title, const AnalysisResult &result);
     //przelacza widok na przycisk dodaj i czysci dane
     void reset();
 
@@ -45,6 +50,8 @@ signals:
     void startRequested(int slotIndex);
     void stopRequested(int slotIndex);
     void resetRequested(int slotIndex);
+    void speedChanged(int slotIndex, double multiplier);
+
 
 private:
     // Stawia kursor A lub B (naprzemiennie) w podanej pozycji X na wykresie.
@@ -72,6 +79,8 @@ private:
     QPushButton *m_btnStop;
     QPushButton *m_btnReset;
     QPushButton *m_btnCsv;
+    QSlider *m_speedSlider;
+    QLabel *m_speedLabel;
 
     // Kursory pomiarowe
     QCPItemStraightLine *m_cursorLineA = nullptr;
@@ -82,6 +91,8 @@ private:
     QCPItemText *m_cursorLabelB = nullptr;
     QCPItemText *m_deltaLabel = nullptr;
     bool m_nextCursorIsA = true;
+    bool m_autoFollow = true;
+    bool m_isAutoScrolling = false;
     QCPItemStraightLine *m_draggedCursor = nullptr;
 
     // Limity wartości

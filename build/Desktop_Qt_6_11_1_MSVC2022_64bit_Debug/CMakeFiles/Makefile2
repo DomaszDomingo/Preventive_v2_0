@@ -104,8 +104,8 @@ src\app\clean: src\app\CMakeFiles\Preventive_v2_0_autogen.dir\clean
 # Target rules for target src/app/CMakeFiles/Preventive_v2_0.dir
 
 # All Build rule for target.
-src\app\CMakeFiles\Preventive_v2_0.dir\all: src\3rdPart\qcustomplot\CMakeFiles\qcustomplot.dir\all
 src\app\CMakeFiles\Preventive_v2_0.dir\all: src\app\CMakeFiles\Preventive_v2_0_autogen_timestamp_deps.dir\all
+src\app\CMakeFiles\Preventive_v2_0.dir\all: src\3rdPart\qcustomplot\CMakeFiles\qcustomplot.dir\all
 src\app\CMakeFiles\Preventive_v2_0.dir\all: src\app\CMakeFiles\Preventive_v2_0_autogen.dir\all
 	$(MAKE) $(MAKESILENT) -f src\app\CMakeFiles\Preventive_v2_0.dir\build.make /nologo -$(MAKEFLAGS) src\app\CMakeFiles\Preventive_v2_0.dir\depend
 	$(MAKE) $(MAKESILENT) -f src\app\CMakeFiles\Preventive_v2_0.dir\build.make /nologo -$(MAKEFLAGS) src\app\CMakeFiles\Preventive_v2_0.dir\build

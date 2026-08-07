@@ -1,4 +1,6 @@
 #include "chartslot.h"
+#include "../datamodel/analysisresult.h"
+
 
 ChartSlot::ChartSlot(int slotIndex, QWidget *parent)
     : QWidget(parent), m_slotIndex(slotIndex)
@@ -37,10 +39,27 @@ ChartSlot::ChartSlot(int slotIndex, QWidget *parent)
     //wykres
     m_plot = new QCustomPlot(m_pageChart);
     m_plot->addGraph();
+    m_plot->addGraph();
+    m_plot->addGraph();
+
+    m_plot->graph(1)->setPen(QPen(QColor(0,120,200),2));
+    m_plot->graph(1)->setName("Filtrowana (Kalman)");
+
+    m_plot->graph(2)->setPen(QPen(QColor(200,100,0),2, Qt::DashLine));
+    m_plot->graph(2)->setName("Prognoza");
+
     m_plot->xAxis->setLabel("Czas (s)");
     m_plot->yAxis->setLabel("Wartość");
+
     m_plot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom | QCP::iSelectItems);
     m_plot->setMinimumHeight(200);
+
+    //jeśli zakres osi X zmienia się, czyli uzytkownik przeciągnął lub przyblizyl oddalil wylacz auto follow
+
+    connect (m_plot->xAxis, QOverload<const QCPRange &>::of(&QCPAxis::rangeChanged), this, [this](const QCPRange &){
+        if (!m_isAutoScrolling)
+            m_autoFollow = false;
+    });
 
     //menu kontekstowe na wykresie (usuwanie wykresu i kursorów)
     m_plot->setContextMenuPolicy(Qt::CustomContextMenu);
@@ -51,6 +70,7 @@ ChartSlot::ChartSlot(int slotIndex, QWidget *parent)
             removeCursorsAction = menu.addAction("Usuń kursory");
         }
         QAction *removeChartAction = menu.addAction("Usuń wykres");
+        QAction *followAction = menu.addAction("Powrot do początku wykr.");
 
         QAction *selected = menu.exec(m_plot->mapToGlobal(pos));
         if (selected == removeChartAction) {
@@ -58,6 +78,17 @@ ChartSlot::ChartSlot(int slotIndex, QWidget *parent)
             reset();
         } else if (removeCursorsAction && selected == removeCursorsAction) {
             removeCursors();
+        } else if (selected == followAction){
+            m_autoFollow = true;
+            if (m_plot->graph(0)->data()->size() > 0){
+                double lastKey = (*(m_plot->graph(0)->data()->constEnd() - 1)).key;
+                m_isAutoScrolling = true;
+                m_plot->xAxis->setRange(lastKey, 5.0, Qt::AlignCenter);
+                m_plot->graph(0)->rescaleValueAxis(false,true);
+                m_isAutoScrolling = false;
+                m_plot->replot();
+            }
+
         }
     });
 
@@ -132,6 +163,30 @@ ChartSlot::ChartSlot(int slotIndex, QWidget *parent)
     btnLayout->addWidget(m_btnCsv);
 
     chartLayout->addWidget(controlPanel);
+    QWidget *speedPanel = new QWidget (m_pageChart);
+    speedPanel->setObjectName("speedPanel");
+    speedPanel->setStyleSheet("#speedPanel { border: none; }");
+    QHBoxLayout *speedLayout = new QHBoxLayout(speedPanel);
+    speedLayout->setContentsMargins(0,0,0,0);
+
+    m_speedLabel = new QLabel("Predkość: 1x", speedPanel);
+    m_speedSlider = new QSlider (Qt::Horizontal, speedPanel);
+    m_speedSlider->setRange(1,100);
+    m_speedSlider->setValue(1);
+
+
+    speedLayout->addWidget(m_speedLabel);
+    speedLayout->addWidget(m_speedSlider,1);
+
+    chartLayout->addWidget(speedPanel);
+
+    connect(m_speedSlider, &QSlider::valueChanged, this, [this](int value){
+        m_speedLabel->setText(QString("Predkość: %1x").arg(value));
+        emit speedChanged(m_slotIndex, static_cast<double>(value));
+
+    });
+
+
     m_stack->addWidget(m_pageChart);
 
     //"Dodaj Wykres" - pokazuje pusty wykres
@@ -145,8 +200,11 @@ ChartSlot::ChartSlot(int slotIndex, QWidget *parent)
     connect(m_btnReset, &QPushButton::clicked, this, [this]() {
         if (m_plot){
             m_plot->graph(0)->data()->clear();
+            m_plot->graph(1)->data()->clear();
+            m_plot->graph(2)->data()->clear();
             m_plot->replot();
         }
+        m_autoFollow = true;
         emit resetRequested(m_slotIndex);
     });
     connect(m_btnCsv, &QPushButton::clicked, this, [this]() { emit csvLoadRequested(m_slotIndex); });
@@ -301,8 +359,11 @@ void ChartSlot::displayChart(int trendId, const QString &title)
     m_lblTitle->setText(title);
 
     m_plot->graph(0)->data()->clear();
+    m_plot->graph(1)->data()->clear();
+    m_plot->graph(2)->data()->clear();
     m_plot->replot();
 
+    m_autoFollow = true;
     m_stack->setCurrentWidget(m_pageChart);
 }
 
@@ -392,9 +453,12 @@ void ChartSlot::reset()
         removeCursors();
         removeLimitsVisuals();
         m_plot->graph(0)->data()->clear();
+        m_plot->graph(1)->data()->clear();
+        m_plot->graph(2)->data()->clear();
         m_plot->replot();
     }
     m_hasLimits = false;
+    m_autoFollow= true;
     m_stack->setCurrentWidget(m_PageEmpty);
 }
 
@@ -406,9 +470,45 @@ void ChartSlot::addDataPoint(double time, double value)
     if(m_trendId != -1 && m_plot) {
         m_plot->graph(0)->addData(time,value);
 
-        m_plot->xAxis->setRange(time, 5.0, Qt::AlignRight);
-        m_plot->yAxis->rescale();
+        if(m_autoFollow){
+            m_isAutoScrolling = true;
+            m_plot->xAxis->setRange(time, 5.0, Qt::AlignCenter);
+            m_plot->graph(0)->rescaleValueAxis(false,true);
+            m_isAutoScrolling= false;
+        }
 
         m_plot->replot(QCustomPlot::rpQueuedReplot);
     }
 }
+
+void ChartSlot::displayAnalysisResult(int trendId, const QString &title, const AnalysisResult &result)
+{
+    m_trendId = trendId;
+    m_lblTitle->setText(title);
+
+    m_plot->graph(0)->data()->clear();
+    m_plot->graph(1)->data()->clear();
+    m_plot->graph(2)->data()->clear();
+
+    const QList<FilteredPoint> filtered = result.filtered();
+    for (const FilteredPoint &point : filtered){
+        double t = point.timestamp / 1000.0;
+        m_plot->graph(0)->addData(t, point.value);
+        m_plot->graph(1)->addData(t, point.predicted);
+    }
+
+    const QList<ForecastPoint> forecasts = result.forecasts();
+    for (const ForecastPoint &point : forecasts){
+        double t = point.timestamp / 1000.0;
+        m_plot->graph(2)->addData(t,point.predicted);
+    }
+
+    m_plot->xAxis->rescale();
+    m_plot->yAxis->rescale();
+    m_plot->replot();
+
+    m_stack->setCurrentWidget(m_pageChart);
+
+}
+
+

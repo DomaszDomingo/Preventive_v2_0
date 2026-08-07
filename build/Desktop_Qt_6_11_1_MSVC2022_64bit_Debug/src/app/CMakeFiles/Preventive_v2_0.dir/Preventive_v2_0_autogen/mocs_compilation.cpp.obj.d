@@ -916,6 +916,7 @@ C:/Qt/6.11.1/msvc2022_64/include/QtPrintSupport/qprintpreviewwidget.h
 C:/Qt/6.11.1/msvc2022_64/include/QtPrintSupport/qtprintsupportversion.h
 C:/Qt/6.11.1/msvc2022_64/include/QtCore/QElapsedTimer
 C:/Qt/6.11.1/msvc2022_64/include/QtCore/QTimeZone
+C:/Qt/6.11.1/msvc2022_64/include/QtWidgets/QSlider
 C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/build/Desktop_Qt_6_11_1_MSVC2022_64bit_Debug/src/app/Preventive_v2_0_autogen/NPUKSKGWT2/moc_simulationcontroller.cpp
 C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/build/Desktop_Qt_6_11_1_MSVC2022_64bit_Debug/src/app/Preventive_v2_0_autogen/NPUKSKGWT2/../../../../../../src/app/controller/simulationcontroller.h
 C:/Qt/6.11.1/msvc2022_64/include/QtCore/QObject

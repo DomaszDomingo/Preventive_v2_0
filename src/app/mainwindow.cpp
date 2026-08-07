@@ -83,6 +83,7 @@ void MainWindow::setupLayout()
             connect(slot, &ChartSlot::startRequested, m_controller, &SimulationController::startSimulation);
             connect(slot, &ChartSlot::stopRequested, m_controller, &SimulationController::stopSimulation);
             connect(slot, &ChartSlot::resetRequested, m_controller, &SimulationController::resetSimulation);
+            connect(slot, &ChartSlot::speedChanged, m_controller, &SimulationController::setSimulationSpeed);
 
             m_chartSlots.append(slot);
             grid->addWidget(slot, row, col);
@@ -194,7 +195,14 @@ void MainWindow::onPythonAnalysisTestRequested()
     if(!ok || column.isEmpty())
         return;
 
-    m_pythonRunner->runAnalysis("kalman",fileName,QStringList() << column);
+    int slotIndex = QInputDialog::getInt(this, tr("Wybór wykresu"),  tr("Numer slotu (0-%1):").arg(m_chartSlots.size() - 1), 0, 0, m_chartSlots.size() - 1, 1, &ok);
+
+    if (!ok)
+        return;
+
+
+    m_pythonAnalysisTargetSlot = slotIndex;
+        m_pythonRunner->runAnalysis("kalman",fileName,QStringList() << column);
 }
 
 
@@ -205,6 +213,13 @@ void MainWindow::onAnalysisFinished(const AnalysisResult &result)
         QMessageBox::warning(this, tr("Analiza Python"), tr ("Błąd: %1").arg(result.errorMessage()));
         return;
     }
+
+    if (m_pythonAnalysisTargetSlot < 0 || m_pythonAnalysisTargetSlot >= m_chartSlots.size())
+        return;
+
+    QString title = tr("%1 (Python) - RSME = %2").arg(result.algorithm()).arg(result.metadata().value("rmse").toDouble(), 0 , 'f', 4);
+
+    m_chartSlots[m_pythonAnalysisTargetSlot]->displayAnalysisResult(m_pythonAnalysisTargetSlot, title, result);
 
     QMessageBox::information(this, tr("AnalizaPython:"), tr("Algotytm: %1\nPunkty filtered: %2\nPunkty forecast: %3\nRSME: %4")
         .arg(result.algorithm())

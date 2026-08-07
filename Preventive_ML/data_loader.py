@@ -25,6 +25,7 @@ def load_file(file_path: str) -> pd.DataFrame:
         raise ValueError(f"Nieobsługiwany format pliku: {extension}")
 
     df = _normalize_columns(df)
+    df = _convert_timestamp_column(df)
 
     return df
 
@@ -81,6 +82,34 @@ def _normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
     if time_column != "timestamp":
         df = df.rename(columns={time_column: "timestamp"})
     return df
+
+#zamienia kolumne "timestmap" na liczbe (epoch w milisekundach), jesli nie jest juz numeryczna.
+#pliki testowe(np. temperature_data.csv) maja czas juz jako liczbe - zostawiamy bez zmian
+#prawdziwe eksporty maja czas jako date tekstową  np. 2026-07-31 08:37:03,144012"
+def _convert_timestamp_column (df: pd.DataFrame) -> pd.DataFrame:
+    col = df["timestamp"]
+
+    if pd.api.types.is_numeric_dtype(col):
+        return df
+
+    #napierw probuje formatu z PI (przecinek jako separator ułamka sekundY)
+    parsed = pd.to_datetime(col, format="%Y-%m-%d %H:%M:%S,%f", errors="coerce")
+
+    #jesli cos nie pasowalo do tego formatu, probujemy ogolnego rozpownania pandas
+
+    if parsed.isna().any():
+        parsed = pd.to_datetime(col,errors="coerce")
+
+    if parsed.isna().any():
+        raise ValueError(
+            "Nie udało się rozpoznać formatu kolumny czasu "
+            "(oczekiwano liczby lub daty w rozpoznawalnym formacie)."
+        )
+
+    df = df.copy()
+    df["timestamp"] = parsed.astype("int64") / 1_000_000 # epoch w ms jako float
+
+    return df 
 
 
 #blok testowy 

@@ -86,6 +86,12 @@ void SimulationController::resetSimulation(int slotIndex)
     }
 }
 
+void SimulationController::setSimulationSpeed(int slotIndex, double multiplier)
+{
+    if(m_simulators.contains(slotIndex))
+        m_simulators[slotIndex]->setSpeedMultipier(multiplier);
+}
+
 void SimulationController::onError(const QString &message)
 {
     qCritical() << "Błąd: " << message;

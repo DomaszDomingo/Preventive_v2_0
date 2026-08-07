@@ -72,7 +72,7 @@ src\app\CMakeFiles\Preventive_v2_0.dir\Preventive_v2_0_autogen\mocs_compilation.
 src\app\CMakeFiles\Preventive_v2_0.dir\Preventive_v2_0_autogen\mocs_compilation.cpp.obj: src\app\CMakeFiles\Preventive_v2_0.dir\compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/app/CMakeFiles/Preventive_v2_0.dir/Preventive_v2_0_autogen/mocs_compilation.cpp.obj"
 	cd C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app
-	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\Preventive_v2_0.dir\Preventive_v2_0_autogen\mocs_compilation.cpp.obj.d --working-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app --filter-prefix="Note: including file: " -- C:\PROGRA~1\MICROS~2\18\COMMUN~1\VC\Tools\MSVC\1450~1.357\bin\HostX64\x64\cl.exe @<<
+	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\Preventive_v2_0.dir\Preventive_v2_0_autogen\mocs_compilation.cpp.obj.d --working-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app --filter-prefix="Uwaga: w tym pliku:  " -- C:\PROGRA~1\MICROS~2\18\COMMUN~1\VC\Tools\MSVC\1450~1.357\bin\HostX64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\Preventive_v2_0.dir\Preventive_v2_0_autogen\mocs_compilation.cpp.obj /FdCMakeFiles\Preventive_v2_0.dir\ /FS -c C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app\Preventive_v2_0_autogen\mocs_compilation.cpp
 <<
 	cd C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug
@@ -98,7 +98,7 @@ src\app\CMakeFiles\Preventive_v2_0.dir\main.cpp.obj: C:\Users\DomoVM\Documents\G
 src\app\CMakeFiles\Preventive_v2_0.dir\main.cpp.obj: src\app\CMakeFiles\Preventive_v2_0.dir\compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/app/CMakeFiles/Preventive_v2_0.dir/main.cpp.obj"
 	cd C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app
-	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\Preventive_v2_0.dir\main.cpp.obj.d --working-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app --filter-prefix="Note: including file: " -- C:\PROGRA~1\MICROS~2\18\COMMUN~1\VC\Tools\MSVC\1450~1.357\bin\HostX64\x64\cl.exe @<<
+	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\Preventive_v2_0.dir\main.cpp.obj.d --working-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app --filter-prefix="Uwaga: w tym pliku:  " -- C:\PROGRA~1\MICROS~2\18\COMMUN~1\VC\Tools\MSVC\1450~1.357\bin\HostX64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\Preventive_v2_0.dir\main.cpp.obj /FdCMakeFiles\Preventive_v2_0.dir\ /FS -c C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\app\main.cpp
 <<
 	cd C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug
@@ -124,7 +124,7 @@ src\app\CMakeFiles\Preventive_v2_0.dir\mainwindow.cpp.obj: C:\Users\DomoVM\Docum
 src\app\CMakeFiles\Preventive_v2_0.dir\mainwindow.cpp.obj: src\app\CMakeFiles\Preventive_v2_0.dir\compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/app/CMakeFiles/Preventive_v2_0.dir/mainwindow.cpp.obj"
 	cd C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app
-	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\Preventive_v2_0.dir\mainwindow.cpp.obj.d --working-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app --filter-prefix="Note: including file: " -- C:\PROGRA~1\MICROS~2\18\COMMUN~1\VC\Tools\MSVC\1450~1.357\bin\HostX64\x64\cl.exe @<<
+	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\Preventive_v2_0.dir\mainwindow.cpp.obj.d --working-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app --filter-prefix="Uwaga: w tym pliku:  " -- C:\PROGRA~1\MICROS~2\18\COMMUN~1\VC\Tools\MSVC\1450~1.357\bin\HostX64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\Preventive_v2_0.dir\mainwindow.cpp.obj /FdCMakeFiles\Preventive_v2_0.dir\ /FS -c C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\app\mainwindow.cpp
 <<
 	cd C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug
@@ -150,7 +150,7 @@ src\app\CMakeFiles\Preventive_v2_0.dir\controller\simulationcontroller.cpp.obj: 
 src\app\CMakeFiles\Preventive_v2_0.dir\controller\simulationcontroller.cpp.obj: src\app\CMakeFiles\Preventive_v2_0.dir\compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/app/CMakeFiles/Preventive_v2_0.dir/controller/simulationcontroller.cpp.obj"
 	cd C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app
-	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\Preventive_v2_0.dir\controller\simulationcontroller.cpp.obj.d --working-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app --filter-prefix="Note: including file: " -- C:\PROGRA~1\MICROS~2\18\COMMUN~1\VC\Tools\MSVC\1450~1.357\bin\HostX64\x64\cl.exe @<<
+	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\Preventive_v2_0.dir\controller\simulationcontroller.cpp.obj.d --working-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app --filter-prefix="Uwaga: w tym pliku:  " -- C:\PROGRA~1\MICROS~2\18\COMMUN~1\VC\Tools\MSVC\1450~1.357\bin\HostX64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\Preventive_v2_0.dir\controller\simulationcontroller.cpp.obj /FdCMakeFiles\Preventive_v2_0.dir\ /FS -c C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\app\controller\simulationcontroller.cpp
 <<
 	cd C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug
@@ -176,7 +176,7 @@ src\app\CMakeFiles\Preventive_v2_0.dir\dataloader\dataloader.cpp.obj: C:\Users\D
 src\app\CMakeFiles\Preventive_v2_0.dir\dataloader\dataloader.cpp.obj: src\app\CMakeFiles\Preventive_v2_0.dir\compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/app/CMakeFiles/Preventive_v2_0.dir/dataloader/dataloader.cpp.obj"
 	cd C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app
-	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\Preventive_v2_0.dir\dataloader\dataloader.cpp.obj.d --working-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app --filter-prefix="Note: including file: " -- C:\PROGRA~1\MICROS~2\18\COMMUN~1\VC\Tools\MSVC\1450~1.357\bin\HostX64\x64\cl.exe @<<
+	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\Preventive_v2_0.dir\dataloader\dataloader.cpp.obj.d --working-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app --filter-prefix="Uwaga: w tym pliku:  " -- C:\PROGRA~1\MICROS~2\18\COMMUN~1\VC\Tools\MSVC\1450~1.357\bin\HostX64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\Preventive_v2_0.dir\dataloader\dataloader.cpp.obj /FdCMakeFiles\Preventive_v2_0.dir\ /FS -c C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\app\dataloader\dataloader.cpp
 <<
 	cd C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug
@@ -202,7 +202,7 @@ src\app\CMakeFiles\Preventive_v2_0.dir\simulation\simulator.cpp.obj: C:\Users\Do
 src\app\CMakeFiles\Preventive_v2_0.dir\simulation\simulator.cpp.obj: src\app\CMakeFiles\Preventive_v2_0.dir\compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object src/app/CMakeFiles/Preventive_v2_0.dir/simulation/simulator.cpp.obj"
 	cd C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app
-	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\Preventive_v2_0.dir\simulation\simulator.cpp.obj.d --working-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app --filter-prefix="Note: including file: " -- C:\PROGRA~1\MICROS~2\18\COMMUN~1\VC\Tools\MSVC\1450~1.357\bin\HostX64\x64\cl.exe @<<
+	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\Preventive_v2_0.dir\simulation\simulator.cpp.obj.d --working-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app --filter-prefix="Uwaga: w tym pliku:  " -- C:\PROGRA~1\MICROS~2\18\COMMUN~1\VC\Tools\MSVC\1450~1.357\bin\HostX64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\Preventive_v2_0.dir\simulation\simulator.cpp.obj /FdCMakeFiles\Preventive_v2_0.dir\ /FS -c C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\app\simulation\simulator.cpp
 <<
 	cd C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug
@@ -228,7 +228,7 @@ src\app\CMakeFiles\Preventive_v2_0.dir\simulation\concretestrategies.cpp.obj: C:
 src\app\CMakeFiles\Preventive_v2_0.dir\simulation\concretestrategies.cpp.obj: src\app\CMakeFiles\Preventive_v2_0.dir\compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object src/app/CMakeFiles/Preventive_v2_0.dir/simulation/concretestrategies.cpp.obj"
 	cd C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app
-	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\Preventive_v2_0.dir\simulation\concretestrategies.cpp.obj.d --working-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app --filter-prefix="Note: including file: " -- C:\PROGRA~1\MICROS~2\18\COMMUN~1\VC\Tools\MSVC\1450~1.357\bin\HostX64\x64\cl.exe @<<
+	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\Preventive_v2_0.dir\simulation\concretestrategies.cpp.obj.d --working-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app --filter-prefix="Uwaga: w tym pliku:  " -- C:\PROGRA~1\MICROS~2\18\COMMUN~1\VC\Tools\MSVC\1450~1.357\bin\HostX64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\Preventive_v2_0.dir\simulation\concretestrategies.cpp.obj /FdCMakeFiles\Preventive_v2_0.dir\ /FS -c C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\app\simulation\concretestrategies.cpp
 <<
 	cd C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug
@@ -254,7 +254,7 @@ src\app\CMakeFiles\Preventive_v2_0.dir\simulation\strategyfactory.cpp.obj: C:\Us
 src\app\CMakeFiles\Preventive_v2_0.dir\simulation\strategyfactory.cpp.obj: src\app\CMakeFiles\Preventive_v2_0.dir\compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object src/app/CMakeFiles/Preventive_v2_0.dir/simulation/strategyfactory.cpp.obj"
 	cd C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app
-	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\Preventive_v2_0.dir\simulation\strategyfactory.cpp.obj.d --working-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app --filter-prefix="Note: including file: " -- C:\PROGRA~1\MICROS~2\18\COMMUN~1\VC\Tools\MSVC\1450~1.357\bin\HostX64\x64\cl.exe @<<
+	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\Preventive_v2_0.dir\simulation\strategyfactory.cpp.obj.d --working-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app --filter-prefix="Uwaga: w tym pliku:  " -- C:\PROGRA~1\MICROS~2\18\COMMUN~1\VC\Tools\MSVC\1450~1.357\bin\HostX64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\Preventive_v2_0.dir\simulation\strategyfactory.cpp.obj /FdCMakeFiles\Preventive_v2_0.dir\ /FS -c C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\app\simulation\strategyfactory.cpp
 <<
 	cd C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug
@@ -280,7 +280,7 @@ src\app\CMakeFiles\Preventive_v2_0.dir\utils\dataanalyzer.cpp.obj: C:\Users\Domo
 src\app\CMakeFiles\Preventive_v2_0.dir\utils\dataanalyzer.cpp.obj: src\app\CMakeFiles\Preventive_v2_0.dir\compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object src/app/CMakeFiles/Preventive_v2_0.dir/utils/dataanalyzer.cpp.obj"
 	cd C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app
-	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\Preventive_v2_0.dir\utils\dataanalyzer.cpp.obj.d --working-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app --filter-prefix="Note: including file: " -- C:\PROGRA~1\MICROS~2\18\COMMUN~1\VC\Tools\MSVC\1450~1.357\bin\HostX64\x64\cl.exe @<<
+	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\Preventive_v2_0.dir\utils\dataanalyzer.cpp.obj.d --working-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app --filter-prefix="Uwaga: w tym pliku:  " -- C:\PROGRA~1\MICROS~2\18\COMMUN~1\VC\Tools\MSVC\1450~1.357\bin\HostX64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\Preventive_v2_0.dir\utils\dataanalyzer.cpp.obj /FdCMakeFiles\Preventive_v2_0.dir\ /FS -c C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\app\utils\dataanalyzer.cpp
 <<
 	cd C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug
@@ -306,7 +306,7 @@ src\app\CMakeFiles\Preventive_v2_0.dir\infowindow.cpp.obj: C:\Users\DomoVM\Docum
 src\app\CMakeFiles\Preventive_v2_0.dir\infowindow.cpp.obj: src\app\CMakeFiles\Preventive_v2_0.dir\compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object src/app/CMakeFiles/Preventive_v2_0.dir/infowindow.cpp.obj"
 	cd C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app
-	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\Preventive_v2_0.dir\infowindow.cpp.obj.d --working-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app --filter-prefix="Note: including file: " -- C:\PROGRA~1\MICROS~2\18\COMMUN~1\VC\Tools\MSVC\1450~1.357\bin\HostX64\x64\cl.exe @<<
+	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\Preventive_v2_0.dir\infowindow.cpp.obj.d --working-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app --filter-prefix="Uwaga: w tym pliku:  " -- C:\PROGRA~1\MICROS~2\18\COMMUN~1\VC\Tools\MSVC\1450~1.357\bin\HostX64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\Preventive_v2_0.dir\infowindow.cpp.obj /FdCMakeFiles\Preventive_v2_0.dir\ /FS -c C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\app\infowindow.cpp
 <<
 	cd C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug
@@ -332,7 +332,7 @@ src\app\CMakeFiles\Preventive_v2_0.dir\components\chartslot.cpp.obj: C:\Users\Do
 src\app\CMakeFiles\Preventive_v2_0.dir\components\chartslot.cpp.obj: src\app\CMakeFiles\Preventive_v2_0.dir\compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object src/app/CMakeFiles/Preventive_v2_0.dir/components/chartslot.cpp.obj"
 	cd C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app
-	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\Preventive_v2_0.dir\components\chartslot.cpp.obj.d --working-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app --filter-prefix="Note: including file: " -- C:\PROGRA~1\MICROS~2\18\COMMUN~1\VC\Tools\MSVC\1450~1.357\bin\HostX64\x64\cl.exe @<<
+	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\Preventive_v2_0.dir\components\chartslot.cpp.obj.d --working-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app --filter-prefix="Uwaga: w tym pliku:  " -- C:\PROGRA~1\MICROS~2\18\COMMUN~1\VC\Tools\MSVC\1450~1.357\bin\HostX64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\Preventive_v2_0.dir\components\chartslot.cpp.obj /FdCMakeFiles\Preventive_v2_0.dir\ /FS -c C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\app\components\chartslot.cpp
 <<
 	cd C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug
@@ -358,7 +358,7 @@ src\app\CMakeFiles\Preventive_v2_0.dir\menu\filemenu.cpp.obj: C:\Users\DomoVM\Do
 src\app\CMakeFiles\Preventive_v2_0.dir\menu\filemenu.cpp.obj: src\app\CMakeFiles\Preventive_v2_0.dir\compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object src/app/CMakeFiles/Preventive_v2_0.dir/menu/filemenu.cpp.obj"
 	cd C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app
-	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\Preventive_v2_0.dir\menu\filemenu.cpp.obj.d --working-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app --filter-prefix="Note: including file: " -- C:\PROGRA~1\MICROS~2\18\COMMUN~1\VC\Tools\MSVC\1450~1.357\bin\HostX64\x64\cl.exe @<<
+	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\Preventive_v2_0.dir\menu\filemenu.cpp.obj.d --working-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app --filter-prefix="Uwaga: w tym pliku:  " -- C:\PROGRA~1\MICROS~2\18\COMMUN~1\VC\Tools\MSVC\1450~1.357\bin\HostX64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\Preventive_v2_0.dir\menu\filemenu.cpp.obj /FdCMakeFiles\Preventive_v2_0.dir\ /FS -c C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\app\menu\filemenu.cpp
 <<
 	cd C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug
@@ -384,7 +384,7 @@ src\app\CMakeFiles\Preventive_v2_0.dir\menu\editmenu.cpp.obj: C:\Users\DomoVM\Do
 src\app\CMakeFiles\Preventive_v2_0.dir\menu\editmenu.cpp.obj: src\app\CMakeFiles\Preventive_v2_0.dir\compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object src/app/CMakeFiles/Preventive_v2_0.dir/menu/editmenu.cpp.obj"
 	cd C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app
-	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\Preventive_v2_0.dir\menu\editmenu.cpp.obj.d --working-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app --filter-prefix="Note: including file: " -- C:\PROGRA~1\MICROS~2\18\COMMUN~1\VC\Tools\MSVC\1450~1.357\bin\HostX64\x64\cl.exe @<<
+	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\Preventive_v2_0.dir\menu\editmenu.cpp.obj.d --working-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app --filter-prefix="Uwaga: w tym pliku:  " -- C:\PROGRA~1\MICROS~2\18\COMMUN~1\VC\Tools\MSVC\1450~1.357\bin\HostX64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\Preventive_v2_0.dir\menu\editmenu.cpp.obj /FdCMakeFiles\Preventive_v2_0.dir\ /FS -c C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\app\menu\editmenu.cpp
 <<
 	cd C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug
@@ -410,7 +410,7 @@ src\app\CMakeFiles\Preventive_v2_0.dir\menu\aboutmenu.cpp.obj: C:\Users\DomoVM\D
 src\app\CMakeFiles\Preventive_v2_0.dir\menu\aboutmenu.cpp.obj: src\app\CMakeFiles\Preventive_v2_0.dir\compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object src/app/CMakeFiles/Preventive_v2_0.dir/menu/aboutmenu.cpp.obj"
 	cd C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app
-	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\Preventive_v2_0.dir\menu\aboutmenu.cpp.obj.d --working-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app --filter-prefix="Note: including file: " -- C:\PROGRA~1\MICROS~2\18\COMMUN~1\VC\Tools\MSVC\1450~1.357\bin\HostX64\x64\cl.exe @<<
+	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\Preventive_v2_0.dir\menu\aboutmenu.cpp.obj.d --working-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app --filter-prefix="Uwaga: w tym pliku:  " -- C:\PROGRA~1\MICROS~2\18\COMMUN~1\VC\Tools\MSVC\1450~1.357\bin\HostX64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\Preventive_v2_0.dir\menu\aboutmenu.cpp.obj /FdCMakeFiles\Preventive_v2_0.dir\ /FS -c C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\app\menu\aboutmenu.cpp
 <<
 	cd C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug
@@ -436,7 +436,7 @@ src\app\CMakeFiles\Preventive_v2_0.dir\dialogs\limitsdialog.cpp.obj: C:\Users\Do
 src\app\CMakeFiles\Preventive_v2_0.dir\dialogs\limitsdialog.cpp.obj: src\app\CMakeFiles\Preventive_v2_0.dir\compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object src/app/CMakeFiles/Preventive_v2_0.dir/dialogs/limitsdialog.cpp.obj"
 	cd C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app
-	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\Preventive_v2_0.dir\dialogs\limitsdialog.cpp.obj.d --working-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app --filter-prefix="Note: including file: " -- C:\PROGRA~1\MICROS~2\18\COMMUN~1\VC\Tools\MSVC\1450~1.357\bin\HostX64\x64\cl.exe @<<
+	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\Preventive_v2_0.dir\dialogs\limitsdialog.cpp.obj.d --working-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app --filter-prefix="Uwaga: w tym pliku:  " -- C:\PROGRA~1\MICROS~2\18\COMMUN~1\VC\Tools\MSVC\1450~1.357\bin\HostX64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\Preventive_v2_0.dir\dialogs\limitsdialog.cpp.obj /FdCMakeFiles\Preventive_v2_0.dir\ /FS -c C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\app\dialogs\limitsdialog.cpp
 <<
 	cd C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug
@@ -462,7 +462,7 @@ src\app\CMakeFiles\Preventive_v2_0.dir\datamodel\analysisresult.cpp.obj: C:\User
 src\app\CMakeFiles\Preventive_v2_0.dir\datamodel\analysisresult.cpp.obj: src\app\CMakeFiles\Preventive_v2_0.dir\compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object src/app/CMakeFiles/Preventive_v2_0.dir/datamodel/analysisresult.cpp.obj"
 	cd C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app
-	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\Preventive_v2_0.dir\datamodel\analysisresult.cpp.obj.d --working-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app --filter-prefix="Note: including file: " -- C:\PROGRA~1\MICROS~2\18\COMMUN~1\VC\Tools\MSVC\1450~1.357\bin\HostX64\x64\cl.exe @<<
+	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\Preventive_v2_0.dir\datamodel\analysisresult.cpp.obj.d --working-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app --filter-prefix="Uwaga: w tym pliku:  " -- C:\PROGRA~1\MICROS~2\18\COMMUN~1\VC\Tools\MSVC\1450~1.357\bin\HostX64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\Preventive_v2_0.dir\datamodel\analysisresult.cpp.obj /FdCMakeFiles\Preventive_v2_0.dir\ /FS -c C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\app\datamodel\analysisresult.cpp
 <<
 	cd C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug
@@ -488,7 +488,7 @@ src\app\CMakeFiles\Preventive_v2_0.dir\analysis\PythonAnalysisRunner.cpp.obj: C:
 src\app\CMakeFiles\Preventive_v2_0.dir\analysis\PythonAnalysisRunner.cpp.obj: src\app\CMakeFiles\Preventive_v2_0.dir\compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object src/app/CMakeFiles/Preventive_v2_0.dir/analysis/PythonAnalysisRunner.cpp.obj"
 	cd C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app
-	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\Preventive_v2_0.dir\analysis\PythonAnalysisRunner.cpp.obj.d --working-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app --filter-prefix="Note: including file: " -- C:\PROGRA~1\MICROS~2\18\COMMUN~1\VC\Tools\MSVC\1450~1.357\bin\HostX64\x64\cl.exe @<<
+	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\Preventive_v2_0.dir\analysis\PythonAnalysisRunner.cpp.obj.d --working-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app --filter-prefix="Uwaga: w tym pliku:  " -- C:\PROGRA~1\MICROS~2\18\COMMUN~1\VC\Tools\MSVC\1450~1.357\bin\HostX64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\Preventive_v2_0.dir\analysis\PythonAnalysisRunner.cpp.obj /FdCMakeFiles\Preventive_v2_0.dir\ /FS -c C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\app\analysis\PythonAnalysisRunner.cpp
 <<
 	cd C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug

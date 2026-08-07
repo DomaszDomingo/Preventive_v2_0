@@ -906,6 +906,7 @@ C:/Qt/6.11.1/msvc2022_64/include/QtPrintSupport/qprintpreviewwidget.h
 C:/Qt/6.11.1/msvc2022_64/include/QtPrintSupport/qtprintsupportversion.h
 C:/Qt/6.11.1/msvc2022_64/include/QtCore/QElapsedTimer
 C:/Qt/6.11.1/msvc2022_64/include/QtCore/QTimeZone
+C:/Qt/6.11.1/msvc2022_64/include/QtWidgets/QSlider
 C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/src/app/infowindow.h
 C:/Qt/6.11.1/msvc2022_64/include/QtWidgets/QDialog
 C:/Qt/6.11.1/msvc2022_64/include/QtWidgets/QLabel

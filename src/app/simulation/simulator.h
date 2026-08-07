@@ -13,6 +13,7 @@ class Simulator : public QObject {
 public:
     //Przejmyjemy na wlasność wskaźnik do strategii
     explicit Simulator (std::unique_ptr<ISimulationStrategy> strategy, QObject *parent);
+    void setSpeedMultipier (double multiplier);
     ~Simulator ();
 
     void start();
@@ -38,6 +39,7 @@ private:
     QElapsedTimer m_elapsedTimer;
     QList<DataPoint> m_data;
     qint64 m_simulationDuration = 0;
+    double m_speedMultiplier = 1.0;
 
 
 };
