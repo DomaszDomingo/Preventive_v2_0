@@ -1,0 +1,328 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineSystem.cmake:205 (message)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      The system is: Windows - 10.0.19045 - AMD64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler: C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.50.35717/bin/HostX64/x64/cl.exe 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      Microsoft (R) C/C++ wersja kompilatora optymalizującego 19.50.35717 dla x64
+      Copyright (C) Microsoft Corporation. Wszystkie prawa zastrzeżone.
+      
+      CMakeCXXCompilerId.cpp
+      Microsoft (R) Incremental Linker Version 14.50.35717.0
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+      
+      /out:CMakeCXXCompilerId.exe 
+      CMakeCXXCompilerId.obj 
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.exe"
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.obj"
+      
+      The CXX compiler identification is MSVC, found in:
+        C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/build/Desktop_Qt_6_11_1_MSVC2022_64bit_Debug/CMakeFiles/3.30.5/CompilerIdCXX/CMakeCXXCompilerId.exe
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:1243 (message)"
+      - "C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:250 (CMAKE_DETERMINE_MSVC_SHOWINCLUDES_PREFIX)"
+      - "C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Detecting CXX compiler /showIncludes prefix:
+        main.c
+        Uwaga: w tym pliku:  C:\\Users\\DomoVM\\Documents\\GitHub\\Preventive_v2_0\\build\\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\\CMakeFiles\\ShowIncludes\\foo.h
+        
+      Found prefix "Uwaga: w tym pliku:  "
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:74 (try_compile)"
+      - "C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:3 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/build/Desktop_Qt_6_11_1_MSVC2022_64bit_Debug/CMakeFiles/CMakeScratch/TryCompile-vyx68z"
+      binary: "C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/build/Desktop_Qt_6_11_1_MSVC2022_64bit_Debug/CMakeFiles/CMakeScratch/TryCompile-vyx68z"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /GR /EHsc"
+      CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/build/Desktop_Qt_6_11_1_MSVC2022_64bit_Debug/CMakeFiles/CMakeScratch/TryCompile-vyx68z'
+        
+        Run Build Command(s): C:/Qt/Tools/CMake_64/bin/cmake.exe -E env VERBOSE=1 jom -f Makefile /nologo cmTC_5158a\\fast
+        jom: parallel job execution disabled for Makefile
+        	C:\\Qt\\Tools\\QtCreator\\bin\\jom\\jom.exe  -f CMakeFiles\\cmTC_5158a.dir\\build.make /nologo -L CMakeFiles\\cmTC_5158a.dir\\build
+        Building CXX object CMakeFiles/cmTC_5158a.dir/CMakeCXXCompilerABI.cpp.obj
+        	C:\\Qt\\Tools\\CMake_64\\bin\\cmake.exe -E cmake_cl_compile_depends --dep-file=CMakeFiles\\cmTC_5158a.dir\\CMakeCXXCompilerABI.cpp.obj.d --working-dir=C:\\Users\\DomoVM\\Documents\\GitHub\\Preventive_v2_0\\build\\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\\CMakeFiles\\CMakeScratch\\TryCompile-vyx68z --filter-prefix="Uwaga: w tym pliku:  " -- C:\\PROGRA~1\\MICROS~2\\18\\COMMUN~1\\VC\\Tools\\MSVC\\1450~1.357\\bin\\HostX64\\x64\\cl.exe @C:\\Users\\DomoVM\\AppData\\Local\\Temp\\CMakeCXXCompilerABI.cpp.obj.5612.0.jom
+        CMakeCXXCompilerABI.cpp
+        Linking CXX executable cmTC_5158a.exe
+        	C:\\Qt\\Tools\\CMake_64\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_5158a.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests -- C:\\PROGRA~1\\MICROS~2\\18\\COMMUN~1\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_5158a.dir\\objects1.rsp @C:\\Users\\DomoVM\\AppData\\Local\\Temp\\cmTC_5158a.exe.5612.156.jom
+        Visual Studio Incremental Link with embedded manifests
+        Create CMakeFiles\\cmTC_5158a.dir/manifest.rc
+        Create empty: CMakeFiles\\cmTC_5158a.dir/embed.manifest
+        RC Pass 1:
+        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe /fo CMakeFiles\\cmTC_5158a.dir/manifest.res CMakeFiles\\cmTC_5158a.dir/manifest.rc
+        LINK Pass 1:
+        C:\\PROGRA~1\\MICROS~2\\18\\COMMUN~1\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_5158a.dir\\objects1.rsp /out:cmTC_5158a.exe /implib:cmTC_5158a.lib /pdb:C:\\Users\\DomoVM\\Documents\\GitHub\\Preventive_v2_0\\build\\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\\CMakeFiles\\CMakeScratch\\TryCompile-vyx68z\\cmTC_5158a.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_5158a.dir/intermediate.manifest CMakeFiles\\cmTC_5158a.dir/manifest.res
+        MT:
+        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe /nologo /manifest CMakeFiles\\cmTC_5158a.dir/intermediate.manifest /out:CMakeFiles\\cmTC_5158a.dir/embed.manifest /notify_update
+        RC Pass 2:
+        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe /fo CMakeFiles\\cmTC_5158a.dir/manifest.res CMakeFiles\\cmTC_5158a.dir/manifest.rc
+        FINAL LINK:
+        C:\\PROGRA~1\\MICROS~2\\18\\COMMUN~1\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_5158a.dir\\objects1.rsp /out:cmTC_5158a.exe /implib:cmTC_5158a.lib /pdb:C:\\Users\\DomoVM\\Documents\\GitHub\\Preventive_v2_0\\build\\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\\CMakeFiles\\CMakeScratch\\TryCompile-vyx68z\\cmTC_5158a.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_5158a.dir/intermediate.manifest CMakeFiles\\cmTC_5158a.dir/manifest.res
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:218 (message)"
+      - "C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Parsed CXX implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
+        linker tool for 'CXX': C:/PROGRA~1/MICROS~2/18/COMMUN~1/VC/Tools/MSVC/1450~1.357/bin/Hostx64/x64/link.exe
+        implicit libs: []
+        implicit objs: []
+        implicit dirs: []
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Internal/CMakeDetermineLinkerId.cmake:40 (message)"
+      - "C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:255 (cmake_determine_linker_id)"
+      - "C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Running the CXX compiler's linker: "C:/PROGRA~1/MICROS~2/18/COMMUN~1/VC/Tools/MSVC/1450~1.357/bin/Hostx64/x64/link.exe" "-v"
+      Microsoft (R) Incremental Linker Version 14.50.35717.0
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CheckCXXSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/FindThreads.cmake:99 (CHECK_CXX_SOURCE_COMPILES)"
+      - "C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/FindThreads.cmake:163 (_threads_check_libc)"
+      - "build/Desktop_Qt_6_11_1_MSVC2022_64bit_Debug/.qtcreator/cmake-helper/maintenance_tool_provider.cmake:283 (find_package)"
+      - "C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeFindDependencyMacro.cmake:76 (find_package)"
+      - "C:/Qt/6.11.1/msvc2022_64/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake:36 (find_dependency)"
+      - "C:/Qt/6.11.1/msvc2022_64/lib/cmake/Qt6/Qt6Dependencies.cmake:38 (_qt_internal_find_third_party_dependencies)"
+      - "C:/Qt/6.11.1/msvc2022_64/lib/cmake/Qt6/Qt6Config.cmake:192 (include)"
+      - "build/Desktop_Qt_6_11_1_MSVC2022_64bit_Debug/.qtcreator/cmake-helper/maintenance_tool_provider.cmake:283 (find_package)"
+      - "CMakeLists.txt:8 (find_package)"
+    checks:
+      - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
+    directories:
+      source: "C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/build/Desktop_Qt_6_11_1_MSVC2022_64bit_Debug/CMakeFiles/CMakeScratch/TryCompile-8by9w2"
+      binary: "C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/build/Desktop_Qt_6_11_1_MSVC2022_64bit_Debug/CMakeFiles/CMakeScratch/TryCompile-8by9w2"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /GR /EHsc"
+      CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "C:/Qt/6.11.1/msvc2022_64/lib/cmake/Qt6;C:/Qt/6.11.1/msvc2022_64/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;C:/Qt/6.11.1/msvc2022_64/lib/cmake/Qt6/3rdparty/kwin"
+    buildResult:
+      variable: "CMAKE_HAVE_LIBC_PTHREAD"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/build/Desktop_Qt_6_11_1_MSVC2022_64bit_Debug/CMakeFiles/CMakeScratch/TryCompile-8by9w2'
+        
+        Run Build Command(s): C:/Qt/Tools/CMake_64/bin/cmake.exe -E env VERBOSE=1 jom -f Makefile /nologo cmTC_d923a\\fast
+        jom: parallel job execution disabled for Makefile
+        	C:\\Qt\\Tools\\QtCreator\\bin\\jom\\jom.exe  -f CMakeFiles\\cmTC_d923a.dir\\build.make /nologo -L CMakeFiles\\cmTC_d923a.dir\\build
+        Building CXX object CMakeFiles/cmTC_d923a.dir/src.cxx.obj
+        	C:\\Qt\\Tools\\CMake_64\\bin\\cmake.exe -E cmake_cl_compile_depends --dep-file=CMakeFiles\\cmTC_d923a.dir\\src.cxx.obj.d --working-dir=C:\\Users\\DomoVM\\Documents\\GitHub\\Preventive_v2_0\\build\\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\\CMakeFiles\\CMakeScratch\\TryCompile-8by9w2 --filter-prefix="Uwaga: w tym pliku:  " -- C:\\PROGRA~1\\MICROS~2\\18\\COMMUN~1\\VC\\Tools\\MSVC\\1450~1.357\\bin\\HostX64\\x64\\cl.exe @C:\\Users\\DomoVM\\AppData\\Local\\Temp\\src.cxx.obj.584.0.jom
+        src.cxx
+        C:\\Users\\DomoVM\\Documents\\GitHub\\Preventive_v2_0\\build\\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\\CMakeFiles\\CMakeScratch\\TryCompile-8by9w2\\src.cxx(1): fatal error C1083: Nie mo┼╝na otworzy─ç pliku do┼é─ůcz: 'pthread.h': No such file or directory
+        jom: C:\\Users\\DomoVM\\Documents\\GitHub\\Preventive_v2_0\\build\\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\\CMakeFiles\\CMakeScratch\\TryCompile-8by9w2\\CMakeFiles\\cmTC_d923a.dir\\build.make [CMakeFiles\\cmTC_d923a.dir\\src.cxx.obj] Error 2
+        jom: C:\\Users\\DomoVM\\Documents\\GitHub\\Preventive_v2_0\\build\\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\\CMakeFiles\\CMakeScratch\\TryCompile-8by9w2\\Makefile [cmTC_d923a\\fast] Error 2
+        
+      exitCode: 2
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CheckLibraryExists.cmake:69 (try_compile)"
+      - "C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/FindThreads.cmake:112 (CHECK_LIBRARY_EXISTS)"
+      - "C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/FindThreads.cmake:175 (_threads_check_lib)"
+      - "build/Desktop_Qt_6_11_1_MSVC2022_64bit_Debug/.qtcreator/cmake-helper/maintenance_tool_provider.cmake:283 (find_package)"
+      - "C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeFindDependencyMacro.cmake:76 (find_package)"
+      - "C:/Qt/6.11.1/msvc2022_64/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake:36 (find_dependency)"
+      - "C:/Qt/6.11.1/msvc2022_64/lib/cmake/Qt6/Qt6Dependencies.cmake:38 (_qt_internal_find_third_party_dependencies)"
+      - "C:/Qt/6.11.1/msvc2022_64/lib/cmake/Qt6/Qt6Config.cmake:192 (include)"
+      - "build/Desktop_Qt_6_11_1_MSVC2022_64bit_Debug/.qtcreator/cmake-helper/maintenance_tool_provider.cmake:283 (find_package)"
+      - "CMakeLists.txt:8 (find_package)"
+    checks:
+      - "Looking for pthread_create in pthreads"
+    directories:
+      source: "C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/build/Desktop_Qt_6_11_1_MSVC2022_64bit_Debug/CMakeFiles/CMakeScratch/TryCompile-0j5qgy"
+      binary: "C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/build/Desktop_Qt_6_11_1_MSVC2022_64bit_Debug/CMakeFiles/CMakeScratch/TryCompile-0j5qgy"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /GR /EHsc"
+      CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "C:/Qt/6.11.1/msvc2022_64/lib/cmake/Qt6;C:/Qt/6.11.1/msvc2022_64/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;C:/Qt/6.11.1/msvc2022_64/lib/cmake/Qt6/3rdparty/kwin"
+    buildResult:
+      variable: "CMAKE_HAVE_PTHREADS_CREATE"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/build/Desktop_Qt_6_11_1_MSVC2022_64bit_Debug/CMakeFiles/CMakeScratch/TryCompile-0j5qgy'
+        
+        Run Build Command(s): C:/Qt/Tools/CMake_64/bin/cmake.exe -E env VERBOSE=1 jom -f Makefile /nologo cmTC_7cd8c\\fast
+        jom: parallel job execution disabled for Makefile
+        	C:\\Qt\\Tools\\QtCreator\\bin\\jom\\jom.exe  -f CMakeFiles\\cmTC_7cd8c.dir\\build.make /nologo -L CMakeFiles\\cmTC_7cd8c.dir\\build
+        Building CXX object CMakeFiles/cmTC_7cd8c.dir/CheckFunctionExists.cxx.obj
+        	C:\\Qt\\Tools\\CMake_64\\bin\\cmake.exe -E cmake_cl_compile_depends --dep-file=CMakeFiles\\cmTC_7cd8c.dir\\CheckFunctionExists.cxx.obj.d --working-dir=C:\\Users\\DomoVM\\Documents\\GitHub\\Preventive_v2_0\\build\\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\\CMakeFiles\\CMakeScratch\\TryCompile-0j5qgy --filter-prefix="Uwaga: w tym pliku:  " -- C:\\PROGRA~1\\MICROS~2\\18\\COMMUN~1\\VC\\Tools\\MSVC\\1450~1.357\\bin\\HostX64\\x64\\cl.exe @C:\\Users\\DomoVM\\AppData\\Local\\Temp\\CheckFunctionExists.cxx.obj.4756.0.jom
+        CheckFunctionExists.cxx
+        Linking CXX executable cmTC_7cd8c.exe
+        	C:\\Qt\\Tools\\CMake_64\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_7cd8c.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests -- C:\\PROGRA~1\\MICROS~2\\18\\COMMUN~1\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_7cd8c.dir\\objects1.rsp @C:\\Users\\DomoVM\\AppData\\Local\\Temp\\cmTC_7cd8c.exe.4756.140.jom
+        Visual Studio Incremental Link with embedded manifests
+        Create CMakeFiles\\cmTC_7cd8c.dir/manifest.rc
+        Create empty: CMakeFiles\\cmTC_7cd8c.dir/embed.manifest
+        RC Pass 1:
+        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe /fo CMakeFiles\\cmTC_7cd8c.dir/manifest.res CMakeFiles\\cmTC_7cd8c.dir/manifest.rc
+        LINK Pass 1:
+        C:\\PROGRA~1\\MICROS~2\\18\\COMMUN~1\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_7cd8c.dir\\objects1.rsp /out:cmTC_7cd8c.exe /implib:cmTC_7cd8c.lib /pdb:C:\\Users\\DomoVM\\Documents\\GitHub\\Preventive_v2_0\\build\\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\\CMakeFiles\\CMakeScratch\\TryCompile-0j5qgy\\cmTC_7cd8c.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console pthreads.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_7cd8c.dir/intermediate.manifest CMakeFiles\\cmTC_7cd8c.dir/manifest.res
+        LINK Pass 1: command "C:\\PROGRA~1\\MICROS~2\\18\\COMMUN~1\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_7cd8c.dir\\objects1.rsp /out:cmTC_7cd8c.exe /implib:cmTC_7cd8c.lib /pdb:C:\\Users\\DomoVM\\Documents\\GitHub\\Preventive_v2_0\\build\\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\\CMakeFiles\\CMakeScratch\\TryCompile-0j5qgy\\cmTC_7cd8c.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console pthreads.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_7cd8c.dir/intermediate.manifest CMakeFiles\\cmTC_7cd8c.dir/manifest.res" failed (exit code 1104) with the following output:
+        LINK : fatal error LNK1104: nie można otworzyć pliku "pthreads.lib"
+        jom: C:\\Users\\DomoVM\\Documents\\GitHub\\Preventive_v2_0\\build\\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\\CMakeFiles\\CMakeScratch\\TryCompile-0j5qgy\\CMakeFiles\\cmTC_7cd8c.dir\\build.make [cmTC_7cd8c.exe] Error 2
+        jom: C:\\Users\\DomoVM\\Documents\\GitHub\\Preventive_v2_0\\build\\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\\CMakeFiles\\CMakeScratch\\TryCompile-0j5qgy\\Makefile [cmTC_7cd8c\\fast] Error 2
+        
+      exitCode: 2
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CheckLibraryExists.cmake:69 (try_compile)"
+      - "C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/FindThreads.cmake:112 (CHECK_LIBRARY_EXISTS)"
+      - "C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/FindThreads.cmake:176 (_threads_check_lib)"
+      - "build/Desktop_Qt_6_11_1_MSVC2022_64bit_Debug/.qtcreator/cmake-helper/maintenance_tool_provider.cmake:283 (find_package)"
+      - "C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeFindDependencyMacro.cmake:76 (find_package)"
+      - "C:/Qt/6.11.1/msvc2022_64/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake:36 (find_dependency)"
+      - "C:/Qt/6.11.1/msvc2022_64/lib/cmake/Qt6/Qt6Dependencies.cmake:38 (_qt_internal_find_third_party_dependencies)"
+      - "C:/Qt/6.11.1/msvc2022_64/lib/cmake/Qt6/Qt6Config.cmake:192 (include)"
+      - "build/Desktop_Qt_6_11_1_MSVC2022_64bit_Debug/.qtcreator/cmake-helper/maintenance_tool_provider.cmake:283 (find_package)"
+      - "CMakeLists.txt:8 (find_package)"
+    checks:
+      - "Looking for pthread_create in pthread"
+    directories:
+      source: "C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/build/Desktop_Qt_6_11_1_MSVC2022_64bit_Debug/CMakeFiles/CMakeScratch/TryCompile-1z9meh"
+      binary: "C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/build/Desktop_Qt_6_11_1_MSVC2022_64bit_Debug/CMakeFiles/CMakeScratch/TryCompile-1z9meh"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /GR /EHsc"
+      CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "C:/Qt/6.11.1/msvc2022_64/lib/cmake/Qt6;C:/Qt/6.11.1/msvc2022_64/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;C:/Qt/6.11.1/msvc2022_64/lib/cmake/Qt6/3rdparty/kwin"
+    buildResult:
+      variable: "CMAKE_HAVE_PTHREAD_CREATE"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/build/Desktop_Qt_6_11_1_MSVC2022_64bit_Debug/CMakeFiles/CMakeScratch/TryCompile-1z9meh'
+        
+        Run Build Command(s): C:/Qt/Tools/CMake_64/bin/cmake.exe -E env VERBOSE=1 jom -f Makefile /nologo cmTC_5d967\\fast
+        jom: parallel job execution disabled for Makefile
+        	C:\\Qt\\Tools\\QtCreator\\bin\\jom\\jom.exe  -f CMakeFiles\\cmTC_5d967.dir\\build.make /nologo -L CMakeFiles\\cmTC_5d967.dir\\build
+        Building CXX object CMakeFiles/cmTC_5d967.dir/CheckFunctionExists.cxx.obj
+        	C:\\Qt\\Tools\\CMake_64\\bin\\cmake.exe -E cmake_cl_compile_depends --dep-file=CMakeFiles\\cmTC_5d967.dir\\CheckFunctionExists.cxx.obj.d --working-dir=C:\\Users\\DomoVM\\Documents\\GitHub\\Preventive_v2_0\\build\\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\\CMakeFiles\\CMakeScratch\\TryCompile-1z9meh --filter-prefix="Uwaga: w tym pliku:  " -- C:\\PROGRA~1\\MICROS~2\\18\\COMMUN~1\\VC\\Tools\\MSVC\\1450~1.357\\bin\\HostX64\\x64\\cl.exe @C:\\Users\\DomoVM\\AppData\\Local\\Temp\\CheckFunctionExists.cxx.obj.8932.0.jom
+        CheckFunctionExists.cxx
+        Linking CXX executable cmTC_5d967.exe
+        	C:\\Qt\\Tools\\CMake_64\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_5d967.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests -- C:\\PROGRA~1\\MICROS~2\\18\\COMMUN~1\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_5d967.dir\\objects1.rsp @C:\\Users\\DomoVM\\AppData\\Local\\Temp\\cmTC_5d967.exe.8932.156.jom
+        Visual Studio Incremental Link with embedded manifests
+        Create CMakeFiles\\cmTC_5d967.dir/manifest.rc
+        Create empty: CMakeFiles\\cmTC_5d967.dir/embed.manifest
+        RC Pass 1:
+        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe /fo CMakeFiles\\cmTC_5d967.dir/manifest.res CMakeFiles\\cmTC_5d967.dir/manifest.rc
+        LINK Pass 1:
+        C:\\PROGRA~1\\MICROS~2\\18\\COMMUN~1\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_5d967.dir\\objects1.rsp /out:cmTC_5d967.exe /implib:cmTC_5d967.lib /pdb:C:\\Users\\DomoVM\\Documents\\GitHub\\Preventive_v2_0\\build\\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\\CMakeFiles\\CMakeScratch\\TryCompile-1z9meh\\cmTC_5d967.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console pthread.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_5d967.dir/intermediate.manifest CMakeFiles\\cmTC_5d967.dir/manifest.res
+        LINK Pass 1: command "C:\\PROGRA~1\\MICROS~2\\18\\COMMUN~1\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_5d967.dir\\objects1.rsp /out:cmTC_5d967.exe /implib:cmTC_5d967.lib /pdb:C:\\Users\\DomoVM\\Documents\\GitHub\\Preventive_v2_0\\build\\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\\CMakeFiles\\CMakeScratch\\TryCompile-1z9meh\\cmTC_5d967.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console pthread.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_5d967.dir/intermediate.manifest CMakeFiles\\cmTC_5d967.dir/manifest.res" failed (exit code 1104) with the following output:
+        LINK : fatal error LNK1104: nie można otworzyć pliku "pthread.lib"
+        jom: C:\\Users\\DomoVM\\Documents\\GitHub\\Preventive_v2_0\\build\\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\\CMakeFiles\\CMakeScratch\\TryCompile-1z9meh\\CMakeFiles\\cmTC_5d967.dir\\build.make [cmTC_5d967.exe] Error 2
+        jom: C:\\Users\\DomoVM\\Documents\\GitHub\\Preventive_v2_0\\build\\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\\CMakeFiles\\CMakeScratch\\TryCompile-1z9meh\\Makefile [cmTC_5d967\\fast] Error 2
+        
+      exitCode: 2
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CheckCXXSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "C:/Qt/6.11.1/msvc2022_64/lib/cmake/Qt6/FindWrapAtomic.cmake:36 (check_cxx_source_compiles)"
+      - "build/Desktop_Qt_6_11_1_MSVC2022_64bit_Debug/.qtcreator/cmake-helper/maintenance_tool_provider.cmake:283 (find_package)"
+      - "C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeFindDependencyMacro.cmake:76 (find_package)"
+      - "C:/Qt/6.11.1/msvc2022_64/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake:36 (find_dependency)"
+      - "C:/Qt/6.11.1/msvc2022_64/lib/cmake/Qt6Core/Qt6CoreDependencies.cmake:36 (_qt_internal_find_third_party_dependencies)"
+      - "C:/Qt/6.11.1/msvc2022_64/lib/cmake/Qt6Core/Qt6CoreConfig.cmake:42 (include)"
+      - "build/Desktop_Qt_6_11_1_MSVC2022_64bit_Debug/.qtcreator/cmake-helper/maintenance_tool_provider.cmake:254 (find_package)"
+      - "C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeFindDependencyMacro.cmake:76 (find_package)"
+      - "C:/Qt/6.11.1/msvc2022_64/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake:142 (find_dependency)"
+      - "C:/Qt/6.11.1/msvc2022_64/lib/cmake/Qt6Widgets/Qt6WidgetsDependencies.cmake:50 (_qt_internal_find_qt_dependencies)"
+      - "C:/Qt/6.11.1/msvc2022_64/lib/cmake/Qt6Widgets/Qt6WidgetsConfig.cmake:40 (include)"
+      - "build/Desktop_Qt_6_11_1_MSVC2022_64bit_Debug/.qtcreator/cmake-helper/maintenance_tool_provider.cmake:235 (find_package)"
+      - "CMakeLists.txt:9 (find_package)"
+    checks:
+      - "Performing Test HAVE_STDATOMIC"
+    directories:
+      source: "C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/build/Desktop_Qt_6_11_1_MSVC2022_64bit_Debug/CMakeFiles/CMakeScratch/TryCompile-oofyw9"
+      binary: "C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/build/Desktop_Qt_6_11_1_MSVC2022_64bit_Debug/CMakeFiles/CMakeScratch/TryCompile-oofyw9"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /GR /EHsc"
+      CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "C:/Qt/6.11.1/msvc2022_64/lib/cmake/Qt6;C:/Qt/6.11.1/msvc2022_64/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;C:/Qt/6.11.1/msvc2022_64/lib/cmake/Qt6/3rdparty/kwin"
+    buildResult:
+      variable: "HAVE_STDATOMIC"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/build/Desktop_Qt_6_11_1_MSVC2022_64bit_Debug/CMakeFiles/CMakeScratch/TryCompile-oofyw9'
+        
+        Run Build Command(s): C:/Qt/Tools/CMake_64/bin/cmake.exe -E env VERBOSE=1 jom -f Makefile /nologo cmTC_43a43\\fast
+        jom: parallel job execution disabled for Makefile
+        	C:\\Qt\\Tools\\QtCreator\\bin\\jom\\jom.exe  -f CMakeFiles\\cmTC_43a43.dir\\build.make /nologo -L CMakeFiles\\cmTC_43a43.dir\\build
+        Building CXX object CMakeFiles/cmTC_43a43.dir/src.cxx.obj
+        	C:\\Qt\\Tools\\CMake_64\\bin\\cmake.exe -E cmake_cl_compile_depends --dep-file=CMakeFiles\\cmTC_43a43.dir\\src.cxx.obj.d --working-dir=C:\\Users\\DomoVM\\Documents\\GitHub\\Preventive_v2_0\\build\\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\\CMakeFiles\\CMakeScratch\\TryCompile-oofyw9 --filter-prefix="Uwaga: w tym pliku:  " -- C:\\PROGRA~1\\MICROS~2\\18\\COMMUN~1\\VC\\Tools\\MSVC\\1450~1.357\\bin\\HostX64\\x64\\cl.exe @C:\\Users\\DomoVM\\AppData\\Local\\Temp\\src.cxx.obj.3140.15.jom
+        src.cxx
+        Linking CXX executable cmTC_43a43.exe
+        	C:\\Qt\\Tools\\CMake_64\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_43a43.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests -- C:\\PROGRA~1\\MICROS~2\\18\\COMMUN~1\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_43a43.dir\\objects1.rsp @C:\\Users\\DomoVM\\AppData\\Local\\Temp\\cmTC_43a43.exe.3140.297.jom
+        Visual Studio Incremental Link with embedded manifests
+        Create CMakeFiles\\cmTC_43a43.dir/manifest.rc
+        Create empty: CMakeFiles\\cmTC_43a43.dir/embed.manifest
+        RC Pass 1:
+        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe /fo CMakeFiles\\cmTC_43a43.dir/manifest.res CMakeFiles\\cmTC_43a43.dir/manifest.rc
+        LINK Pass 1:
+        C:\\PROGRA~1\\MICROS~2\\18\\COMMUN~1\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_43a43.dir\\objects1.rsp /out:cmTC_43a43.exe /implib:cmTC_43a43.lib /pdb:C:\\Users\\DomoVM\\Documents\\GitHub\\Preventive_v2_0\\build\\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\\CMakeFiles\\CMakeScratch\\TryCompile-oofyw9\\cmTC_43a43.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_43a43.dir/intermediate.manifest CMakeFiles\\cmTC_43a43.dir/manifest.res
+        MT:
+        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe /nologo /manifest CMakeFiles\\cmTC_43a43.dir/intermediate.manifest /out:CMakeFiles\\cmTC_43a43.dir/embed.manifest /notify_update
+        RC Pass 2:
+        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe /fo CMakeFiles\\cmTC_43a43.dir/manifest.res CMakeFiles\\cmTC_43a43.dir/manifest.rc
+        FINAL LINK:
+        C:\\PROGRA~1\\MICROS~2\\18\\COMMUN~1\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_43a43.dir\\objects1.rsp /out:cmTC_43a43.exe /implib:cmTC_43a43.lib /pdb:C:\\Users\\DomoVM\\Documents\\GitHub\\Preventive_v2_0\\build\\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\\CMakeFiles\\CMakeScratch\\TryCompile-oofyw9\\cmTC_43a43.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_43a43.dir/intermediate.manifest CMakeFiles\\cmTC_43a43.dir/manifest.res
+        
+      exitCode: 0
+...

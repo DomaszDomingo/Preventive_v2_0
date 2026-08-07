@@ -10,6 +10,11 @@ Simulator::Simulator(std::unique_ptr<ISimulationStrategy> strategy, QObject * pa
     connect (&m_timer, &QTimer::timeout, this, &Simulator::onTick);
 }
 
+void Simulator::setSpeedMultipier(double multiplier)
+{
+    m_speedMultiplier = multiplier;
+}
+
 Simulator::~Simulator (){
     qDebug() << "Symulator zniszczony.";
 }
@@ -70,7 +75,7 @@ void Simulator::reset()
 
 void Simulator::onTick()
 {
-    qint64 elapsed = m_elapsedTimer.elapsed();
+    qint64 elapsed = m_elapsedTimer.elapsed() * m_speedMultiplier;
     if (elapsed > m_simulationDuration){
         stop ();
         if(!m_data.isEmpty()){

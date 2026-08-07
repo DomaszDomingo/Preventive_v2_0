@@ -83,6 +83,7 @@ void MainWindow::setupLayout()
             connect(slot, &ChartSlot::startRequested, m_controller, &SimulationController::startSimulation);
             connect(slot, &ChartSlot::stopRequested, m_controller, &SimulationController::stopSimulation);
             connect(slot, &ChartSlot::resetRequested, m_controller, &SimulationController::resetSimulation);
+            connect(slot, &ChartSlot::speedChanged, m_controller, &SimulationController::setSimulationSpeed);
 
             m_chartSlots.append(slot);
             grid->addWidget(slot, row, col);

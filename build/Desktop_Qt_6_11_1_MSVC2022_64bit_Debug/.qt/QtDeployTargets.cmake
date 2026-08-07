@@ -1,0 +1,6 @@
+set(__QT_DEPLOY_TARGET_Preventive_v2_0_FILE C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/build/Desktop_Qt_6_11_1_MSVC2022_64bit_Debug/Preventive_v2_0.exe)
+set(__QT_DEPLOY_TARGET_Preventive_v2_0_TYPE EXECUTABLE)
+set(__QT_DEPLOY_TARGET_Preventive_v2_0_RUNTIME_DLLS C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/build/Desktop_Qt_6_11_1_MSVC2022_64bit_Debug/qcustomplot.dll;C:/Qt/6.11.1/msvc2022_64/bin/Qt6PrintSupportd.dll;C:/Qt/6.11.1/msvc2022_64/bin/Qt6Widgetsd.dll;C:/Qt/6.11.1/msvc2022_64/bin/Qt6Guid.dll;C:/Qt/6.11.1/msvc2022_64/bin/Qt6Cored.dll)
+set(__QT_DEPLOY_TARGET_qcustomplot_FILE C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/build/Desktop_Qt_6_11_1_MSVC2022_64bit_Debug/qcustomplot.dll)
+set(__QT_DEPLOY_TARGET_qcustomplot_TYPE SHARED_LIBRARY)
+set(__QT_DEPLOY_TARGET_qcustomplot_RUNTIME_DLLS C:/Qt/6.11.1/msvc2022_64/bin/Qt6PrintSupportd.dll;C:/Qt/6.11.1/msvc2022_64/bin/Qt6Widgetsd.dll;C:/Qt/6.11.1/msvc2022_64/bin/Qt6Guid.dll;C:/Qt/6.11.1/msvc2022_64/bin/Qt6Cored.dll)

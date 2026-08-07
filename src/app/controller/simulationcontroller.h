@@ -29,6 +29,7 @@ public slots:
     void startSimulation(int slotIndex);
     void stopSimulation(int slotIndex);
     void resetSimulation(int slotIndex);
+    void setSimulationSpeed (int slotIndex, double multiplier);
 
 private slots:
     void onError(const QString & message);
