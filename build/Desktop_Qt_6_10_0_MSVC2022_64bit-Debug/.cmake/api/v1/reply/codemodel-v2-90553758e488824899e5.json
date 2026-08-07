@@ -1,0 +1,137 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2
+					],
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : "."
+				},
+				{
+					"build" : "src/app",
+					"jsonFile" : "directory-src.app-Debug-de77eec203e76141027b.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src/app",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				},
+				{
+					"build" : "src/3rdPart/qcustomplot",
+					"jsonFile" : "directory-src.3rdPart.qcustomplot-Debug-b095dff95ee900c23ef7.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src/3rdPart/qcustomplot",
+					"targetIndexes" : 
+					[
+						3,
+						4,
+						5
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2
+					],
+					"name" : "Preventive_V2_0",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 1,
+					"id" : "Preventive_v2_0::@ff93792cf40911dae1b8",
+					"jsonFile" : "target-Preventive_v2_0-Debug-f9222b3609d948c3bd98.json",
+					"name" : "Preventive_v2_0",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "Preventive_v2_0_autogen::@ff93792cf40911dae1b8",
+					"jsonFile" : "target-Preventive_v2_0_autogen-Debug-27ecb36d0e9c6d944fc2.json",
+					"name" : "Preventive_v2_0_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "Preventive_v2_0_autogen_timestamp_deps::@ff93792cf40911dae1b8",
+					"jsonFile" : "target-Preventive_v2_0_autogen_timestamp_deps-Debug-63469965a09768d0db9c.json",
+					"name" : "Preventive_v2_0_autogen_timestamp_deps",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "qcustomplot::@d3298cd9ace31af89b51",
+					"jsonFile" : "target-qcustomplot-Debug-7b77591e8060a48f3b9b.json",
+					"name" : "qcustomplot",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "qcustomplot_autogen::@d3298cd9ace31af89b51",
+					"jsonFile" : "target-qcustomplot_autogen-Debug-5e8a1a74a83f919b647d.json",
+					"name" : "qcustomplot_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "qcustomplot_autogen_timestamp_deps::@d3298cd9ace31af89b51",
+					"jsonFile" : "target-qcustomplot_autogen_timestamp_deps-Debug-ac4780a880e4dedaede4.json",
+					"name" : "qcustomplot_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0/build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug",
+		"source" : "C:/Users/DomoVM/Documents/GitHub/Preventive_v2_0"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}
