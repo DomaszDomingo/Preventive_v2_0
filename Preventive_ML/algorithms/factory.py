@@ -2,6 +2,7 @@ from enum import Enum
 
 from .base import BaseAlgorithm
 from .kalman_filter import KalmanFilterAlgorithm
+from.ekf_valve import EKFValveAlgorithm
 
 class AlgorithmType (Enum):
     """
@@ -10,6 +11,7 @@ class AlgorithmType (Enum):
     """
 
     KALMAN = "kalman"
+    EKF_Valve = "ekf_valve"
 
 class AlgorithmFactory:
     """
@@ -25,5 +27,8 @@ class AlgorithmFactory:
         if algorithm_type == AlgorithmType.KALMAN:
             return KalmanFilterAlgorithm(**kwargs)
 
+        if algorithm_type == AlgorithmType.EKF_Valve:
+            return EKFValveAlgorithm(**kwargs)
+        
         raise ValueError (f"Nieznany typ algorytmu: {algorithm_type}")
         

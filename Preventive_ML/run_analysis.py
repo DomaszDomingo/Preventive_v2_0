@@ -25,6 +25,15 @@ def parse_arg():
     parser.add_argument("--forecast-steps", type=int, default=None)
     parser.add_argument("--confidence-z", type=float, default=None)
 
+    #parametry specyficzne dla EKF zaworu
+
+    parser.add_argument("--cv-max", type=float, default=None)
+    parser.add_argument("--specific-gravity", type=float, default=None)
+    parser.add_argument("--valve-characteristic", type=str, default=None,
+                        choices=["linear", "equal_percentage"])
+    parser.add_argument("--rangeability", type=float, default=None)
+       
+
     return parser.parse_args()
 
 def error_result(algorithm_name: str, message: str) ->dict:
@@ -59,6 +68,10 @@ def main() -> int:
         "measurement_noise": args.measurement_noise,
         "forecast_steps": args.forecast_steps,
         "confidence_z": args.confidence_z,
+        "cv_max":args.cv_max,
+        "specific_gravity": args.specific_gravity,
+        "valve_characteristic": args.valve_characteristic,
+        "rangeability": args.rangeability,
     }
     algorithm_kwargs = {k: v for k, v in algorithm_kwargs.items() if v is not None}
 
