@@ -23,6 +23,7 @@ import numpy as np
 import pandas as pd
 
 from .base import BaseAlgorithm
+from data_loader import timestamps_to_ms
 
 def _clamp (value: float, lo: float, hi: float) -> float:
     return max(lo, min (hi,value))
@@ -312,6 +313,11 @@ class EKFValveAlgorithm (BaseAlgorithm):
             #lista slowników {nazwa_kolumny: wartosc}, po jednym na probke -
             #wygodne, bo kazdy kanal moze wyciagnac wlasne kolumny po nazwie
 
+            data = data.copy()
+            data ["timestamp"] = timestamps_to_ms(data["timestamp"])
+            #lista slownikow {nazwa_kolumny:wartosc}, po jednym na probke -
+            #wygodne, bo kazdy kanal moze wyciagnac wlasne kolumny po nazwie
+            
             rows = data.to_dict("records")
 
             initial_opening = _estimate_initial_opening(

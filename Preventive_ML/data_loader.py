@@ -83,9 +83,12 @@ def _normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
         df = df.rename(columns={time_column: "timestamp"})
     return df
 
-#zamienia kolumne "timestmap" na liczbe (epoch w milisekundach), jesli nie jest juz numeryczna.
+#zamienia kolumne "timestmap" na liczbe (panads datetime64), jesli nie jest juz numeryczna.
 #pliki testowe(np. temperature_data.csv) maja czas juz jako liczbe - zostawiamy bez zmian
-#prawdziwe eksporty maja czas jako date tekstową  np. 2026-07-31 08:37:03,144012"
+#prawdziwe eksporty maja czas jako date tekstową  np. 2026-07-31 08:37:03,144012"-
+#przechowuje ja jako prawdziwa date(zamieniam na rzeczywistą liczbe), zeby latwo bylo synchronizowac
+#kilka osobnych plikow po rzeczywistym czasie - patrz - load_and_merge_files() nizej
+#zamiana na liczbe (ms) dzieje się dopiero w algorytmie tuz przed liczeniem dt - patrz timestamps_to_ms()
 def _convert_timestamp_column (df: pd.DataFrame) -> pd.DataFrame:
     col = df["timestamp"]
 
@@ -107,9 +110,61 @@ def _convert_timestamp_column (df: pd.DataFrame) -> pd.DataFrame:
         )
 
     df = df.copy()
-    df["timestamp"] = parsed.astype("int64") / 1_000_000 # epoch w ms jako float
+    df["timestamp"] = parsed # epoch w ms jako float
 
-    return df 
+    return df
+
+##Zamienia kolumne "timestamp" (prawdziwa data albo juz liczba) na tablice liczb w milisekundach
+#To jedyne miejsce w calym pipeline, gdzie prawdziwa data zamieniana jest na liczbe - wczytywanie 
+#i laczenie plikow(load_and_merge_files) operuje na prawdziwych datach (latwiej synchronizwac)
+#kilka zrodel danych), a dopiero algorytm (Kalman/EKF) potrzebuje liczby zeby policzyc
+#dt = czas[i] - czas[i-1]
+def timestamps_to_ms(series:pd.Series):
+    if pd.api.types.is_datetime64_any_dtype(series):
+        return(series.astype("datetime64[ns]").astype("int64")
+               /1_000_000).to_numpy(dtype=float)
+    return series.to_numpy(dtype=float)
+
+#laczy kilka osobcnyhc plikow (kazdy z wlasna kolumna czasu i jedna kolumna wartosci - 
+#typowy  pojedynczy eksport tagu PIVISION) w jeden DataFrame, dopasowujac wierszy po najblizszym
+#czasie (pd.merge_asof). Osobne tagi w historianie prawie nigdy nie sa probkowane dokladnie w tych
+#samych chwilach, dlatego to dopasowanie "po najblizszymc zasie", a nie proste sklejenie kolumna do kolumny
+#wedlug pozycji w pliku
+#
+#sources:lista trojek(sciezka_do_pliku, nazwa_kolumnu_wartosci_w_tym_pliku,
+#       docelowa_nazwa_tej_kolumny w polaczonych danych) - np. 
+#       [("flow.csv"), "wartosc", "przeplyw"), "pressure.csv", "wartosc", "cisnienie")]
+#tolerance: maksymalna dopuszczalna odlegosc czasowa miedzy dopasowanymi probkami
+#       (np.pd_Timedelta(minutes=5)) - probki dalze niz to nie zostana ze soba polaczone 
+#       (dostana NaN, ktory potem odfiltruje dropna() w algorytmie)
+#       None - brak ograniczenia.
+
+def load_and_merge_files(sources: list[tuple[str,str,str]],
+                         tolerance: pd.Timedelta | None = None) -> pd.DataFrame:
+
+    if not sources:
+        raise ValueError("Potrzebny co najmniej jeden plik zrodlowy do połączenia.")
+    merged = None
+    for file_path, source_column, target_column in sources:
+        df = load_file(file_path)
+
+        if source_column not in df.columns:
+            raise ValueError(
+                f"Kolumna '{source_column}' nie istnieje w pliku {file_path}."
+                f"Dostepne kolumny: {list(df.columns)}"
+            )
+
+        piece = (df[["timestamp", source_column]]
+                 .rename(columns={source_column: target_column})
+                 .dropna()
+                 .sort_values("timestamp"))
+
+        if merged is None:
+            merged = piece
+        else:
+            merged = pd.merge_asof(merged, piece, on = "timestamp",
+                                   direction="nearest", tolerance=tolerance)
+    return merged
 
 
 #blok testowy 

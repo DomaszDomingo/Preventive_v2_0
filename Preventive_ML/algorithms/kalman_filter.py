@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 
 from .base import BaseAlgorithm
+from data_loader import timestamps_to_ms
 
 class KalmanFilter1D:
     """
@@ -99,7 +100,7 @@ class KalmanFilterAlgorithm(BaseAlgorithm):
                     status="error",
                         error_message=f"Brak danych w kolumnie '{value_column}'.",
                     )
-            timestamps = data["timestamp"].to_numpy(dtype=float)
+            timestamps = timestamps_to_ms(data["timestamp"])
             values = data[value_column].to_numpy(dtype=float)
 
             kf = KalmanFilter1D(

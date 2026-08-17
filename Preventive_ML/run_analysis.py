@@ -3,17 +3,25 @@ import json
 import sys
 
 from algorithms.factory import AlgorithmFactory, AlgorithmType
-from data_loader import load_file
+from data_loader import load_file, load_and_merge_files
 
 def parse_arg():
     parser = argparse.ArgumentParser(
         description="Uruchamia wybrany algorytm ML na danych historycznych i zwraca wynik jako JSON."
     )
-    parser.add_argument("--file", required=True, help="Ścieżka do pliku CSV/XLS z danymi historycznymi.")
+    parser.add_argument("--file",action="append", required=True, help="Ścieżka do pliku z danymi historycznym. Podaj kilka razy "
+                        "zeby połaczyć osobne eksporty (np rozne tagi PIvision) w jeden zestaw danych).")
+    parser.add_argument("--source-column", action="append", default= None,
+                        help="Nazwa kolumny wartosci w danym pliku (w tej samej kolejnosci co " \
+                        "--file).") 
+    parser.add_argument("--target-column", action="append", default=None,
+                        help="Nazwa pod jaka kolumna wartosci z danego pliku ma trafic do " \
+                        "polaczonych danych (w tej samej kolejnosci co --file). Wymagane tylko gdy podano" \
+                        "wiecej niz jeden --file.")
     parser.add_argument("--algorithm", required=True, help="Typ algorytmu, np. 'kalman'.")
     parser.add_argument("--feature-columns", nargs="+", required=True,
                         help="Kolumny wejściowe algorytmu (jedna lub wiecej).")
-    parser.add_argument("--target-column", default=None,
+    parser.add_argument("--target-column-name", default=None,
                         help="Kolumna, która ma przewidzieć algorytm (opcjonalnie).")
 
     # Parametry specyficzne dla filtra kalmana - domyślnieNone, zeby w razie braku
@@ -78,11 +86,25 @@ def main() -> int:
     algo = AlgorithmFactory.create(algorithm_type, **algorithm_kwargs)
 
     try:
-        df = load_file(args.file)
+        if len(args.file) == 1:
+            df = load_file(args.file[0])
+        else:
+            if not args.source_column or not args.target_column \
+                    or len(args.source_column) != len(args.file) \
+                    or len(args.target_column) != len(args.file):
+                print_result(error_result(algo.name,
+                                          "Przy kilku plikach (--file podanym kilka razy) trzeba podac tyle samo "
+                                          "--source-column i --target-column, ile jest plikow. ",
+                ))
+                return 0
+            sources = list(zip(args.file, args.source_column, args.target_column))
+            df = load_and_merge_files(sources)
+
     except (FileNotFoundError, ValueError) as e:
         print_result(error_result(algo.name, str(e)))
         return 0
-    result = algo.run(df, feature_columns=args.feature_columns, target_column=args.target_column)
+    result = algo.run(df, feature_columns=args.feature_columns, 
+                      target_column=args.target_column_name)
     print_result(result)
     return 0
 
