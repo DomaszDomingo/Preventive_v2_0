@@ -15,7 +15,7 @@ signals:
 
     //Emitowany po pmyśnym wczytaniu i sparsowaniu danych
     //Przekazujemy przez stałą referencję, aby uniknąć zbędnej kopii.
-    void dataLoaded (const QList<DataPoint> & data);
+    void dataLoaded (const QList<DataPoint> & data, qint64 originMs);
 
     //Emitowany w przypadku błędy (np. plik nie istnieje)
 

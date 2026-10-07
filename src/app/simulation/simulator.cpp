@@ -46,9 +46,10 @@ bool Simulator::isRunning() const
 
 
 
-void Simulator::setData(const QList<DataPoint> &data)
+void Simulator::setData(const QList<DataPoint> &data, qint64 originMs)
 {
     m_data = data;
+    m_originMs = originMs;
     if(!m_data.isEmpty()){
         m_simulationDuration = m_data.last().timestamp;
     } else {

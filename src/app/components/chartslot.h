@@ -10,6 +10,7 @@
 #include <QMenu>
 #include "qcustomplot.h"
 #include <QSlider>
+#include <QSharedPointer>
 
 class AnalysisResult;
 
@@ -19,6 +20,10 @@ class ChartSlot : public QWidget
 
 public:
     explicit ChartSlot(int slotIndex, QWidget *parent = nullptr);
+
+    //format osi x: realna data/godzina (domyslnie, albo sekundy
+    //pod wzgledem punktu startego danych tego wykresu
+    enum class TimeAxisMode {DateTime, ElapsedSeconds};
 
     //przelaczanie widoku na wykres i ustawienie jego tytulu
     void displayChart (int trendId, const QString &title);
@@ -30,6 +35,9 @@ public:
 
     //aktualizacja wewnętrznego wykresu o nowy punkt
     void addDataPoint (double time, double value);
+
+    void SetTimeAxisMode(TimeAxisMode mode);
+    TimeAxisMode timeAxisMode() const {return m_timeAxisMode;}
 
     //limity
     void setLimits(double min, double max);

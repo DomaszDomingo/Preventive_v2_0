@@ -30,7 +30,7 @@ public:
     ~MainWindow();
 
 private slots:
-    void onNewData(int slotIndex, double time, double value);
+    void onNewData(int slotIndex, double time, double value, qint64 originMs);
     void onStatsReceived(const SimulationStats &stats);
     void onSlotAddChartRequested(int slotIndex);
     void onSlotCsvLoadRequested(int slotIndex);

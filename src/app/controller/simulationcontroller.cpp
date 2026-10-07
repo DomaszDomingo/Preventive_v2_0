@@ -29,7 +29,7 @@ void SimulationController::loadNewData(int slotIndex, const QString &filePath)
 
         //podlaczamy sygnaly z przechwyceniem slotIndex
         connect(sim, &Simulator::valueChanged, this, [this, slotIndex](double time, double value){
-            emit newValueProduced(slotIndex, time, value);
+            emit newValueProduced(slotIndex, time, value, sim->originMs());
         });
         connect(sim, &Simulator::simulationFinished, this, [this, slotIndex](){
             emit simulationFinished(slotIndex);
@@ -44,7 +44,7 @@ void SimulationController::loadNewData(int slotIndex, const QString &filePath)
     //ladujemy dane - trzeba odlaczyc poprzednie polaczenie i podlaczyc nowe z kontekstem tego slotu
     disconnect(m_loader, &DataLoader::dataLoaded, nullptr, nullptr);
     connect(m_loader, &DataLoader::dataLoaded, this, [this, sim, filePath](const QList<DataPoint> &data){
-        sim->setData(data);
+        sim->setData(data, originMs);
 
         SimulationStats stats = DataAnalyzer::analyze(data, filePath);
         emit statsReady(stats);

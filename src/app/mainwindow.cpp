@@ -94,11 +94,11 @@ void MainWindow::setupLayout()
 
 // Odbiera nowy punkt danych z kontrolera i kieruje go do konkretnego slotu.
 // Przelicza czas z milisekund na sekundy przed przekazaniem do wykresu.
-void MainWindow::onNewData(int slotIndex, double time, double value)
+void MainWindow::onNewData(int slotIndex, double time, double value, qint64 originMs)
 {
     double timeInSeconds = time / 1000.0;
     if (slotIndex >= 0 && slotIndex < m_chartSlots.size()) {
-        m_chartSlots[slotIndex]->addDataPoint(timeInSeconds, value);
+        m_chartSlots[slotIndex]->addDataPoint(timeInSeconds, value, originMs);
     }
 }
 

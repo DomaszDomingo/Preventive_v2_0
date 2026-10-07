@@ -147,7 +147,7 @@ void DataLoader::loadFromCSV(const QString &filePath)
             point.timestamp -= t0;
         }
 
-        emit dataLoaded(dataList);
+        emit dataLoaded(dataList, t0);
     } else {
         qWarning() << "Plik załadowany, ale nie znaleziono żadnych prawidłowych punktów danych.";
     }

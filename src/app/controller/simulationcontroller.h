@@ -20,7 +20,7 @@ public:
     explicit SimulationController(QObject * parent = nullptr);
 
 signals:
-    void newValueProduced(int slotIndex, double time, double value);
+    void newValueProduced(int slotIndex, double time, double value, qint64 originMs);
     void simulationFinished(int slotIndex);
     void statsReady(const SimulationStats& stats);
 
