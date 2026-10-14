@@ -44,6 +44,7 @@ template <> constexpr inline auto SimulationController::qt_create_metaobjectdata
         "slotIndex",
         "time",
         "value",
+        "originMs",
         "simulationFinished",
         "statsReady",
         "SimulationStats",
@@ -61,40 +62,40 @@ template <> constexpr inline auto SimulationController::qt_create_metaobjectdata
 
     QtMocHelpers::UintData qt_methods {
         // Signal 'newValueProduced'
-        QtMocHelpers::SignalData<void(int, double, double)>(1, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::Int, 3 }, { QMetaType::Double, 4 }, { QMetaType::Double, 5 },
+        QtMocHelpers::SignalData<void(int, double, double, qint64)>(1, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::Int, 3 }, { QMetaType::Double, 4 }, { QMetaType::Double, 5 }, { QMetaType::LongLong, 6 },
         }}),
         // Signal 'simulationFinished'
-        QtMocHelpers::SignalData<void(int)>(6, 2, QMC::AccessPublic, QMetaType::Void, {{
+        QtMocHelpers::SignalData<void(int)>(7, 2, QMC::AccessPublic, QMetaType::Void, {{
             { QMetaType::Int, 3 },
         }}),
         // Signal 'statsReady'
-        QtMocHelpers::SignalData<void(const SimulationStats &)>(7, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { 0x80000000 | 8, 9 },
+        QtMocHelpers::SignalData<void(const SimulationStats &)>(8, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { 0x80000000 | 9, 10 },
         }}),
         // Slot 'loadNewData'
-        QtMocHelpers::SlotData<void(int, const QString &)>(10, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::Int, 3 }, { QMetaType::QString, 11 },
+        QtMocHelpers::SlotData<void(int, const QString &)>(11, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::Int, 3 }, { QMetaType::QString, 12 },
         }}),
         // Slot 'startSimulation'
-        QtMocHelpers::SlotData<void(int)>(12, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::Int, 3 },
-        }}),
-        // Slot 'stopSimulation'
         QtMocHelpers::SlotData<void(int)>(13, 2, QMC::AccessPublic, QMetaType::Void, {{
             { QMetaType::Int, 3 },
         }}),
-        // Slot 'resetSimulation'
+        // Slot 'stopSimulation'
         QtMocHelpers::SlotData<void(int)>(14, 2, QMC::AccessPublic, QMetaType::Void, {{
             { QMetaType::Int, 3 },
         }}),
+        // Slot 'resetSimulation'
+        QtMocHelpers::SlotData<void(int)>(15, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::Int, 3 },
+        }}),
         // Slot 'setSimulationSpeed'
-        QtMocHelpers::SlotData<void(int, double)>(15, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::Int, 3 }, { QMetaType::Double, 16 },
+        QtMocHelpers::SlotData<void(int, double)>(16, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::Int, 3 }, { QMetaType::Double, 17 },
         }}),
         // Slot 'onError'
-        QtMocHelpers::SlotData<void(const QString &)>(17, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { QMetaType::QString, 18 },
+        QtMocHelpers::SlotData<void(const QString &)>(18, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::QString, 19 },
         }}),
     };
     QtMocHelpers::UintData qt_properties {
@@ -119,7 +120,7 @@ void SimulationController::qt_static_metacall(QObject *_o, QMetaObject::Call _c,
     auto *_t = static_cast<SimulationController *>(_o);
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: _t->newValueProduced((*reinterpret_cast<std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<double>>(_a[2])),(*reinterpret_cast<std::add_pointer_t<double>>(_a[3]))); break;
+        case 0: _t->newValueProduced((*reinterpret_cast<std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<double>>(_a[2])),(*reinterpret_cast<std::add_pointer_t<double>>(_a[3])),(*reinterpret_cast<std::add_pointer_t<qint64>>(_a[4]))); break;
         case 1: _t->simulationFinished((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
         case 2: _t->statsReady((*reinterpret_cast<std::add_pointer_t<SimulationStats>>(_a[1]))); break;
         case 3: _t->loadNewData((*reinterpret_cast<std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2]))); break;
@@ -132,7 +133,7 @@ void SimulationController::qt_static_metacall(QObject *_o, QMetaObject::Call _c,
         }
     }
     if (_c == QMetaObject::IndexOfMethod) {
-        if (QtMocHelpers::indexOfMethod<void (SimulationController::*)(int , double , double )>(_a, &SimulationController::newValueProduced, 0))
+        if (QtMocHelpers::indexOfMethod<void (SimulationController::*)(int , double , double , qint64 )>(_a, &SimulationController::newValueProduced, 0))
             return;
         if (QtMocHelpers::indexOfMethod<void (SimulationController::*)(int )>(_a, &SimulationController::simulationFinished, 1))
             return;
@@ -173,9 +174,9 @@ int SimulationController::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void SimulationController::newValueProduced(int _t1, double _t2, double _t3)
+void SimulationController::newValueProduced(int _t1, double _t2, double _t3, qint64 _t4)
 {
-    QMetaObject::activate<void>(this, &staticMetaObject, 0, nullptr, _t1, _t2, _t3);
+    QMetaObject::activate<void>(this, &staticMetaObject, 0, nullptr, _t1, _t2, _t3, _t4);
 }
 
 // SIGNAL 1

@@ -37,7 +37,7 @@ public:
     void addDataPoint (double time, double value);
 
     void SetTimeAxisMode(TimeAxisMode mode);
-    TimeAxisMode timeAxisMode() const {return m_timeAxisMode;}
+    TimeAxisMode timeAxisMode() const { return m_timeAxisMode; }
 
     //limity
     void setLimits(double min, double max);
@@ -102,6 +102,12 @@ private:
     bool m_autoFollow = true;
     bool m_isAutoScrolling = false;
     QCPItemStraightLine *m_draggedCursor = nullptr;
+
+    //Format osi czasu
+    TimeAxisMode m_timeAxisMode = TimeAxisMode::DateTime;
+    qint64 m_originEpochMs = 0;
+    QSharedPointer <QCPAxisTicker> m_dateTimeTicker;
+    QSharedPointer <QCPAxisTicker> m_relativeSecondsTicker;
 
     // Limity wartości
     double m_limitMin = 0.0;

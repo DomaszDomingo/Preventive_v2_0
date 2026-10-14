@@ -46,6 +46,7 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         "slotIndex",
         "time",
         "value",
+        "originMs",
         "onStatsReceived",
         "SimulationStats",
         "stats",
@@ -65,36 +66,36 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
 
     QtMocHelpers::UintData qt_methods {
         // Slot 'onNewData'
-        QtMocHelpers::SlotData<void(int, double, double)>(1, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { QMetaType::Int, 3 }, { QMetaType::Double, 4 }, { QMetaType::Double, 5 },
+        QtMocHelpers::SlotData<void(int, double, double, qint64)>(1, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::Int, 3 }, { QMetaType::Double, 4 }, { QMetaType::Double, 5 }, { QMetaType::LongLong, 6 },
         }}),
         // Slot 'onStatsReceived'
-        QtMocHelpers::SlotData<void(const SimulationStats &)>(6, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { 0x80000000 | 7, 8 },
+        QtMocHelpers::SlotData<void(const SimulationStats &)>(7, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { 0x80000000 | 8, 9 },
         }}),
         // Slot 'onSlotAddChartRequested'
-        QtMocHelpers::SlotData<void(int)>(9, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { QMetaType::Int, 3 },
-        }}),
-        // Slot 'onSlotCsvLoadRequested'
         QtMocHelpers::SlotData<void(int)>(10, 2, QMC::AccessPrivate, QMetaType::Void, {{
             { QMetaType::Int, 3 },
         }}),
+        // Slot 'onSlotCsvLoadRequested'
+        QtMocHelpers::SlotData<void(int)>(11, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::Int, 3 },
+        }}),
         // Slot 'onLimitsDialogRequested'
-        QtMocHelpers::SlotData<void()>(11, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(12, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onLimitsApplied'
-        QtMocHelpers::SlotData<void(int, double, double)>(12, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { QMetaType::Int, 3 }, { QMetaType::Double, 13 }, { QMetaType::Double, 14 },
+        QtMocHelpers::SlotData<void(int, double, double)>(13, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::Int, 3 }, { QMetaType::Double, 14 }, { QMetaType::Double, 15 },
         }}),
         // Slot 'onLimitsVisibilityChanged'
-        QtMocHelpers::SlotData<void(int, bool)>(15, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { QMetaType::Int, 3 }, { QMetaType::Bool, 16 },
+        QtMocHelpers::SlotData<void(int, bool)>(16, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::Int, 3 }, { QMetaType::Bool, 17 },
         }}),
         // Slot 'onPythonAnalysisTestRequested'
-        QtMocHelpers::SlotData<void()>(17, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(18, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onAnalysisFinished'
-        QtMocHelpers::SlotData<void(const AnalysisResult &)>(18, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { 0x80000000 | 19, 20 },
+        QtMocHelpers::SlotData<void(const AnalysisResult &)>(19, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { 0x80000000 | 20, 21 },
         }}),
     };
     QtMocHelpers::UintData qt_properties {
@@ -119,7 +120,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
     auto *_t = static_cast<MainWindow *>(_o);
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: _t->onNewData((*reinterpret_cast<std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<double>>(_a[2])),(*reinterpret_cast<std::add_pointer_t<double>>(_a[3]))); break;
+        case 0: _t->onNewData((*reinterpret_cast<std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<double>>(_a[2])),(*reinterpret_cast<std::add_pointer_t<double>>(_a[3])),(*reinterpret_cast<std::add_pointer_t<qint64>>(_a[4]))); break;
         case 1: _t->onStatsReceived((*reinterpret_cast<std::add_pointer_t<SimulationStats>>(_a[1]))); break;
         case 2: _t->onSlotAddChartRequested((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
         case 3: _t->onSlotCsvLoadRequested((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;

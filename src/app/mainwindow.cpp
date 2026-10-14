@@ -96,9 +96,9 @@ void MainWindow::setupLayout()
 // Przelicza czas z milisekund na sekundy przed przekazaniem do wykresu.
 void MainWindow::onNewData(int slotIndex, double time, double value, qint64 originMs)
 {
-    double timeInSeconds = time / 1000.0;
+    double epochSeconds =(originMs + time) / 1000.0;
     if (slotIndex >= 0 && slotIndex < m_chartSlots.size()) {
-        m_chartSlots[slotIndex]->addDataPoint(timeInSeconds, value, originMs);
+        m_chartSlots[slotIndex]->addDataPoint(epochSeconds, value, originMs);
     }
 }
 

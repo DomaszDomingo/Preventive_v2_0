@@ -1,5 +1,29 @@
 #include "chartslot.h"
 #include "../datamodel/analysisresult.h"
+#include  <QDateTime>
+
+namespace {
+//Prosty tickerlicznowy, ktory od każdego znacznika odejmuje punkt startu
+//(m_origin, w sekundach epoch) przed wypisaniem etykiety - dzieki temu
+//wykres nadal trzyma prawdziwy epoch jako klucz X (dzialaja zoom/kursory/
+// tryb "Data i godzina"), a etykiety w tym trybie pokazuja male liczby
+// "sekund od startu" zamiast surowego ogromnego epoch.
+class RelativeSecondsTicker : public QCPAxisTicker
+{
+public:
+    void setOrigin(double originSeconds) {m_origin = originSeconds;}
+
+protected:
+    QString getTickLabel(double tick, const QLocale, QChar formatChar, int precision) override
+    {
+        return QCPAxisATicker::getTickLabel(tick - m_origin, locale, formatChar, precision);
+    }
+
+private:
+    double m_origin = 0.0;
+
+};
+}
 
 
 ChartSlot::ChartSlot(int slotIndex, QWidget *parent)
@@ -48,7 +72,15 @@ ChartSlot::ChartSlot(int slotIndex, QWidget *parent)
     m_plot->graph(2)->setPen(QPen(QColor(200,100,0),2, Qt::DashLine));
     m_plot->graph(2)->setName("Prognoza");
 
-    m_plot->xAxis->setLabel("Czas (s)");
+    auto dateTimeTicker = QSharedPointer <QCPAxisTickerDateTime>::create();
+    dateTimeTicker -> setDateTimeFormat("dd.MM.yyyy\nHH:mm:ss");
+    dateTimerTicker -> setDateTimeSpec(Qt::LocalTime);
+    m_dateTimeTicker = dateTimeTicker;
+
+    m_relativeSecondTicker = QSharedPointed<RelativeSecondTicker>::create();
+
+    m_plot->xAxis->setTicker (m_dateTimeTicker);
+    m_plot->xAxis->setLabel("Czas");
     m_plot->yAxis->setLabel("Wartość");
 
     m_plot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom | QCP::iSelectItems);
@@ -72,6 +104,14 @@ ChartSlot::ChartSlot(int slotIndex, QWidget *parent)
         QAction *removeChartAction = menu.addAction("Usuń wykres");
         QAction *followAction = menu.addAction("Powrot do początku wykr.");
 
+        QMenu *timeAxisMenu = menu.addMenu("Oś czasu");
+        QAction *actionDateTime = timeAxisMenu->addAction("Data i godzina");
+        QAction *actionElapsed = timeAxisMenu->addAction("Sekundy od startu");
+        actionDateTime->setCheckable(true);
+        actionElapsed->setCheckable(true);
+        actionDateTime->setChecked(m_timeAxisMode == TimeAxisMode::DateTime);
+        actionElapsed->setChecked(m_timeAxisMode == TimeAxisMode::ElapsedSeconds);
+
         QAction *selected = menu.exec(m_plot->mapToGlobal(pos));
         if (selected == removeChartAction) {
             emit resetRequested(m_slotIndex);
@@ -88,7 +128,10 @@ ChartSlot::ChartSlot(int slotIndex, QWidget *parent)
                 m_isAutoScrolling = false;
                 m_plot->replot();
             }
-
+        }else if (selected == actionDateTime) {
+            setTimeAxisMode(TimeaxisMode::DateTime);
+        }else if (seleceted == actionElapsed) {
+            SetTimeAxisMode(TimeAxisMode::ElapsedSeconds);
         }
     });
 
@@ -332,6 +375,15 @@ void ChartSlot::updateCursorLabels()
                                   .arg(qAbs(vB - vA), 0, 'f', 2));
         m_deltaLabel->position->setCoords(midX, 0.13);
     }
+}
+
+//Formatuje wspolrzędną X (zawsze epoch w sekundach) na tekst etykiety kursora,
+//zależnie od aktywnego trybu osi: pelna data/godzina, albo sekundy od
+//punktu startowego danych tego wykresu.
+
+QString ChartSlot::formatTimeLabel(double epochSeconds) const{
+    if()
+
 }
 
 // Usuwa wszystkie kursory (linie, tracery, etykiety, deltę) z wykresu

@@ -44,6 +44,7 @@ template <> constexpr inline auto DataLoader::qt_create_metaobjectdata<qt_meta_t
         "",
         "QList<DataPoint>",
         "data",
+        "originMs",
         "errorOccured",
         "message",
         "loadFromCSV",
@@ -52,16 +53,16 @@ template <> constexpr inline auto DataLoader::qt_create_metaobjectdata<qt_meta_t
 
     QtMocHelpers::UintData qt_methods {
         // Signal 'dataLoaded'
-        QtMocHelpers::SignalData<void(const QList<DataPoint> &)>(1, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { 0x80000000 | 3, 4 },
+        QtMocHelpers::SignalData<void(const QList<DataPoint> &, qint64)>(1, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { 0x80000000 | 3, 4 }, { QMetaType::LongLong, 5 },
         }}),
         // Signal 'errorOccured'
-        QtMocHelpers::SignalData<void(const QString &)>(5, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::QString, 6 },
+        QtMocHelpers::SignalData<void(const QString &)>(6, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 7 },
         }}),
         // Slot 'loadFromCSV'
-        QtMocHelpers::SlotData<void(const QString &)>(7, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::QString, 8 },
+        QtMocHelpers::SlotData<void(const QString &)>(8, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 9 },
         }}),
     };
     QtMocHelpers::UintData qt_properties {
@@ -86,14 +87,14 @@ void DataLoader::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
     auto *_t = static_cast<DataLoader *>(_o);
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: _t->dataLoaded((*reinterpret_cast<std::add_pointer_t<QList<DataPoint>>>(_a[1]))); break;
+        case 0: _t->dataLoaded((*reinterpret_cast<std::add_pointer_t<QList<DataPoint>>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<qint64>>(_a[2]))); break;
         case 1: _t->errorOccured((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
         case 2: _t->loadFromCSV((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
         default: ;
         }
     }
     if (_c == QMetaObject::IndexOfMethod) {
-        if (QtMocHelpers::indexOfMethod<void (DataLoader::*)(const QList<DataPoint> & )>(_a, &DataLoader::dataLoaded, 0))
+        if (QtMocHelpers::indexOfMethod<void (DataLoader::*)(const QList<DataPoint> & , qint64 )>(_a, &DataLoader::dataLoaded, 0))
             return;
         if (QtMocHelpers::indexOfMethod<void (DataLoader::*)(const QString & )>(_a, &DataLoader::errorOccured, 1))
             return;
@@ -132,9 +133,9 @@ int DataLoader::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void DataLoader::dataLoaded(const QList<DataPoint> & _t1)
+void DataLoader::dataLoaded(const QList<DataPoint> & _t1, qint64 _t2)
 {
-    QMetaObject::activate<void>(this, &staticMetaObject, 0, nullptr, _t1);
+    QMetaObject::activate<void>(this, &staticMetaObject, 0, nullptr, _t1, _t2);
 }
 
 // SIGNAL 1
