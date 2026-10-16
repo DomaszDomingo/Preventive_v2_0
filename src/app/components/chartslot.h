@@ -34,9 +34,9 @@ public:
     void reset();
 
     //aktualizacja wewnętrznego wykresu o nowy punkt
-    void addDataPoint (double time, double value);
+    void addDataPoint (double epochSeconds, double value, qint64 originMs);
 
-    void SetTimeAxisMode(TimeAxisMode mode);
+    void setTimeAxisMode(TimeAxisMode mode);
     TimeAxisMode timeAxisMode() const { return m_timeAxisMode; }
 
     //limity
@@ -72,6 +72,7 @@ private:
     int m_slotIndex;
     int m_trendId = -1; //oznacza ze pusty slot
 
+    QString formatTimeLabel(double epochSeconds) const;
     QStackedWidget *m_stack;
 
     //strona1: pusty stan

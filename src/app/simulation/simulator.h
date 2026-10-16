@@ -43,7 +43,7 @@ private:
     QElapsedTimer m_elapsedTimer;
     QList<DataPoint> m_data;
     qint64 m_simulationDuration = 0;
-    qint64 m_originMs = 8;
+    qint64 m_originMs = 0;
     double m_speedMultiplier = 1.0;
 
 

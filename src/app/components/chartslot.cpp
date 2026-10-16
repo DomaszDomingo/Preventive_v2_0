@@ -3,7 +3,7 @@
 #include  <QDateTime>
 
 namespace {
-//Prosty tickerlicznowy, ktory od każdego znacznika odejmuje punkt startu
+//Prosty ticker liczbowy, ktory od każdego znacznika odejmuje punkt startu
 //(m_origin, w sekundach epoch) przed wypisaniem etykiety - dzieki temu
 //wykres nadal trzyma prawdziwy epoch jako klucz X (dzialaja zoom/kursory/
 // tryb "Data i godzina"), a etykiety w tym trybie pokazuja male liczby
@@ -14,9 +14,9 @@ public:
     void setOrigin(double originSeconds) {m_origin = originSeconds;}
 
 protected:
-    QString getTickLabel(double tick, const QLocale, QChar formatChar, int precision) override
+    QString getTickLabel(double tick, const QLocale &locale, QChar formatChar, int precision) override
     {
-        return QCPAxisATicker::getTickLabel(tick - m_origin, locale, formatChar, precision);
+        return QCPAxisTicker::getTickLabel(tick - m_origin, locale, formatChar, precision);
     }
 
 private:
@@ -74,10 +74,10 @@ ChartSlot::ChartSlot(int slotIndex, QWidget *parent)
 
     auto dateTimeTicker = QSharedPointer <QCPAxisTickerDateTime>::create();
     dateTimeTicker -> setDateTimeFormat("dd.MM.yyyy\nHH:mm:ss");
-    dateTimerTicker -> setDateTimeSpec(Qt::LocalTime);
+    dateTimeTicker -> setDateTimeSpec(Qt::LocalTime);
     m_dateTimeTicker = dateTimeTicker;
 
-    m_relativeSecondTicker = QSharedPointed<RelativeSecondTicker>::create();
+    m_relativeSecondsTicker = QSharedPointer<RelativeSecondsTicker>::create();
 
     m_plot->xAxis->setTicker (m_dateTimeTicker);
     m_plot->xAxis->setLabel("Czas");
@@ -129,9 +129,9 @@ ChartSlot::ChartSlot(int slotIndex, QWidget *parent)
                 m_plot->replot();
             }
         }else if (selected == actionDateTime) {
-            setTimeAxisMode(TimeaxisMode::DateTime);
-        }else if (seleceted == actionElapsed) {
-            SetTimeAxisMode(TimeAxisMode::ElapsedSeconds);
+            setTimeAxisMode(TimeAxisMode::DateTime);
+        }else if (selected == actionElapsed) {
+            setTimeAxisMode(TimeAxisMode::ElapsedSeconds);
         }
     });
 
@@ -351,7 +351,7 @@ void ChartSlot::updateCursorLabels()
         m_cursorTracerA->updatePosition();
         double tA = m_cursorTracerA->position->key();
         double vA = m_cursorTracerA->position->value();
-        m_cursorLabelA->setText(QString("A: t=%1 s\nv=%2").arg(tA, 0, 'f', 2).arg(vA, 0, 'f', 2));
+        m_cursorLabelA->setText(QString("A: t=%1 \nv=%2").arg(formatTimeLabel(tA)).arg(vA, 0, 'f', 2));
         m_cursorLabelA->position->setCoords(tA, 0.03);
     }
 
@@ -359,7 +359,7 @@ void ChartSlot::updateCursorLabels()
         m_cursorTracerB->updatePosition();
         double tB = m_cursorTracerB->position->key();
         double vB = m_cursorTracerB->position->value();
-        m_cursorLabelB->setText(QString("B: t=%1 s\nv=%2").arg(tB, 0, 'f', 2).arg(vB, 0, 'f', 2));
+        m_cursorLabelB->setText(QString("B: t=%1 \nv=%2").arg(formatTimeLabel(tB)).arg(vB, 0, 'f', 2));
         m_cursorLabelB->position->setCoords(tB, 0.03);
     }
 
@@ -382,8 +382,11 @@ void ChartSlot::updateCursorLabels()
 //punktu startowego danych tego wykresu.
 
 QString ChartSlot::formatTimeLabel(double epochSeconds) const{
-    if()
-
+    if(m_timeAxisMode == TimeAxisMode::DateTime){
+        return QDateTime::fromMSecsSinceEpoch(qint64(epochSeconds * 1000.0)).toString("yyyy-MM-dd HH:mm:ss");
+    }
+    double relativeSeconds = epochSeconds - (m_originEpochMs / 1000.0);
+    return QString("%1 s").arg(relativeSeconds, 0 , 'f', 2);
 }
 
 // Usuwa wszystkie kursory (linie, tracery, etykiety, deltę) z wykresu
@@ -403,6 +406,22 @@ void ChartSlot::removeCursors()
     m_plot->replot();
 }
 
+
+void ChartSlot::setTimeAxisMode(TimeAxisMode mode)
+{
+    m_timeAxisMode = mode;
+    if(mode == TimeAxisMode::DateTime){
+        m_plot->xAxis->setTicker(m_dateTimeTicker);
+        m_plot->xAxis->setLabel("Czas");
+    } else {
+        qSharedPointerCast<RelativeSecondsTicker> (m_relativeSecondsTicker)->setOrigin(m_originEpochMs / 1000.0);
+        m_plot->xAxis->setTicker(m_relativeSecondsTicker);
+        m_plot->xAxis->setLabel("Czas (s od startu)");
+    }
+    updateCursorLabels();
+    m_plot->replot();
+
+}
 // Przełącza slot z widoku pustego na widok wykresu.
 // Ustawia identyfikator trendu i tytuł, czyści poprzednie dane wykresu.
 void ChartSlot::displayChart(int trendId, const QString &title)
@@ -517,14 +536,17 @@ void ChartSlot::reset()
 // Dodaje nowy punkt danych do wykresu w czasie rzeczywistym.
 // Działa tylko gdy slot jest aktywny (trendId != -1).
 // Przesuwa oś X za ostatnim punktem (okno 5s) i automatycznie skaluje oś Y.
-void ChartSlot::addDataPoint(double time, double value)
+void ChartSlot::addDataPoint(double epochSeconds, double value, qint64 originMs)
 {
     if(m_trendId != -1 && m_plot) {
-        m_plot->graph(0)->addData(time,value);
+        m_originEpochMs = originMs;
+        qSharedPointerCast<RelativeSecondsTicker>(m_relativeSecondsTicker)->setOrigin(m_originEpochMs / 1000.0);
+
+        m_plot->graph(0)->addData(epochSeconds,value);
 
         if(m_autoFollow){
             m_isAutoScrolling = true;
-            m_plot->xAxis->setRange(time, 5.0, Qt::AlignCenter);
+            m_plot->xAxis->setRange(epochSeconds, 5.0, Qt::AlignCenter);
             m_plot->graph(0)->rescaleValueAxis(false,true);
             m_isAutoScrolling= false;
         }
@@ -543,6 +565,12 @@ void ChartSlot::displayAnalysisResult(int trendId, const QString &title, const A
     m_plot->graph(2)->data()->clear();
 
     const QList<FilteredPoint> filtered = result.filtered();
+
+    if(!filtered.isEmpty()){
+        m_originEpochMs = filtered.first().timestamp;
+        qSharedPointerCast<RelativeSecondsTicker>(m_relativeSecondsTicker)->setOrigin(m_originEpochMs / 1000.0);
+
+    }
     for (const FilteredPoint &point : filtered){
         double t = point.timestamp / 1000.0;
         m_plot->graph(0)->addData(t, point.value);

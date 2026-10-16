@@ -28,7 +28,7 @@ void SimulationController::loadNewData(int slotIndex, const QString &filePath)
         Simulator *sim = new Simulator(std::move(strategy), this);
 
         //podlaczamy sygnaly z przechwyceniem slotIndex
-        connect(sim, &Simulator::valueChanged, this, [this, slotIndex](double time, double value){
+        connect(sim, &Simulator::valueChanged, this, [this, slotIndex, sim](double time, double value){
             emit newValueProduced(slotIndex, time, value, sim->originMs());
         });
         connect(sim, &Simulator::simulationFinished, this, [this, slotIndex](){
@@ -43,7 +43,7 @@ void SimulationController::loadNewData(int slotIndex, const QString &filePath)
 
     //ladujemy dane - trzeba odlaczyc poprzednie polaczenie i podlaczyc nowe z kontekstem tego slotu
     disconnect(m_loader, &DataLoader::dataLoaded, nullptr, nullptr);
-    connect(m_loader, &DataLoader::dataLoaded, this, [this, sim, filePath](const QList<DataPoint> &data){
+    connect(m_loader, &DataLoader::dataLoaded, this, [this, sim, filePath](const QList<DataPoint> &data, qint64 originMs){
         sim->setData(data, originMs);
 
         SimulationStats stats = DataAnalyzer::analyze(data, filePath);
