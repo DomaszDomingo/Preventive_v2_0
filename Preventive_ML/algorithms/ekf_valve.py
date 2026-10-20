@@ -17,6 +17,8 @@ Dzieki temu podzialowi dodanie kolejnego pomiaru w przyszlosci (temperatura, poz
 prąd siłownika ...) to napisanie nowej klasy dziedzicączej po MeasurementChannel i dopisanie
 jej do listy 'channels' w EKFValveAlgorithm.run() - rdzen filtra nie wymaga żadnych zmian"""
 
+import json
+import os
 from abc import ABC, abstractmethod
 
 import numpy as np
@@ -98,6 +100,18 @@ class ExtendedKalmanFilterValve:
         jac = channel.jacobian(opening, row)
         self.update (measurement, predicted, jac, channel.noise_variance())
 
+    def load_state(self,opening: float, opening_rate: float, P) -> None:
+        #nadpisuje stan filtra zapisanym wczesniej (np. z poprzedniej sesji)
+        #zamiast liczyć go od pierwszej próbki w nowym pliku
+        self.x = np.array([[_clamp(opening, 0.0, 1.0)], [opening_rate]], dtype=float)
+        self.P = np.array(P,dtype=float)
+
+    def reset_uncertainty(self, uncertainty: float) -> None:
+        #uzywane, gdy przerwa czasowa jest zbyt duza, zeby normalnie przez
+        #predic() urosła niepewnosc (patrz _safe_predict) - zamiast
+        #tego wracam do ustalonej wartosci, tak jak na starcie filtra.
+        self.P = np.eye(2) * uncertainty
+        
     @property
     def opening (self) -> float:
         return float(self.x[0,0])
@@ -251,6 +265,49 @@ def _estimate_initial_opening (cv_max: float, specific_gravity: float, dp0: floa
          return 0.5
      return characteristic. invert (q0 / denom)
 
+def _safe_predict (ekf: ExtendedKalmanFilterValve, dt: float, max_gap_ms, gap_reset_uncertainty: float) -> None:
+    """Krok predykcjio dt, z ochroną przed zbyt duzą przerwą czasową.
+    Zwykły predict() rosnie z niepewnoscia jak dt**3 - przy przerwie rzedu dni
+    (np. dwie osobne sesje nauki w roznych dniach, albo nieciagle okresy złączone w jeden plik)
+    to wywindowałoby P do absurdalnych wartości. Gdy przerwa przekracza max_gap_ms, zamiast tego
+    resetuje niepewnosc do ustalonej wartosci - "zacznij ufac pomiarom jak na starcie",
+    bez przeliczania bezsensownego trendu przez wielodniowy odstęp"""
+
+    if max_gap_ms is not None and dt > max_gap_ms:
+        ekf.reset_uncertainty(gap_reset_uncertainty)
+    else:
+        ekf.predict(dt)
+
+def _load_session(path: str, expected_config: dict):
+    #wczytuje zapisany stan sesji. None, jeśli plik nie istnieje (pierwsza sesja)
+
+    if not os.path.exists(path):
+        return None
+    with open (path, "r", encoding="utf-8") as f:
+        session = json.load(f)
+    saved_config = session.get("config", {})
+    for key, value in expected_config.items():
+        if key in saved_config and saved_config[key] != value:
+            raise ValueError(
+                f"Sesja ' {path}' zostala zapisana z innym parametrem '{key}' "
+                f"({saved_config[key]!r} != {value!r}). Użyj tych samych parametrów"
+                f"co przy pierwszej sesji, albo zacznij nową sesje (inny plik/usuń ten)."
+            )
+    return session
+
+def _save_session(path: str, ekf:ExtendedKalmanFilterValve, last_timestamp_ms:float, config: dict) -> None:
+    session = {
+        "last_timestamp_ms": last_timestamp_ms,
+        "state": {
+            "opening": ekf.opening,
+            "opening_rate": ekf.opening_rate,
+            "P": ekf.P.tolist(),
+        },
+        "config":config,
+    }
+    with open(path,"w", encoding="utf-8") as f:
+        json.dump(session, f, indent=2)
+    
 
 # Algorytm - spina rdzen EKF z lista kanałów w formacie zdgodnym z BaseAlgorithm
 
@@ -260,7 +317,9 @@ class EKFValveAlgorithm (BaseAlgorithm):
     def __init__(self, cv_max: float = 100.0, specific_gravity: float = 1.0,
                          valve_characteristic: str = "linear", rangeability: float = 50.0,
                          process_noise: float = 1e-6, measurement_noise: float = 1.0,
-                         forecast_steps: int = 20, confidence_z: float = 1.96):
+                         forecast_steps: int = 20, confidence_z: float = 1.96,
+                         session_file:str | None = None, max_gap_seconds: float = 3600.0,
+                         gap_reset_uncertainty: float = 0.1):
         self.cv_max = cv_max
         self.specific_gravity = specific_gravity
         self.valve_characteristic = valve_characteristic
@@ -269,6 +328,11 @@ class EKFValveAlgorithm (BaseAlgorithm):
         self.measurement_noise = measurement_noise
         self.forecast_steps = forecast_steps
         self.confidence_z = confidence_z
+        self.session_file = session_file
+        self.max_gap_ms = max_gap_seconds * 1000 if max_gap_seconds is not None else None
+        self.gap_reset_uncertainty = gap_reset_uncertainty
+
+   
     def run (self, df: pd.DataFrame, feature_columns: list [str],
              target_column: str | None = None) -> dict:
 
@@ -297,6 +361,20 @@ class EKFValveAlgorithm (BaseAlgorithm):
         ]
         primary_channel = channels[0] # kanał raportowany w "value/predicted (do wykresu)"
 
+        session_config = {
+            "cv_max": self.cv_max,
+            "specific_gravity": self.specific_gravity,
+            "valve_characteristic": self.valve_characteristic,
+            "rangeability": self.rangeability
+        }
+
+        resumed = None
+        if self.session_file:
+            try:
+                resumed = _load_session(self.session_file, session_config)
+            except ValueError as e:
+                return self.to_result_dict(status="error", error_message=str(e))
+
         try:
             needed_columns = ["timestamp"]
             for ch in channels:
@@ -319,17 +397,24 @@ class EKFValveAlgorithm (BaseAlgorithm):
             #wygodne, bo kazdy kanal moze wyciagnac wlasne kolumny po nazwie
             
             rows = data.to_dict("records")
+            if resumed is not None:
+                state = resumed["state"]
+                ekf = ExtendedKalmanFilterValve(initial_opening=state["opening"], process_noise=self.process_noise)
+                ekf.load_state(state["opening"], state ["opening_rate"], state ["P"])
+                last_timestamp_ms = resumed["last_timestamp_ms"]
+            else:
 
-            initial_opening = _estimate_initial_opening(
-                self. cv_max, self.specific_gravity,
-                rows[0][pressure_column], rows[0][flow_column],
-                characteristic
+                initial_opening = _estimate_initial_opening(
+                    self. cv_max, self.specific_gravity,
+                    rows[0][pressure_column], rows[0][flow_column],
+                    characteristic
+                    )
+                
+                ekf = ExtendedKalmanFilterValve(
+                    initial_opening = initial_opening,
+                    process_noise = self.process_noise,
                 )
-
-            ekf = ExtendedKalmanFilterValve(
-                initial_opening = initial_opening,
-                process_noise = self.process_noise,
-            )
+                last_timestamp_ms = None
 
             def channel_snapshot(row: dict) -> dict:
                 #h(x) i pomiar dla kazdego kanału, przy aktualnyms tanie EKF
@@ -343,13 +428,25 @@ class EKFValveAlgorithm (BaseAlgorithm):
             #pierwszy punkt: brak jeszcze zadnej korekty, predicted liczone
             #z początkowego (zgadywanego) otwarcia
 
+            #jesli wznawiam sesje, pierwszy wiersz nowej partii tez dostaje
+            #predict+update - liczony wzgledem ostatniego punktu poprzedniej
+            #sesji (a nie od zera jak przy pierwszym uruchomieniu).
+
+            if last_timestamp_ms is not None:
+                dt0 = rows[0]["timestamp"] - last_timestamp_ms
+                if dt0 > 0:
+                    _safe_predict(ekf, dt0, self.max_gap_ms, self.gap_reset_uncertainty)
+                    for ch in channels:
+                        measure_col = ch.required_columns()[0]
+                        ekf.update_from_channel(ch,rows[0][measure_col], rows[0])
+
             snapshot0 = channel_snapshot(rows[0])
             filtered = [{
                 "timestamp": float (rows[0]["timestamp"]),
-                "value": snapshot0[primary_channel. name]["measured"],
+                "value": snapshot0[primary_channel.name]["measured"],
                 "predicted": snapshot0[primary_channel.name]["predicted"],
-                "estimatedOpeningPct": ekf.opening * 100,
-                "channels": snapshot0,
+                "estimatedOpeningPct": ekf.opening * 100.0,
+                "channels":snapshot0,
             }]
 
             for i in range (1, len(rows)):
@@ -357,19 +454,20 @@ class EKFValveAlgorithm (BaseAlgorithm):
                 if dt <= 0:
                     continue #pomijam duplikaty/nieposortowane znaczniku czasu
 
-                ekf.predict (dt)
+                _safe_predict(ekf, dt, self.max_gap_ms, self.gap_reset_uncertainty)
                 for ch in channels:
                     measure_col = ch.required_columns ()[0]
                     ekf.update_from_channel(ch, rows[i][measure_col], rows [i])
-
+                
                 snapshot = channel_snapshot(rows[i])
-                filtered.append({
+                filtered.append ({
                     "timestamp": float (rows[i]["timestamp"]),
                     "value": snapshot[primary_channel.name]["measured"],
                     "predicted": snapshot[primary_channel.name]["predicted"],
                     "estimatedOpeningPct": ekf.opening * 100.0,
                     "channels":snapshot,
                 })
+                
 
             predicted_arr = np.array([p["predicted"] for p in filtered])
             actual_arr = np.array([p["value"] for p in filtered])
@@ -399,8 +497,11 @@ class EKFValveAlgorithm (BaseAlgorithm):
                     "lower": predicted - self.confidence_z * std_dev,
                 })
 
+            if self.session_file:
+                _save_session(self.session_file, ekf, float(rows[-1]["timestamp"]), session_config)
+
             return self.to_result_dict(
-                filtered= filtered,
+                filtered = filtered,
                 forecasts=forecasts,
                 metadata= {
                     "cv_max": self.cv_max,
@@ -414,6 +515,7 @@ class EKFValveAlgorithm (BaseAlgorithm):
                     "final_opening_rate": ekf.opening_rate,
                     "avg_dt": avg_dt,
                     "channels": [ch.name for ch in channels],
+                    "resumed_session": resumed is not None,
                 },
             )            
             

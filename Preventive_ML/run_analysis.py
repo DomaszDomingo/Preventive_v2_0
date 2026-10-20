@@ -40,6 +40,17 @@ def parse_arg():
     parser.add_argument("--valve-characteristic", type=str, default=None,
                         choices=["linear", "equal_percentage"])
     parser.add_argument("--rangeability", type=float, default=None)
+    parser.add_argument("--session-file", type=str, default=None,
+                        help="Plik ze stanej sesji EKF(do kontynuacji nauki między uruchomieniami). "
+                            "Jesli podany i istnieje, algorytm wczyta ostatni stan zamiast zaczynać "
+                            "od zera; po zakończeniu zapisze nowy stan do tego samego pliku.")
+    parser.add_argument("--max-gap-seconds", type=float, default = None,
+                        help="Maksymalna przerwa czasowa (s) miedzy kolejnymy próbkami/sesjami, "
+                            "poad którą niepewność filtra jest resetowana zamiast naturalnie rosnąć. "
+                            "Domyślnie 3600(1h).")
+    parser.add_argument("--gap-reset-uncertainty", type=float, default=None,
+                        help="Wartość niepewności (P), do jakiej filtr wraca po przekroczeniu"
+                            "--max-gap-seconds. Domyślnie 0.1.")
        
 
     return parser.parse_args()
@@ -80,6 +91,9 @@ def main() -> int:
         "specific_gravity": args.specific_gravity,
         "valve_characteristic": args.valve_characteristic,
         "rangeability": args.rangeability,
+        "session_file": args.session_file,
+        "max_gap_seconds": args.max_gap_seconds,
+        "gap_reset_uncertainty": args.gap_reset_uncertainty,
     }
     algorithm_kwargs = {k: v for k, v in algorithm_kwargs.items() if v is not None}
 
