@@ -509,6 +509,32 @@ src\app\CMakeFiles\Preventive_v2_0.dir\analysis\PythonAnalysisRunner.cpp.s: cmak
 <<
 	cd C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug
 
+src\app\CMakeFiles\Preventive_v2_0.dir\dialogs\analysisdialog.cpp.obj: src\app\CMakeFiles\Preventive_v2_0.dir\flags.make
+src\app\CMakeFiles\Preventive_v2_0.dir\dialogs\analysisdialog.cpp.obj: C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\app\dialogs\analysisdialog.cpp
+src\app\CMakeFiles\Preventive_v2_0.dir\dialogs\analysisdialog.cpp.obj: src\app\CMakeFiles\Preventive_v2_0.dir\compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object src/app/CMakeFiles/Preventive_v2_0.dir/dialogs/analysisdialog.cpp.obj"
+	cd C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app
+	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\Preventive_v2_0.dir\dialogs\analysisdialog.cpp.obj.d --working-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app --filter-prefix="Uwaga: w tym pliku:  " -- C:\PROGRA~1\MICROS~2\18\COMMUN~1\VC\Tools\MSVC\1450~1.357\bin\HostX64\x64\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\Preventive_v2_0.dir\dialogs\analysisdialog.cpp.obj /FdCMakeFiles\Preventive_v2_0.dir\ /FS -c C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\app\dialogs\analysisdialog.cpp
+<<
+	cd C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug
+
+src\app\CMakeFiles\Preventive_v2_0.dir\dialogs\analysisdialog.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Preventive_v2_0.dir/dialogs/analysisdialog.cpp.i"
+	cd C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app
+	C:\PROGRA~1\MICROS~2\18\COMMUN~1\VC\Tools\MSVC\1450~1.357\bin\HostX64\x64\cl.exe > CMakeFiles\Preventive_v2_0.dir\dialogs\analysisdialog.cpp.i @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\app\dialogs\analysisdialog.cpp
+<<
+	cd C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug
+
+src\app\CMakeFiles\Preventive_v2_0.dir\dialogs\analysisdialog.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Preventive_v2_0.dir/dialogs/analysisdialog.cpp.s"
+	cd C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app
+	C:\PROGRA~1\MICROS~2\18\COMMUN~1\VC\Tools\MSVC\1450~1.357\bin\HostX64\x64\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\Preventive_v2_0.dir\dialogs\analysisdialog.cpp.s /c C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\src\app\dialogs\analysisdialog.cpp
+<<
+	cd C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug
+
 # Object files for target Preventive_v2_0
 Preventive_v2_0_OBJECTS = \
 "CMakeFiles\Preventive_v2_0.dir\Preventive_v2_0_autogen\mocs_compilation.cpp.obj" \
@@ -527,7 +553,8 @@ Preventive_v2_0_OBJECTS = \
 "CMakeFiles\Preventive_v2_0.dir\menu\aboutmenu.cpp.obj" \
 "CMakeFiles\Preventive_v2_0.dir\dialogs\limitsdialog.cpp.obj" \
 "CMakeFiles\Preventive_v2_0.dir\datamodel\analysisresult.cpp.obj" \
-"CMakeFiles\Preventive_v2_0.dir\analysis\PythonAnalysisRunner.cpp.obj"
+"CMakeFiles\Preventive_v2_0.dir\analysis\PythonAnalysisRunner.cpp.obj" \
+"CMakeFiles\Preventive_v2_0.dir\dialogs\analysisdialog.cpp.obj"
 
 # External object files for target Preventive_v2_0
 Preventive_v2_0_EXTERNAL_OBJECTS =
@@ -549,6 +576,7 @@ Preventive_v2_0.exe: src\app\CMakeFiles\Preventive_v2_0.dir\menu\aboutmenu.cpp.o
 Preventive_v2_0.exe: src\app\CMakeFiles\Preventive_v2_0.dir\dialogs\limitsdialog.cpp.obj
 Preventive_v2_0.exe: src\app\CMakeFiles\Preventive_v2_0.dir\datamodel\analysisresult.cpp.obj
 Preventive_v2_0.exe: src\app\CMakeFiles\Preventive_v2_0.dir\analysis\PythonAnalysisRunner.cpp.obj
+Preventive_v2_0.exe: src\app\CMakeFiles\Preventive_v2_0.dir\dialogs\analysisdialog.cpp.obj
 Preventive_v2_0.exe: src\app\CMakeFiles\Preventive_v2_0.dir\build.make
 Preventive_v2_0.exe: src\3rdPart\qcustomplot\qcustomplot.lib
 Preventive_v2_0.exe: C:\Qt\6.11.1\msvc2022_64\lib\Qt6PrintSupportd.lib
@@ -557,7 +585,7 @@ Preventive_v2_0.exe: C:\Qt\6.11.1\msvc2022_64\lib\Qt6Guid.lib
 Preventive_v2_0.exe: C:\Qt\6.11.1\msvc2022_64\lib\Qt6Cored.lib
 Preventive_v2_0.exe: src\app\Preventive_v2_0.exe.manifest
 Preventive_v2_0.exe: src\app\CMakeFiles\Preventive_v2_0.dir\objects1.rsp
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Linking CXX executable ..\..\Preventive_v2_0.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Linking CXX executable ..\..\Preventive_v2_0.exe"
 	cd C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app
 	C:\Qt\Tools\CMake_64\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\Preventive_v2_0.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100261~1.0\x64\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100261~1.0\x64\mt.exe --manifests Preventive_v2_0.exe.manifest -- C:\PROGRA~1\MICROS~2\18\COMMUN~1\VC\Tools\MSVC\1450~1.357\bin\Hostx64\x64\link.exe /nologo @CMakeFiles\Preventive_v2_0.dir\objects1.rsp @<<
  /out:..\..\Preventive_v2_0.exe /implib:Preventive_v2_0.lib /pdb:C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\Preventive_v2_0.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console /MANIFEST:NO  ..\3rdPart\qcustomplot\qcustomplot.lib C:\Qt\6.11.1\msvc2022_64\lib\Qt6PrintSupportd.lib C:\Qt\6.11.1\msvc2022_64\lib\Qt6Widgetsd.lib C:\Qt\6.11.1\msvc2022_64\lib\Qt6Guid.lib C:\Qt\6.11.1\msvc2022_64\lib\Qt6Cored.lib mpr.lib userenv.lib d3d11.lib dxgi.lib dxguid.lib d3d12.lib comdlg32.lib winspool.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib 

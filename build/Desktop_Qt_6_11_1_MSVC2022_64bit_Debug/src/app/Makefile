@@ -349,6 +349,36 @@ datamodel\analysisresult.cpp.s:
 	cd C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app
 .PHONY : datamodel\analysisresult.cpp.s
 
+dialogs\analysisdialog.obj: dialogs\analysisdialog.cpp.obj
+.PHONY : dialogs\analysisdialog.obj
+
+# target to build an object file
+dialogs\analysisdialog.cpp.obj:
+	cd C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug
+	$(MAKE) $(MAKESILENT) -f src\app\CMakeFiles\Preventive_v2_0.dir\build.make /nologo -$(MAKEFLAGS) src\app\CMakeFiles\Preventive_v2_0.dir\dialogs\analysisdialog.cpp.obj
+	cd C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app
+.PHONY : dialogs\analysisdialog.cpp.obj
+
+dialogs\analysisdialog.i: dialogs\analysisdialog.cpp.i
+.PHONY : dialogs\analysisdialog.i
+
+# target to preprocess a source file
+dialogs\analysisdialog.cpp.i:
+	cd C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug
+	$(MAKE) $(MAKESILENT) -f src\app\CMakeFiles\Preventive_v2_0.dir\build.make /nologo -$(MAKEFLAGS) src\app\CMakeFiles\Preventive_v2_0.dir\dialogs\analysisdialog.cpp.i
+	cd C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app
+.PHONY : dialogs\analysisdialog.cpp.i
+
+dialogs\analysisdialog.s: dialogs\analysisdialog.cpp.s
+.PHONY : dialogs\analysisdialog.s
+
+# target to generate assembly for a file
+dialogs\analysisdialog.cpp.s:
+	cd C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug
+	$(MAKE) $(MAKESILENT) -f src\app\CMakeFiles\Preventive_v2_0.dir\build.make /nologo -$(MAKEFLAGS) src\app\CMakeFiles\Preventive_v2_0.dir\dialogs\analysisdialog.cpp.s
+	cd C:\Users\DomoVM\Documents\GitHub\Preventive_v2_0\build\Desktop_Qt_6_11_1_MSVC2022_64bit_Debug\src\app
+.PHONY : dialogs\analysisdialog.cpp.s
+
 dialogs\limitsdialog.obj: dialogs\limitsdialog.cpp.obj
 .PHONY : dialogs\limitsdialog.obj
 
@@ -708,6 +738,9 @@ help:
 	@echo ... datamodel/analysisresult.obj
 	@echo ... datamodel/analysisresult.i
 	@echo ... datamodel/analysisresult.s
+	@echo ... dialogs/analysisdialog.obj
+	@echo ... dialogs/analysisdialog.i
+	@echo ... dialogs/analysisdialog.s
 	@echo ... dialogs/limitsdialog.obj
 	@echo ... dialogs/limitsdialog.i
 	@echo ... dialogs/limitsdialog.s

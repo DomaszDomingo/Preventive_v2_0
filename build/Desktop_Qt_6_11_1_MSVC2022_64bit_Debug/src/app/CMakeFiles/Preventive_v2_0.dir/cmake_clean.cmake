@@ -17,6 +17,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Preventive_v2_0.dir/dataloader/dataloader.cpp.obj.d"
   "CMakeFiles/Preventive_v2_0.dir/datamodel/analysisresult.cpp.obj"
   "CMakeFiles/Preventive_v2_0.dir/datamodel/analysisresult.cpp.obj.d"
+  "CMakeFiles/Preventive_v2_0.dir/dialogs/analysisdialog.cpp.obj"
+  "CMakeFiles/Preventive_v2_0.dir/dialogs/analysisdialog.cpp.obj.d"
   "CMakeFiles/Preventive_v2_0.dir/dialogs/limitsdialog.cpp.obj"
   "CMakeFiles/Preventive_v2_0.dir/dialogs/limitsdialog.cpp.obj.d"
   "CMakeFiles/Preventive_v2_0.dir/infowindow.cpp.obj"
