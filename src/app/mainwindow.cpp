@@ -7,6 +7,7 @@
 #include "dialogs/limitsdialog.h"
 #include "analysis/pythonanalysisrunner.h"
 #include "qcustomplot.h"
+#include "dialogs/analysisdialog.h"
 #include <QDebug>
 #include <QFileDialog>
 #include <QFileInfo>
@@ -14,6 +15,7 @@
 #include <QInputDialog>
 #include <QLineEdit>
 #include <QMessageBox>
+
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -184,6 +186,19 @@ void MainWindow::onLimitsVisibilityChanged(int slotIndex, bool visible)
 
 void MainWindow::onPythonAnalysisTestRequested()
 {
+    QStingList slotLabels;
+    for (int i = 0; i < m_chartSlots.size(); ++i){
+        slotLabels << tr("Wykres %1").args(i+1);
+
+        AnalysisDialog dialog (slotLabels,this);
+        if (dialog.exec() != QDialog::Accepted)
+            return;
+
+        m_pythonAnalysisTargetSlot = dialog.targetSlot();
+        m_pythonRunner->runAnalysis(dialog.algorithm, dialog.filePaths(), dialog.sourceColumns(),
+                                    dialog.targetColmuns(), dialog.featureColumns(), QString() , dialog.extraParams());
+    }
+
     QString fileName = QFileDialog::getOpenFileName(this, tr("Wybierz plik danych"), "", tr("CSV Files (*.csv);;All Files(*)"));
 
     if (fileName.isEmpty())

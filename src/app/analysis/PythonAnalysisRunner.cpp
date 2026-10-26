@@ -1,6 +1,7 @@
 #include "pythonanalysisrunner.h"
 #include <QDebug>
 
+
 namespace{
 //Interpreter z virtualenv Preventive_pl - ma zainstalowane pandas/numpy
 //zaszyte na sztywno do czasu, az projekt dostanie osobna konfigurację ścieżek
@@ -29,8 +30,16 @@ void PythonAnalysisRunner::runAnalysis(const QString &algorithm, const QString &
     m_currentAlgorithm = algorithm;
 
     QStringList args;
+    args << RUN_ANALYSIS_SCRIPT;
 
-    args << RUN_ANALYSIS_SCRIPT << "--file" << dataFilePath << "--algorithm" << algorithm << "--feature-columns" << featureColumns;
+    for (const QString &path : dataFilePath)
+        args << "--file"  << path;
+    for (const QString &col : sourceColumns)
+        args << "--source-column" << col;
+    for (const QString &col : targetColumns)
+        args << "--target-column" << col;
+
+    args << "--algorithm" << algorithm << "--feature-columns" << featureColumns;
 
     if(!targetColumn.isEmpty()){
         args << "--target-column" << targetColumn;

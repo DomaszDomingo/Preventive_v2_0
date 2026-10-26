@@ -6,6 +6,6 @@ EditMenu::EditMenu(QWidget *parent)
     QAction *actionLimits = addAction(tr("Dodaj limity"));
     connect(actionLimits, &QAction::triggered, this, &EditMenu::limitsDialogRequested);
 
-    QAction *actionPythonTest = addAction(tr("Uruchom analize Python (test)"));
+    QAction *actionPythonTest = addAction(tr("Uruchom analizę Python)"));
     connect(actionPythonTest, &QAction::triggered, this, &EditMenu::pythonAnalysisTestRequested);
 }

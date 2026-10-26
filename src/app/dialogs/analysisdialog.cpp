@@ -17,7 +17,7 @@
 #include <QSet>
 
 
-analysisdialog::analysisdialog(const QStringList &slotLabels, QWidget *parent) : QDialog(parent)
+AnalysisDialog::AnalysisDialog(const QStringList &slotLabels, QWidget *parent) : QDialog(parent)
 {
     setWindowTitle (tr("Analiza Python"));
 
@@ -110,13 +110,13 @@ analysisdialog::analysisdialog(const QStringList &slotLabels, QWidget *parent) :
     m_buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, this);
     mainLayout->addWidget(m_buttonBox);
 
-    connect(m_comboAlgorithm, &QComboBox::currentIndexChanged, this, &analysisdialog::onAlgorithmChanged);
-    connect(addFileBtn, &QPushButton::clicked, this, &analysisdialog::onAddFile);
-    connect(removeFileBtn, &QPushButton::clicked, this, &analysisdialog::onRemoveFile);
-    connect(moveUpBtn, &QPushButton::clicked, this, &analysisdialog::onMoveUp);
-    connect(moveDownBtn, &QPushButton::clicked, this, &analysisdialog::onMoveDown);
-    connect(browseSessionBtn, &QPushButton::clicked, this, &analysisdialog::onBrowseSessionFile);
-    connect(m_buttonBox, &QDialogButtonBox::accepted, this, &analysisdialog::onAccept);
+    connect(m_comboAlgorithm, &QComboBox::currentIndexChanged, this, &AnalysisDialog::onAlgorithmChanged);
+    connect(addFileBtn, &QPushButton::clicked, this, &AnalysisDialog::onAddFile);
+    connect(removeFileBtn, &QPushButton::clicked, this, &AnalysisDialog::onRemoveFile);
+    connect(moveUpBtn, &QPushButton::clicked, this, &AnalysisDialog::onMoveUp);
+    connect(moveDownBtn, &QPushButton::clicked, this, &AnalysisDialog::onMoveDown);
+    connect(browseSessionBtn, &QPushButton::clicked, this, &AnalysisDialog::onBrowseSessionFile);
+    connect(m_buttonBox, &QDialogButtonBox::accepted, this, &AnalysisDialog::onAccept);
     connect(m_buttonBox, &QDialogButtonBox::rejected, this, &QDialog::reject);
 
     updateFieldsVisibility();
@@ -125,13 +125,79 @@ analysisdialog::analysisdialog(const QStringList &slotLabels, QWidget *parent) :
 
 }
 
-void analysisdialog::onAlgorithmChanged(int index)
+QString AnalysisDialog::algorithm() const
+{
+    return m_comboAlgorithm->currentData().toString();
+}
+
+QStringList AnalysisDialog::filePaths() const
+{
+    QStringList result;
+    for (const FileEntry &entry : m_fileEntries)
+        result << entry.filePath;
+    return result;
+}
+
+QStringList AnalysisDialog::sourceColumns() const
+{
+    QStringList result;
+    for (const FileEntry &entry : m_fileEntries)
+        result << entry.sourceColumn;
+    return result;
+}
+
+QStringList AnalysisDialog::targetColmuns() const
+{
+    QStringList result;
+    for (const FileEntry &entry : m_fileEntries)
+        result << entry.targetColumn;
+    return result;
+}
+
+QStringList AnalysisDialog::featureColumns() const
+{
+    //jeden plik: run_analysis.py nie robi zadnego przemianowania - uzywa kolumny wprost
+    // z pliku (source), wiec feature-columns musi byc nazwa zródlowa
+    if (m_fileEntries.size() == 1)
+        return QStringList() << m_fileEntries[0].sourceColumn;
+    //wiecej plików: run_analysis.py laczy je i przemianowuje kolumny na "target"
+    //wiec feature columns musi być lista nazw docelowych w tej samej kolejności
+    return targetColumns();
+}
+
+int AnalysisDialog::targetSlot() const
+{
+    return m_comboSlot->currentIndex();
+}
+
+QVariantMap AnalysisDialog::extraParams() const
+{
+    QVariantMap params;
+    if(algorithm() == "ekf_valve"){
+        params["cv-max"] = m_cvMaxSpin->value();
+        params["specific-gravity"] = m_specificGravitySpin->value();
+        params["valve-characteristic"] = m_valveCharacteristicCombo->currentData().toString();
+        params["rangeability"] = m_rangeabilitySpin->value();
+        if(!m_sessionFileEdit->text().trimmed().isEmpty()){
+            params["session-file"] = m_sessionFileEdit->text().trimmed();
+            params["max-gap-seconds"] = m_maxGapSecondsSpin->value();
+            params["gap-reset-uncertainty"] = m_gapResetUncertaintySpin->value();
+            }
+    }
+
+    return params;
+}
+
+
+
+
+void AnalysisDialog::onAlgorithmChanged(int index)
 {
     Q_UNUSED(index);
     updateFieldsVisibility();
 }
 
-void analysisdialog::onAddFile()
+void AnalysisDialog::onAddFile()
 {
     QString fileName = QFileDialog::getOpenFileName(this, tr("Wybierz plik danych"), QString(), tr("CSV Files (*.csv);;All Files(*)"));
     if (fileName.isEmpty())
@@ -161,7 +227,7 @@ void analysisdialog::onAddFile()
 
 }
 
-void analysisdialog::onRemoveFile()
+void AnalysisDialog::onRemoveFile()
 {
     int row = m_fileListWidget->currentRow();
     if (row < 0 || row >= m_fileEntries.size());
@@ -171,7 +237,7 @@ void analysisdialog::onRemoveFile()
 
 }
 
-void analysisdialog::onMoveUp()
+void AnalysisDialog::onMoveUp()
 {
     int row = m_fileListWidget->currentRow();
     if (row <=0 || row >= m_fileEntries.size())
@@ -182,7 +248,7 @@ void analysisdialog::onMoveUp()
 
 }
 
-void analysisdialog::onMoveDown()
+void AnalysisDialog::onMoveDown()
 {
     int row = m_fileListWidget->currentRow();
     if (row < 0 || row >= m_fileEntries.size() - 1)
@@ -192,7 +258,7 @@ void analysisdialog::onMoveDown()
     m_fileListWidget->setCurrentRow(row + 1);
 }
 
-void analysisdialog::onBrowseSessionFile()
+void AnalysisDialog::onBrowseSessionFile()
 {
     //getSaveFileName, bo plik sesji moze jeszcze neie istniec (pierwsze uzycie)
     //a rownie dobrze moze wskazwyać na juz istniejący plik do wznowienia
@@ -202,7 +268,7 @@ void analysisdialog::onBrowseSessionFile()
         m_sessionFileEdit->setText(fileName);
 }
 
-void analysisdialog::onAccept()
+void AnalysisDialog::onAccept()
 {
     if(m_fileEntries.isEmpty()){
         QMessageBox::warning(this, tr("Analiza Python"), tr("Dodaj co najmniej jeden plik."));
@@ -244,13 +310,13 @@ void analysisdialog::onAccept()
     accept();
 }
 
-void analysisdialog::updateFieldsVisibility()
+void AnalysisDialog::updateFieldsVisibility()
 {
     bool isEkf = (m_comboAlgorithm->currentData().toString() == "ekf_valve");
     m_ekfFieldsWidget->setVisible(isEkf);
 }
 
-void analysisdialog::refreshFileList()
+void AnalysisDialog::refreshFileList()
 {
     m_fileListWidget->clear();
     for (int i = 0; i < m_fileEntries.size(); i++){
