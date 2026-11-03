@@ -16,9 +16,14 @@ public:
 
     //Uruchamia run_analysis.py asynchronicznie. Wynik przechodzi przez sygnał
     //AnalysisFinished, gdy proces sie zakonczy (sukces lub błąd)
+    //dataFilePaths/sourceColumns/targetColumns - rownolgle listy, po jednym
+    //wpisie na kazdy plik danych (kolejnosc ma znaczneie - patrz AnalysisDialog).
+    //sourceColumns/targetColumns sa ignorowane przez run_analysis.py, gdy jest tylko jeden plik
 
     void runAnalysis (const QString &algorithm,
-                     const QString &dataFilePath,
+                     const QStringList &dataFilePath,
+                     const QStringList &sourceColumns,
+                     const QStringList &targetColumns,
                      const QStringList &featureColumns,
                      const QString &targetColumn = QString(),
                      const QVariantMap &extraParams = QVariantMap());

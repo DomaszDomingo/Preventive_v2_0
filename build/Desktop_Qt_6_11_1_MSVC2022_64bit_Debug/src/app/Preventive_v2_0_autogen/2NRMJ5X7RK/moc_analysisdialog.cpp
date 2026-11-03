@@ -31,14 +31,14 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 QT_WARNING_DISABLE_GCC("-Wuseless-cast")
 namespace {
-struct qt_meta_tag_ZN14analysisdialogE_t {};
+struct qt_meta_tag_ZN14AnalysisDialogE_t {};
 } // unnamed namespace
 
-template <> constexpr inline auto analysisdialog::qt_create_metaobjectdata<qt_meta_tag_ZN14analysisdialogE_t>()
+template <> constexpr inline auto AnalysisDialog::qt_create_metaobjectdata<qt_meta_tag_ZN14AnalysisDialogE_t>()
 {
     namespace QMC = QtMocConstants;
     QtMocHelpers::StringRefStorage qt_stringData {
-        "analysisdialog",
+        "AnalysisDialog",
         "onAlgorithmChanged",
         "",
         "index",
@@ -72,22 +72,22 @@ template <> constexpr inline auto analysisdialog::qt_create_metaobjectdata<qt_me
     };
     QtMocHelpers::UintData qt_enums {
     };
-    return QtMocHelpers::metaObjectData<analysisdialog, qt_meta_tag_ZN14analysisdialogE_t>(QMC::MetaObjectFlag{}, qt_stringData,
+    return QtMocHelpers::metaObjectData<AnalysisDialog, qt_meta_tag_ZN14AnalysisDialogE_t>(QMC::MetaObjectFlag{}, qt_stringData,
             qt_methods, qt_properties, qt_enums);
 }
-Q_CONSTINIT const QMetaObject analysisdialog::staticMetaObject = { {
+Q_CONSTINIT const QMetaObject AnalysisDialog::staticMetaObject = { {
     QMetaObject::SuperData::link<QDialog::staticMetaObject>(),
-    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN14analysisdialogE_t>.stringdata,
-    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN14analysisdialogE_t>.data,
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN14AnalysisDialogE_t>.stringdata,
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN14AnalysisDialogE_t>.data,
     qt_static_metacall,
     nullptr,
-    qt_staticMetaObjectRelocatingContent<qt_meta_tag_ZN14analysisdialogE_t>.metaTypes,
+    qt_staticMetaObjectRelocatingContent<qt_meta_tag_ZN14AnalysisDialogE_t>.metaTypes,
     nullptr
 } };
 
-void analysisdialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void AnalysisDialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
-    auto *_t = static_cast<analysisdialog *>(_o);
+    auto *_t = static_cast<AnalysisDialog *>(_o);
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
         case 0: _t->onAlgorithmChanged((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
@@ -102,20 +102,20 @@ void analysisdialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
     }
 }
 
-const QMetaObject *analysisdialog::metaObject() const
+const QMetaObject *AnalysisDialog::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *analysisdialog::qt_metacast(const char *_clname)
+void *AnalysisDialog::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_staticMetaObjectStaticContent<qt_meta_tag_ZN14analysisdialogE_t>.strings))
+    if (!strcmp(_clname, qt_staticMetaObjectStaticContent<qt_meta_tag_ZN14AnalysisDialogE_t>.strings))
         return static_cast<void*>(this);
     return QDialog::qt_metacast(_clname);
 }
 
-int analysisdialog::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int AnalysisDialog::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QDialog::qt_metacall(_c, _id, _a);
     if (_id < 0)

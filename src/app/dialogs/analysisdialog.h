@@ -23,7 +23,7 @@ public:
     QString algorithm() const;              //"kalman" lub ekf_value
     QStringList filePaths() const;           //jeden wpis na każdy dodany plik, w kolejności dodania
     QStringList sourceColumns() const;      //rownolegla do filePaths - nazwa kolumny w danym pliku
-    QStringList targetColmuns () const;      //rownoległa do filePaths - nazwa po połączeniu (używana tylko gdy wiecej niz jeden plik)
+    QStringList targetColumns () const;      //rownoległa do filePaths - nazwa po połączeniu (używana tylko gdy wiecej niz jeden plik)
     QStringList featureColumns () const;    // finalne kolumny dla algorytmu, gotowe do wysłania do run_analysis.py
 
     int targetSlot() const;

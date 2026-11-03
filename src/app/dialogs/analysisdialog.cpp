@@ -13,7 +13,7 @@
 #include <QFileDialog>
 #include <QInputDialog>
 #include <QMessageBox>
-#include <QfileInfo>
+#include <QFileInfo>
 #include <QSet>
 
 
@@ -37,7 +37,7 @@ AnalysisDialog::AnalysisDialog(const QStringList &slotLabels, QWidget *parent) :
     //to następne pozycje. Dla kalmana jest uzywany jeden wpis
 
     QGroupBox *filesGroup = new QGroupBox(tr("Pliki danych (kolejność ma znaczenie - dla EKF: 1. przepływ, 2. ciśnienie)"),this);
-    QVBoxLayout *filesLayout = QVBoxLayout(filesGroup);
+    QVBoxLayout *filesLayout = new QVBoxLayout(filesGroup);
 
     m_fileListWidget = new QListWidget(filesGroup);
     filesLayout->addWidget(m_fileListWidget);
@@ -146,7 +146,7 @@ QStringList AnalysisDialog::sourceColumns() const
     return result;
 }
 
-QStringList AnalysisDialog::targetColmuns() const
+QStringList AnalysisDialog::targetColumns() const
 {
     QStringList result;
     for (const FileEntry &entry : m_fileEntries)
@@ -222,7 +222,7 @@ void AnalysisDialog::onAddFile()
     entry.sourceColumn = sourceColumn.trimmed();
     entry.targetColumn = targetColumn.trimmed();
     m_fileEntries.append(entry);
-    refreshFile();
+    refreshFileList();
 
 
 }
@@ -230,7 +230,7 @@ void AnalysisDialog::onAddFile()
 void AnalysisDialog::onRemoveFile()
 {
     int row = m_fileListWidget->currentRow();
-    if (row < 0 || row >= m_fileEntries.size());
+    if (row < 0 || row >= m_fileEntries.size())
         return;
     m_fileEntries.removeAt(row);
     refreshFileList();
@@ -283,7 +283,7 @@ void AnalysisDialog::onAccept()
         return;
     }
 
-    if (!isEKF && m_fileEntries.size() < 2) {
+    if (isEKF && m_fileEntries.size() < 2) {
         QMessageBox::warning(this, tr("Analiza Python)"),
                              tr("EKF Zaworu wymaga co najmniej dwoch plików/kolumn (przepływ, ciśnienie)."));
         return;

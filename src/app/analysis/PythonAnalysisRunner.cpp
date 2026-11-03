@@ -13,14 +13,12 @@ const QString RUN_ANALYSIS_SCRIPT =
 }
 
 
-PythonAnalysisRunner::PythonAnalysisRunner(QObject *parent) : QObject (parent)
-{
-    m_process = new QProcess(this);
-    connect (m_process, &QProcess::finished, this, &PythonAnalysisRunner::onProcessFinished);
-    connect (m_process, &QProcess::errorOccurred, this , &PythonAnalysisRunner::onProcessErrorOccured);
-}
 
-void PythonAnalysisRunner::runAnalysis(const QString &algorithm, const QString &dataFilePath, const QStringList &featureColumns, const QString &targetColumn, const QVariantMap &extraParams)
+
+void PythonAnalysisRunner::runAnalysis(const QString &algorithm, const QStringList &dataFilePath,
+                                       const QStringList &sourceColumns, const QStringList &targetColumns,
+                                       const QStringList &featureColumns,const QString &targetColumn,
+                                       const QVariantMap &extraParams)
 {
     if (m_process->state() != QProcess::NotRunning){
         qWarning() << "PythonAnalysisRunner: poprzednia analiza jeszcze trwa, nowe zadanie zingorowane.";
@@ -42,7 +40,7 @@ void PythonAnalysisRunner::runAnalysis(const QString &algorithm, const QString &
     args << "--algorithm" << algorithm << "--feature-columns" << featureColumns;
 
     if(!targetColumn.isEmpty()){
-        args << "--target-column" << targetColumn;
+        args << "--target-column-name" << targetColumn;
     }
 
     //Dowolne dodatkowe parametry algorytmu (np. klucz "process-noise" -> --process-noise).

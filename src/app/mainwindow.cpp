@@ -186,39 +186,21 @@ void MainWindow::onLimitsVisibilityChanged(int slotIndex, bool visible)
 
 void MainWindow::onPythonAnalysisTestRequested()
 {
-    QStingList slotLabels;
-    for (int i = 0; i < m_chartSlots.size(); ++i){
-        slotLabels << tr("Wykres %1").args(i+1);
+    QStringList slotLabels;
+    for (int i = 0; i < m_chartSlots.size(); ++i)
+        slotLabels << tr("Wykres %1").arg(i+1);
 
         AnalysisDialog dialog (slotLabels,this);
         if (dialog.exec() != QDialog::Accepted)
             return;
 
         m_pythonAnalysisTargetSlot = dialog.targetSlot();
-        m_pythonRunner->runAnalysis(dialog.algorithm, dialog.filePaths(), dialog.sourceColumns(),
-                                    dialog.targetColmuns(), dialog.featureColumns(), QString() , dialog.extraParams());
+        m_pythonRunner->runAnalysis(dialog.algorithm(), dialog.filePaths(), dialog.sourceColumns(),
+                                    dialog.targetColumns(), dialog.featureColumns(), QString() , dialog.extraParams());
     }
 
-    QString fileName = QFileDialog::getOpenFileName(this, tr("Wybierz plik danych"), "", tr("CSV Files (*.csv);;All Files(*)"));
-
-    if (fileName.isEmpty())
-        return;
-
-    bool ok = false;
-    QString column = QInputDialog::getText(this, tr("Kolumna wejściowa"), tr("Nazwy kolumny(po normalizacji, malymi literami):"), QLineEdit::Normal, "temperature_c", &ok);
-
-    if(!ok || column.isEmpty())
-        return;
-
-    int slotIndex = QInputDialog::getInt(this, tr("Wybór wykresu"),  tr("Numer slotu (0-%1):").arg(m_chartSlots.size() - 1), 0, 0, m_chartSlots.size() - 1, 1, &ok);
-
-    if (!ok)
-        return;
 
 
-    m_pythonAnalysisTargetSlot = slotIndex;
-        m_pythonRunner->runAnalysis("kalman",fileName,QStringList() << column);
-}
 
 
 
